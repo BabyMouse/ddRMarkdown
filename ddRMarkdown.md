@@ -1,0 +1,50 @@
+---
+title: "Thiết kế tài liệu với RMarkdown"
+author: "Trát Quang Thụy"
+date: "1/19/2020"
+output: 
+  html_document: 
+    code_download: yes
+    code_folding: show
+    css: Style.css
+    df_print: kable
+    highlight: haddock
+    keep_md: yes
+    number_sections: yes
+---
+
+
+
+---
+
+**MỤC LỤC**
+
+1. Giới thiệu
+
+**Phần chung**
+
+2. Mã hóa thông tin
+
+3. Tiếng Việt trong R
+
+4. Markdown
+
+5. LaTeX
+
+6. HTML +  CSS +  JavaScript
+
+* HTML
+
+* CSS
+
+* JavaScript
+
+
+
+**Phần riêng**
+
+7. Bảng
+
+8. Công thức toán học
+
+9. Hình ảnh và Biểu đồ

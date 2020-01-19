@@ -1,0 +1,53 @@
+/*
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+    css: escapeString.css
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+*/
+
+body {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+.main-content {
+  max-width: 100% !important;
+}
+
+.logs {
+  width: auto;
+}
+
+.logs-caption {
+  background-color: #4caf50;
+  border-radius: 0.3rem 0.3rem 0rem 0rem;
+  border: solid 1px #dce6f0;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 0px;
+  padding: 5px 10px 5px 10px;
+  width: auto;
+}
+
+.logs-content {
+  background-color: #f3f6fa;
+  border-radius: 0rem 0rem 0.3rem 0.3rem;
+  border: solid 1px #dce6f0;
+  color: #304e6d;
+  font-size: 1rem;
+  height: 200px;
+  line-height: 1.25;
+  margin-top: 0px;
+  overflow-y: scroll;
+  padding: 10px;
+  width: auto;
+  word-wrap: break-word;
+}
+
+.logs-content > p {
+  margin: 2px;
+}

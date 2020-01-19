@@ -1,0 +1,123 @@
+---
+title: "Chuyển mã Unicode trong R"
+author: "Trát Quang Thụy"
+date: "Ngày 20.8.2019"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+    css: escapeString.css
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+<div class="logs">
+<div class="logs-caption">Logs</div>
+<div class="logs-content">
+**14.1.2020:** Sửa lỗi
+
+* Thay đổi thuật toán: Không convert tất cả kí tự thuộc bảng mã ASCII.
+
+**13.1.2020:** Cập nhật
+
+* Cập nhật thêm một số ASCII code.
+
+**20.8.2019:** Khởi tạo project
+
+- Chuyển thử bài từ Note của Facebook sang RMarkdown để upload lên RPubs.
+</div></div>
+
+---
+
+(Bài này viết như đã hứa sẽ bổ sung ở bài trước ^[“Chia sẻ kinh nghiệm cá nhân: Tôi đi học làm nhà nghiên cứu (Kỳ 2)”, https://www.facebook.com/babymouse.nice/posts/2885594074800107], nhân tiện chia sẻ cho những bạn đang và sẽ làm việc với phần mềm R.)
+
+## Các bước thực hiện
+Với những bạn chuyên ngành CNTT, khi nhìn lướt qua thì đã biết đoạn mã (‘văn bản’) bên dưới chính là 1 trang web. Tuy nhiên, với những bạn không chuyên, thì phải làm sao đây?
+
+**Bước 1:** Trên Windows, mở (chạy) `Notepad`.
+
+**Bước 2:** Copy toàn bộ đoạn mã bên dưới, paste (dán) vào `Notepad`.
+
+**Bước 3:** Save (lưu lại) với tên  “<code>Escape**.html**</code>”.
+
+**Bước cuối:** Mở file bằng trình duyệt web (hoặc click đôi chuột).
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Convert to escape string</title>
+    <meta charset="utf-8" />
+</head>
+<style>
+    .panel {
+        display: block;
+        width: 50%;
+    }
+    
+    textarea {
+        height: 150px;
+        width: 100%;
+    }
+    
+    .align_right {
+        text-align: right;
+    }
+</style>
+<script>
+    /* ASCII code: http://ascii-table.com/codepage.php?1252 */
+    /* escape: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/escape */
+    /* encodeURI: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI */
+    /* encodeURIComponent: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent */
+
+    function toEscape() {
+
+        var sourceString = document.getElementById("inputString").value;
+        var escapeString = "";
+        document.getElementById("outputOriginalString").innerText = escape(sourceString);
+
+        for (var i = 0; i < sourceString.length; i++) {
+            var code = sourceString.charCodeAt(i);
+            if (code >= 0xFF) {
+                escapeString += encodeURI(sourceString.charAt(i)).replace("%u", "\\u");
+            } else {
+                escapeString += sourceString.charAt(i);
+            }
+        }
+        document.getElementById("outputConvertedString").innerText = escapeString;
+    }
+</script>
+
+<body>
+    <div class="panel">
+        <div>Nhập chuỗi Unicode</div> <textarea id="inputString"></textarea><br />
+        <div class="align_right"> <button type="button" id="escapeButton" title="Escape" onclick="toEscape();">Chuyển mã</button> </div>
+        <div>Xuất chuỗi Escape</div> <textarea id="outputOriginalString"></textarea></br>
+        </br>
+        <div>Xuất chuỗi Escape (không chuyển ASCII code)</div> <textarea id="outputConvertedString"></textarea> </div>
+</body>
+
+</html>
+```
+
+## Tham khảo thêm
+(Dành cho những bạn không rành, nhưng muốn tùy chỉnh theo ý mình.)
+
+Các bạn cứ vào trang **MDN** (của FireFox) tham khảo rồi sửa: https://developer.mozilla.org/en-US/
+
+**Lưu ý:** Ở cuối trang có mục chuyển sang Tiếng Việt. Nhưng thiết nghĩ, không nên. Do người ta phát triển ngôn ngữ lập trình bằng tiếng Anh, nên đọc tiếng Anh cho dễ hiểu. Chữ nào không biết thì dịch nó sang tiếng Việt thôi.
+
+Trang web trên bao gồm 3 phần:
+
+1.  **HTML** (nằm trong tag **`<html>`**, để phát triển khung sườn trang web): https://developer.mozilla.org/en-US/docs/Web/HTML
+
+2.  **CSS** (nằm trong tag **`<style>`**, để định dạng các thẻ (tag) HTML, tô son trát phấn cho cả trang web): https://developer.mozilla.org/en-US/docs/Web/CSS
+
+3.  **JavaScript** (nằm trong tag **`<script>`**, để lập trình 1 kịch bản chuyển mã cho trang web): https://developer.mozilla.org/en-US/docs/Web/JavaScript
+
+
+## Ghi chú  
+
