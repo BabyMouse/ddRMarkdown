@@ -40,7 +40,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### **0.** Giới thiệu tổng quan
 
-* **Mục tiêu:** Visualization nhưng thiên về Design (kĩ thuật, không phải mĩ thuật) với phạm vi public lên RPubs.
+* **Mục tiêu:** Visualization nhưng thiên về Design (kĩ thuật, không phải mĩ thuật) với phạm vi public lên `RPubs`.
 
 * **Qui ước giao tiếp (protocol)**
   + Xưng hô
