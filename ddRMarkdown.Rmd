@@ -1,7 +1,8 @@
 ---
 title: "Thiết kế tài liệu với RMarkdown"
+subtitle: "(<span style=\"text-decoration: underline\">**D**</span>esign <span style=\"text-decoration: underline\">**D**</span>ocuments with <span style=\"text-decoration: underline\">**RMarkdown**</span>)"
 author: "Trát Quang Thụy"
-date: "1/19/2020"
+date: "Ngày 19/1/2020"
 output: 
   html_document: 
     code_download: yes
@@ -17,6 +18,19 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ---
+
+<div class="logs">
+<div class="logs-caption">Logs</div>
+<div class="logs-content">
+**22.1.2020:** Thêm **Mục lục** và upload `RPubs`.
+
+- RPubs: <http://rpubs.com/BabyMouse/ddRMarkdown>
+
+**19.8.2020:** Khởi tạo project và upload lên `Github`.
+
+- GitHub: <https://github.com/BabyMouse/ddRMarkdown>
+
+</div></div>
 
 # **Mục lục**
 
@@ -79,7 +93,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### **7.** Table (kable)
 
-### **8.** Graphic (gglot2)
+### **8.** Graphic (ggplot2)
 
 ## **Phụ lục**
 

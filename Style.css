@@ -1,5 +1,10 @@
 /* Style này chỉ dành cho RMarkdown không xài Theme. */
 
+code {
+  color: #000000;
+  font-size: medium;
+  font-weight: 600;
+}
 hr {
   background-color: #aaa;
   background-image: linear-gradient(to right, #eee, #aaa, #eee);
@@ -19,6 +24,7 @@ hr {
   border-radius: 0.3rem 0.3rem 0rem 0rem;
   border: solid 1px #dce6f0;
   color: #fff;
+  font-size: large;
   font-weight: 700;
   margin-bottom: 0px;
   padding: 5px 10px 5px 10px;
@@ -30,7 +36,7 @@ hr {
   border-radius: 0rem 0rem 0.3rem 0.3rem;
   border: solid 1px #dce6f0;
   color: #304e6d;
-  font-size: 1rem;
+  font-size: medium;
   height: 200px;
   line-height: 1.25;
   margin-top: 0px;
@@ -41,5 +47,5 @@ hr {
 }
 
 .logs-content > p {
-  margin: 2px;
+  margin: 10px 5px 5px 5px;
 }
