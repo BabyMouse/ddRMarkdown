@@ -10,7 +10,6 @@ output:
     df_print: kable
     highlight: haddock
     keep_md: yes
-    number_sections: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -19,34 +18,78 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ---
 
-**MỤC LỤC**
+# **Mục lục**
 
-1. Giới thiệu
+## **Cám ơn**
 
-**Phần chung**
+## **Phần 1:** Giới thiệu
 
-2. Mã hóa thông tin
+### **0.** Giới thiệu tổng quan
 
-3. Tiếng Việt trong R
+* **Mục tiêu:** Visualization nhưng thiên về Design (kĩ thuật, không phải mĩ thuật) với phạm vi public lên RPubs.
 
-4. Markdown
+* **Qui ước giao tiếp (protocol)**
+  + Xưng hô
+  + Ngôn ngữ Anh, Việt
+  + Định dạng văn bản, tài liệu 
+  + Tổ chức tài liệu và cách đọc
 
-5. LaTeX
+## **Phần 2:** Làm quen
 
-6. HTML +  CSS +  JavaScript
+### **1.** Triết lí Design Documents (suy nghĩ một cách thông thái)
 
-* HTML
+* Kaizen vs. Revolution ("anything goes" - P.F)
+* Chia để trị (module, component)
+* Tổ chức thông tin 
+	* Tính logic
+	* Tính hệ thống
+* Khoa học vs. Nghệ thuật
+* Nguyên lí "Xây cái Toilet" (History)
+* Học người đi trước ('đầu tiên và cũng là cuối cùng' - Harry Potter)
+	* Tiếp nhận - Phân tích - Bắt chước - Tùy biến - Sáng tạo 
 
-* CSS
+### **2.** Mã hóa thông tin trong RMarkdown 
 
-* JavaScript
+* Nguyên lí thông tin dưới góc độ khoa học máy tính (hệ bin, hex, dec; bit, byte/ word, double words)
+* Kí tự: Bảng mã ASCII (7-bit, 8-bit), UniCode
+* Chuỗi kí tự: Escape string, URI
+* Định dạng văn bản bằng đánh dấu (markup)
+	* Markdown
+	* LaTeX
+	* HTML
+	* CSS
+
+### **3.** Nguyên liệu chế biến Documents
+
+* Phát thảo khung sườn (template, skeleton, partien)
+* Chọn chủ đề (theme)
+* Biến tấu phong cách (style)
+* Thổi hồn vào Documents (DHTML, JavaScript)
+	* Batch và R functions (Bắt chước)
+	* Script và Own R function (Tùy biến)
+	* Language (Sáng tạo)
+
+## **Phần 3:** Làm thử
+
+### **4.** Định dạng chữ
+
+### **5.** Picture, Address, Block, Code
+
+### **6.** Equartion 
+
+### **7.** Table (kable)
+
+### **8.** Graphic (gglot2)
+
+## **Phụ lục**
+
+**Phụ lục 1**: Convert UniCode tổ hợp sang UniCode dựng sẵn 
+
+**Phụ lục 2**: Convert UniCode sang Escape string 
+
+**Phụ lục 3**: Convert Equartion từ LaTeX sang MathML
 
 
 
-**Phần riêng**
 
-7. Bảng
 
-8. Công thức toán học
-
-9. Hình ảnh và Biểu đồ
