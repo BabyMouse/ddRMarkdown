@@ -81,11 +81,11 @@ output:
 
 ## **Phụ lục**
 
-**Phụ lục 1**: Convert UniCode tổ hợp sang UniCode dựng sẵn 
+### **Phụ lục 1**: Convert UniCode tổ hợp sang UniCode dựng sẵn 
 
-**Phụ lục 2**: Convert UniCode sang Escape string 
+### **Phụ lục 2**: Convert UniCode sang Escape string 
 
-**Phụ lục 3**: Convert Equartion từ LaTeX sang MathML
+### **Phụ lục 3**: Convert Equartion từ LaTeX sang MathML
 
 
 
