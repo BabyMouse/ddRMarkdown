@@ -3,5 +3,7 @@
 .RData
 .Ruserdata
 rsconnect
-test.css
-test.Rmd
+*.md
+*.html
+Test.css
+Test.Rmd
