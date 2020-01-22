@@ -1,5 +1,5 @@
 ---
-title: "3. Nguyên liệu chế biến Documen"
+title: "3. Nguyên liệu chế biến Documents"
 subtitle: "(<span style=\"text-decoration: underline\">**D**</span>esign <span style=\"text-decoration: underline\">**D**</span>ocuments with <span style=\"text-decoration: underline\">**RMarkdown**</span>)"
 author: "Trát Quang Thụy"
 date: "Ngày 22/1/2020"

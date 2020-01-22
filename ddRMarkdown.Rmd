@@ -32,13 +32,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 </div></div>
 
-# **Mục lục**
+# **[Mục lục](http://rpubs.com/BabyMouse/ddRMarkdown)**
 
 ## **Cám ơn**
 
 ## **Phần 1:** Giới thiệu
 
 ### **0.** Giới thiệu tổng quan
+
+* **Giới thiệu về dự án**
 
 * **Mục tiêu:** Visualization nhưng thiên về Design (kĩ thuật, không phải mĩ thuật) với phạm vi public lên `RPubs`.
 
@@ -52,7 +54,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### **1.** Triết lí Design Documents (suy nghĩ một cách thông thái)
 
-* Kaizen vs. Revolution ("anything goes" - P.F)
+* Kaizen vs. Revolution ("anything goes" - Paul Karl Feyerabend)
 * Chia để trị (module, component)
 * Tổ chức thông tin 
 	* Tính logic
@@ -60,7 +62,11 @@ knitr::opts_chunk$set(echo = TRUE)
 * Khoa học vs. Nghệ thuật
 * Nguyên lí "Xây cái Toilet" (History)
 * Học người đi trước ('đầu tiên và cũng là cuối cùng' - Harry Potter)
-	* Tiếp nhận - Phân tích - Bắt chước - Tùy biến - Sáng tạo 
+	- Tiếp nhận
+	- Phân tích
+	- Bắt chước
+	- Tùy biến 
+	- Sáng tạo 
 
 ### **2.** Mã hóa thông tin trong RMarkdown 
 
@@ -89,7 +95,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### **5.** Picture, Address, Block, Code
 
-### **6.** Equartion 
+### **6.** Equation 
 
 ### **7.** Table (kable)
 
