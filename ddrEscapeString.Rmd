@@ -1,35 +1,29 @@
 ---
-title: "Chuyển mã Unicode trong R"
+title: "Phụ lục 2: Convert UniCode sang Escape string"
+subtitle: "(<span style=\"text-decoration: underline\">**D**</span>esign <span style=\"text-decoration: underline\">**D**</span>ocuments with <span style=\"text-decoration: underline\">**RMarkdown**</span>)"
 author: "Trát Quang Thụy"
-date: "Ngày 20.8.2019"
-output:
-  prettydoc::html_pretty:
-    theme: cayman
-    highlight: github
-    css: escapeString.css
-vignette: >
-  %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+date: "Ngày 22/1/2020"
+output: 
+  html_document: 
+    code_download: yes
+    code_folding: show
+    css: Style.css
+    df_print: kable
+    highlight: haddock
+    keep_md: yes
+---
+
 ---
 
 <div class="logs">
 <div class="logs-caption">Logs</div>
 <div class="logs-content">
-**14.1.2020:** Sửa lỗi
+**22.1.2020:** Khởi tạo `ddrEscapeString`.
 
-* Thay đổi thuật toán: Không convert tất cả kí tự thuộc bảng mã ASCII.
-
-**13.1.2020:** Cập nhật
-
-* Cập nhật thêm một số ASCII code.
-
-**20.8.2019:** Khởi tạo project
-
-- Chuyển thử bài từ Note của Facebook sang RMarkdown để upload lên RPubs.
 </div></div>
 
----
+## Phụ lục 2: Convert UniCode sang Escape string: ddrEscapeString
+
 
 (Bài này viết như đã hứa sẽ bổ sung ở bài trước ^[“Chia sẻ kinh nghiệm cá nhân: Tôi đi học làm nhà nghiên cứu (Kỳ 2)”, https://www.facebook.com/babymouse.nice/posts/2885594074800107], nhân tiện chia sẻ cho những bạn đang và sẽ làm việc với phần mềm R.)
 

@@ -1,11 +1,37 @@
 ---
-title: "Giới thiệu"
+title: "0. Giới thiệu tổng quan"
+subtitle: "(<span style=\"text-decoration: underline\">**D**</span>esign <span style=\"text-decoration: underline\">**D**</span>ocuments with <span style=\"text-decoration: underline\">**RMarkdown**</span>)"
 author: "Trát Quang Thụy"
-date: "1/20/2020"
-output: html_document
+date: "Ngày 22/1/2020"
+output: 
+  html_document: 
+    code_download: yes
+    code_folding: show
+    css: Style.css
+    df_print: kable
+    highlight: haddock
+    keep_md: yes
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+---
+
+<div class="logs">
+<div class="logs-caption">Logs</div>
+<div class="logs-content">
+**22.1.2020:** Khởi tạo `ddrIntroduction`.
+
+</div></div>
+
+## 0. Giới thiệu tổng quan: ddrIntroduction
+
+* Giới thiệu về dự án
+
+* Mục tiêu: Visualization nhưng thiên về Design (kĩ thuật, không phải mĩ thuật) với phạm vi public lên RPubs.
+
+* Qui ước giao tiếp (protocol)
+
+	* Xưng hô
+	* Ngôn ngữ Anh, Việt
+	* Định dạng văn bản, tài liệu
+	* Tổ chức tài liệu và cách đọc
 
