@@ -1,0 +1,30 @@
+---
+title: "Phụ lục 3: Convert Equartion từ LaTeX sang MathML"
+subtitle: "(<span style=\"text-decoration: underline\">**D**</span>esign <span style=\"text-decoration: underline\">**D**</span>ocuments with <span style=\"text-decoration: underline\">**RMarkdown**</span>)"
+author: "Trát Quang Thụy"
+date: "Ngày 22/1/2020"
+output: 
+  html_document: 
+    code_download: yes
+    code_folding: show
+    css: Style.css
+    df_print: kable
+    highlight: haddock
+    keep_md: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+
+<div class="logs">
+<div class="logs-caption">Logs</div>
+<div class="logs-content">
+**22.1.2020:** Khởi tạo `ddrMathML`.
+
+</div></div>
+
+## Phụ lục 3: Convert Equartion từ LaTeX sang MathML: ddrMathML
+
