@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Convert Composite UniCode to UniCode</title>
+    <meta charset="utf-8" />
+</head>
+<style>
+    body,
+    textarea {
+        font-size: 1.2em;
+    }
+    
+    .panel {
+        display: block;
+        width: 50%;
+    }
+    
+    textarea {
+        height: 150px;
+        width: 100%;
+    }
+    
+    .align_right {
+        text-align: right;
+    }
+</style>
+<script>
+    /* ASCII code: http://ascii-table.com/codepage.php?1252 */
+    /* escape: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/escape */
+    /* encodeURI: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI */
+    /* encodeURIComponent: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent */
+    /* Unicode & Vietnamese Legacy Character Encodings: http://vietunicode.sourceforge.net/charset/ */
+
+    function toEscape(inputString) {
+        var escapeString = "";
+
+        for (var i = 0; i < inputString.length; i++) {
+            var code = inputString.charCodeAt(i);
+            if (code >= 0xff) {
+                escapeString += escape(inputString.charAt(i)).replace("%u", "\\u").replace("%", "\\u00");
+            } else {
+                escapeString += inputString.charAt(i);
+            }
+        }
+        //escapeString = escapeString.replace(/\u002f\u002a\u0020/g, "\"").replace(/\u0020\u002a\u002f/g, "\",");
+        //escapeString = escapeString.replace(/\u0020/g, "\": \"");
+        return escapeString;
+    }
+
+    function toEncode() {
+        var inputString = document.getElementById("inputString").value;
+        document.getElementById("outputConvertedString").value = toEscape(inputString);
+
+        var mapCode = {
+            /* á */
+            "a\u0301": "\u00E1",
+            /* à */
+            "a\u0300": "\u00E0",
+            /* ả */
+            "a\u0309": "\u1EA3",
+            /* ã */
+            "a\u0303": "\u00E3",
+            /* ạ */
+            "a\u0323": "\u1EA1",
+            /* â */
+            "â": "\u00E2",
+            /* ă */
+            "\u0103": "\u0103"
+        };
+        var outputString = inputString.replace(/a\u0301|a\u0300|a\u0309|a\u0303|a\u0323|â|\u0103/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* Á */
+            "A\u0301": "\u00C1",
+            /* À */
+            "A\u0300": "\u00C0",
+            /* Ả */
+            "A\u0309": "\u1EA2",
+            /* Ã */
+            "A\u0303": "\u00C3",
+            /* Ạ */
+            "A\u0323": "\u1EA0",
+            /* Â */
+            "Â": "\u00C2",
+            /* Ă */
+            "\u0102": "\u0102"
+        };
+        outputString = outputString.replace(/A\u0301|A\u0300|A\u0309|A\u0303|A\u0323|Â|\u0102/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* ấ */
+            "â\u0301": "\u1EA5",
+            /* ầ */
+            "â\u0300": "\u1EA7",
+            /* ẩ */
+            "â\u0309": "\u1EA9",
+            /* ẫ */
+            "â\u0303": "\u1EAB",
+            /* ậ */
+            "â\u0323": "\u1EAD"
+        };
+        outputString = outputString.replace(/â\u0301|â\u0300|â\u0309|â\u0303|â\u0323/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* Ấ */
+            "Â\u0301": "\u1EA4",
+            /* Ầ */
+            "Â\u0300": "\u1EA6",
+            /* Ẩ */
+            "Â\u0309": "\u1EA8",
+            /* Ẫ */
+            "Â\u0303": "\u1EAA",
+            /* Ậ */
+            "Â\u0323": "\u1EAC"
+        };
+        outputString = outputString.replace(/Â\u0301|Â\u0300|Â\u0309|Â\u0303|Â\u0323/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* ắ */
+            "\u0103\u0301": "\u1EAF",
+            /* ằ */
+            "\u0103\u0300": "\u1EB1",
+            /* ẳ */
+            "\u0103\u0309": "\u1EB3",
+            /* ẵ */
+            "\u0103\u0303": "\u1EB5",
+            /* ặ */
+            "\u0103\u0323": "\u1EB7"
+        };
+        outputString = outputString.replace(/\u0103\u0301|\u0103\u0300|\u0103\u0309|\u0103\u0303|\u0103\u0323/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* Ắ */
+            "\u0102\u0301": "\u1EAE",
+            /* Ằ */
+            "\u0102\u0300": "\u1EB0",
+            /* Ẳ */
+            "\u0102\u0309": "\u1EB2",
+            /* Ẵ */
+            "\u0102\u0303": "\u1EB4",
+            /* Ặ */
+            "\u0102\u0323": "\u1EB6"
+        };
+        outputString = outputString.replace(/\u0102\u0301|\u0102\u0300|\u0102\u0309|\u0102\u0303|\u0102\u0323/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* é */
+            "e\u0301": "\u00E9",
+            /* è */
+            "e\u0300": "\u00E8",
+            /* ẻ */
+            "e\u0309": "\u1EBB",
+            /* ẽ */
+            "e\u0303": "\u1EBD",
+            /* ẹ */
+            "e\u0323": "\u1EB9",
+            /* ê */
+            "ê": "\u00EA"
+        };
+        outputString = outputString.replace(/e\u0301|e\u0300|e\u0309|e\u0303|e\u0323|ê/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* É */
+            "E\u0301": "\u00C9",
+            /* È */
+            "E\u0300": "\u00C8",
+            /* Ẻ */
+            "E\u0309": "\u1EBA",
+            /* Ẽ */
+            "E\u0303": "\u1EBC",
+            /* Ẹ */
+            "E\u0323": "\u1EB8",
+            /* Ê */
+            "Ê": "\u00CA"
+        };
+        outputString = outputString.replace(/E\u0301|E\u0300|E\u0309|E\u0303|E\u0323|Ê/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* ế */
+            "ê\u0301": "\u1EBF",
+            /* ề */
+            "ê\u0300": "\u1EC1",
+            /* ể */
+            "ê\u0309": "\u1EC3",
+            /* ễ */
+            "ê\u0303": "\u1EC5",
+            /* ệ */
+            "ê\u0323": "\u1EC7"
+        };
+        outputString = outputString.replace(/ê\u0301|ê\u0300|ê\u0309|ê\u0303|ê\u0323/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* Ế */
+            "Ê\u0301": "\u1EBE",
+            /* Ề */
+            "Ê\u0300": "\u1EC0",
+            /* Ể */
+            "Ê\u0309": "\u1EC2",
+            /* Ễ */
+            "Ê\u0303": "\u1EC4",
+            /* Ệ */
+            "Ê\u0323": "\u1EC6"
+        };
+        outputString = outputString.replace(/Ê\u0301|Ê\u0300|Ê\u0309|Ê\u0303|Ê\u0323/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* í */
+            "i\u0301": "\u00ED",
+            /* ì */
+            "i\u0300": "\u00EC",
+            /* ỉ */
+            "i\u0309": "\u1EC9",
+            /* ĩ */
+            "i\u0303": "\u0129",
+            /* ị */
+            "i\u0323": "\u1ECB"
+        };
+        outputString = outputString.replace(/i\u0301|i\u0300|i\u0309|i\u0303|i\u0323/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* Í */
+            "I\u0301": "\u00CD",
+            /* Ì */
+            "I\u0300": "\u00CC",
+            /* Ỉ */
+            "I\u0309": "\u1EC8",
+            /* Ĩ */
+            "I\u0303": "\u0128",
+            /* Ị */
+            "I\u0323": "\u1ECA"
+        };
+        outputString = outputString.replace(/I\u0301|I\u0300|I\u0309|I\u0303|I\u0323/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* ó */
+            "o\u0301": "\u00F3",
+            /* ò */
+            "o\u0300": "\u00F2",
+            /* ỏ */
+            "o\u0309": "\u1ECF",
+            /* õ */
+            "o\u0303": "\u00F5",
+            /* ọ */
+            "o\u0323": "\u1ECD",
+            /* ô */
+            "ô": "\u00F4",
+            /* ơ */
+            "\u01A1": "\u01A1"
+        };
+        outputString = outputString.replace(/o\u0301|o\u0300|o\u0309|o\u0303|o\u0323|ô|\u01A1/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* Ó */
+            "O\u0301": "\u00D3",
+            /* Ò */
+            "O\u0300": "\u00D2",
+            /* Ỏ */
+            "O\u0309": "\u1ECE",
+            /* Õ */
+            "O\u0303": "\u00D5",
+            /* Ọ */
+            "O\u0323": "\u1ECC",
+            /* Ô */
+            "Ô": "\u00D4",
+            /* Ơ */
+            "\u01A0": "\u01A0"
+        };
+        outputString = outputString.replace(/O\u0301|O\u0300|O\u0309|O\u0303|O\u0323|O|\u01A0/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* ố */
+            "ô\u0301": "\u1ED1",
+            /* ồ */
+            "ô\u0300": "\u1ED3",
+            /* ổ */
+            "ô\u0309": "\u1ED5",
+            /* ỗ */
+            "ô\u0303": "\u1ED7",
+            /* ộ */
+            "ô\u0323": "\u1ED9"
+        };
+        outputString = outputString.replace(/ô\u0301|ô\u0300|ô\u0309|ô\u0303|ô\u0323/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* Ố */
+            "Ô\u0301": "\u1ED0",
+            /* Ồ */
+            "Ô\u0300": "\u1ED2",
+            /* Ổ */
+            "Ô\u0309": "\u1ED4",
+            /* Ỗ */
+            "Ô\u0303": "\u1ED6",
+            /* Ộ */
+            "Ô\u0323": "\u1ED8"
+        };
+        outputString = outputString.replace(/Ô\u0301|Ô\u0300|Ô\u0309|Ô\u0303|Ô\u0323/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* ớ */
+            "\u01A1\u0301": "\u1EDB",
+            /* ờ */
+            "\u01A1\u0300": "\u1EDD",
+            /* ở */
+            "\u01A1\u0309": "\u1EDF",
+            /* ỡ */
+            "\u01A1\u0303": "\u1EE1",
+            /* ợ */
+            "\u01A1\u0323": "\u1EE3"
+        };
+        outputString = outputString.replace(/\u01A1\u0301|\u01A1\u0300|\u01A1\u0309|\u01A1\u0303|\u01A1\u0323/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* Ớ */
+            "\u01A0\u0301": "\u1EDA",
+            /* Ờ */
+            "\u01A0\u0300": "\u1EDC",
+            /* Ở */
+            "\u01A0\u0309": "\u1EDE",
+            /* Ỡ */
+            "\u01A0\u0303": "\u1EE0",
+            /* Ợ */
+            "\u01A0\u0323": "\u1EE2"
+        };
+        outputString = outputString.replace(/\u01A0\u0301|\u01A0\u0300|\u01A0\u0309|\u01A0\u0303|\u01A0\u0323/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* ú */
+            "u\u0301": "\u00FA",
+            /* ù */
+            "u\u0300": "\u00F9",
+            /* ủ */
+            "u\u0309": "\u1EE7",
+            /* ũ */
+            "u\u0303": "\u0169",
+            /* ụ */
+            "u\u0323": "\u1EE5",
+            /* ư */
+            "\u01B0": "\u01B0"
+        };
+        outputString = outputString.replace(/u\u0301|u\u0300|u\u0309|u\u0303|u\u0323|\u01B0/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* Ú */
+            "U\u0301": "\u00DA",
+            /* Ù */
+            "U\u0300": "\u00D9",
+            /* Ủ */
+            "U\u0309": "\u1EE6",
+            /* Ũ */
+            "U\u0303": "\u0168",
+            /* Ụ */
+            "U\u0323": "\u1EE4",
+            /* Ư */
+            "\u01AF": "\u01AF"
+        };
+        outputString = outputString.replace(/U\u0301|U\u0300|U\u0309|U\u0303|U\u0323|\u01AF/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* ứ */
+            "\u01B0\u0301": "\u1EE9",
+            /* ừ */
+            "\u01B0\u0300": "\u1EEB",
+            /* ử */
+            "\u01B0\u0309": "\u1EED",
+            /* ữ */
+            "\u01B0\u0303": "\u1EEF",
+            /* ự */
+            "\u01B0\u0323": "\u1EF1"
+        };
+        outputString = outputString.replace(/\u01B0\u0301|\u01B0\u0300|\u01B0\u0309|\u01B0\u0303|\u01B0\u0323/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* Ứ */
+            "\u01AF\u0301": "\u1EE8",
+            /* Ừ */
+            "\u01AF\u0300": "\u1EEA",
+            /* Ử */
+            "\u01AF\u0309": "\u1EEC",
+            /* Ữ */
+            "\u01AF\u0303": "\u1EEE",
+            /* Ự */
+            "\u01AF\u0323": "\u1EF0"
+        };
+        outputString = outputString.replace(/\u01AF\u0301|\u01AF\u0300|\u01AF\u0309|\u01AF\u0303|\u01AF\u0323/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* ý */
+            "y\u0301": "\u00FD",
+            /* ỳ */
+            "y\u0300": "\u1EF3",
+            /* ỷ */
+            "y\u0309": "\u1EF7",
+            /* ỹ */
+            "y\u0303": "\u1EF9",
+            /* ỵ */
+            "y\u0323": "\u1EF5"
+        };
+        outputString = outputString.replace(/y\u0301|y\u0300|y\u0309|y\u0303|y\u0323/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* Ý */
+            "Y\u0301": "\u00DD",
+            /* Ỳ */
+            "Y\u0300": "\u1EF2",
+            /* Ỷ */
+            "Y\u0309": "\u1EF6",
+            /* Ỹ */
+            "Y\u0303": "\u1EF8",
+            /* Ỵ */
+            "Y\u0323": "\u1EF4"
+        };
+        outputString = outputString.replace(/Y\u0301|Y\u0300|Y\u0309|Y\u0303|Y\u0323/g, function(matched) {
+            return mapCode[matched];
+        });
+        mapCode = {
+            /* đ */
+            "\u0111": "\u0111",
+            /* Đ */
+            "\u0110": "\u0110"
+        };
+        outputString = outputString.replace(/\u0111|\u0110/g, function(matched) {
+            return mapCode[matched];
+        });
+
+        document.getElementById("outputUniCodeString").value = outputString;
+
+        /*
+        var str = "";
+        for (var i = 0; i < inputString.length; i++) {
+            str += "\\x" + inputString.charCodeAt(i).toString(16);
+        }
+        document.getElementById("outputUniCodeString").value = str;
+        */
+
+        document.getElementById("outputConvertedUniCodeString").value = toEscape(outputString);
+    }
+</script>
+
+<body>
+    <div class="panel">
+        <div>Nhập chuỗi Unicode</div> <textarea id="inputString"></textarea><br />
+        <div class="align_right"> <button type="button" id="escapeButton" title="Escape" onclick="toEncode();">Chuyển
+                mã</button> </div>
+        <div>Xuất chuỗi Escape (không chuyển ASCII code)</div> <textarea id="outputConvertedString"></textarea></br>
+        </br>
+        <hr with="50%" />
+        <div>Xuất chuỗi UniCode dựng sẵn</div> <textarea id="outputUniCodeString"></textarea></br>
+        </br>
+        <div>Xuất chuỗi Escape (không chuyển ASCII code)</div> <textarea id="outputConvertedUniCodeString"></textarea>
+    </div>
+</body>
+
+</html>

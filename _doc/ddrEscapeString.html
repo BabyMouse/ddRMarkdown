@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Convert to Escape string</title>
+    <meta charset="utf-8" />
+</head>
+<style>
+    .panel {
+        display: block;
+        width: 50%;
+    }
+    
+    textarea {
+        height: 150px;
+        width: 100%;
+    }
+    
+    .align_right {
+        text-align: right;
+    }
+</style>
+<script>
+    /* ASCII code: http://ascii-table.com/codepage.php?1252 */
+    /* escape: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/escape */
+    /* encodeURI: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI */
+    /* encodeURIComponent: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent */
+
+    function toEscape() {
+
+        var sourceString = document.getElementById("inputString").value;
+        var escapeString = "";
+        document.getElementById("outputOriginalString").value = escape(sourceString);
+
+        for (var i = 0; i < sourceString.length; i++) {
+            var code = sourceString.charCodeAt(i);
+            if (code >= 0xFF) {
+                escapeString += escape(sourceString.charAt(i)).replace("%u", "\\u");
+            } else {
+                escapeString += sourceString.charAt(i);
+            }
+        }
+        document.getElementById("outputConvertedString").value = escapeString;
+    }
+</script>
+
+<body>
+    <div class="panel">
+        <div>Nhập chuỗi Unicode</div> <textarea id="inputString"></textarea><br />
+        <div class="align_right"> <button type="button" id="escapeButton" title="Escape" onclick="toEscape();">Chuyển mã</button> </div>
+        <div>Xuất chuỗi Escape</div> <textarea id="outputOriginalString"></textarea></br>
+        </br>
+        <div>Xuất chuỗi Escape (không chuyển ASCII code)</div> <textarea id="outputConvertedString"></textarea> </div>
+</body>
+
+</html>
