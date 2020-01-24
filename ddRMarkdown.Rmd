@@ -40,11 +40,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### **0.** Giới thiệu tổng quan
 
-* **Giới thiệu về dự án**
+* Giới thiệu về dự án
 
 * **Mục tiêu:** Visualization nhưng thiên về Design (kĩ thuật, không phải mĩ thuật) với phạm vi public lên `RPubs`.
 
-* **Qui ước giao tiếp (protocol)**
+* Qui ước giao tiếp (protocol)
   + Xưng hô
   + Ngôn ngữ Anh, Việt
   + Định dạng văn bản, tài liệu 
@@ -81,7 +81,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### **3.** Nguyên liệu chế biến Documents
 
-* Phát thảo khung sườn (template, skeleton, partien)
+* Phát thảo khung sườn (template, skeleton, pattern)
 * Chọn chủ đề (theme)
 * Biến tấu phong cách (style)
 * Thổi hồn vào Documents (DHTML, JavaScript)
@@ -101,15 +101,20 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### **8.** Graphic (ggplot2)
 
+## **Chú giải thuật ngữ Anh - Việt**: ddrTerms
+
 ## **Phụ lục**
 
-### **Phụ lục 1**: Convert UniCode tổ hợp sang UniCode dựng sẵn 
+### **Phụ lục 1**: Convert UniCode sang Escape string 
 
-### **Phụ lục 2**: Convert UniCode sang Escape string 
+### **Phụ lục 2**: Convert UniCode tổ hợp sang UniCode dựng sẵn 
 
 ### **Phụ lục 3**: Convert Equartion từ LaTeX sang MathML
 
 
 
+<br/><br/><br/><br/>
 
 
+
+ 

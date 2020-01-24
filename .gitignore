@@ -3,7 +3,11 @@
 .RData
 .Ruserdata
 rsconnect
+
+# File được tự động tạo ra bởi RMarkdown
 *.md
-*.html
+/*.html
+
+# File để thử nghiệm
 Test.css
 Test.Rmd

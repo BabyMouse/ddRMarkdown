@@ -2,9 +2,9 @@
 
 code {
   color: #000000;
-  font-size: medium;
   font-weight: 600;
 }
+
 hr {
   background-color: #aaa;
   background-image: linear-gradient(to right, #eee, #aaa, #eee);
@@ -12,7 +12,43 @@ hr {
 }
 
 .main-container {
-  max-width: 98% !important;
+  font-size: 1.1em;
+  max-width: 96% !important;
+}
+
+h1,
+.level1 {
+  font-size: 28pt;
+}
+
+h2,
+.level2,
+.logs-caption {
+  font-size: 24pt;
+  font-weight: 600;
+}
+
+h3,
+.level3 {
+  font-size: 22pt;
+  font-weight: 500;
+}
+
+h4,
+li,
+p,
+code,
+.level4,
+.logs-content {
+  font-size: 19pt;
+}
+
+h4,
+li,
+p,
+.level4,
+.logs-content {
+  font-weight: 400;
 }
 
 .logs {
@@ -24,7 +60,6 @@ hr {
   border-radius: 0.3rem 0.3rem 0rem 0rem;
   border: solid 1px #dce6f0;
   color: #fff;
-  font-size: large;
   font-weight: 700;
   margin-bottom: 0px;
   padding: 5px 10px 5px 10px;
@@ -36,7 +71,6 @@ hr {
   border-radius: 0rem 0rem 0.3rem 0.3rem;
   border: solid 1px #dce6f0;
   color: #304e6d;
-  font-size: medium;
   height: 200px;
   line-height: 1.25;
   margin-top: 0px;
