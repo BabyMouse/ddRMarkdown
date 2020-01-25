@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Convert Composite UniCode to UniCode</title>
+    <meta charset="utf-8" />
+</head>
+<style>
+    body,
+    textarea {
+        font-size: 1.2em;
+    }
+    
+    .panel {
+        display: block;
+        width: 50%;
+    }
+    
+    textarea {
+        height: 150px;
+        width: 100%;
+    }
+    
+    .align_right {
+        text-align: right;
+    }
+</style>
+<script>
+    /* ASCII code: http://ascii-table.com/codepage.php?1252 */
+    /* escape: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/escape */
+    /* encodeURI: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI */
+    /* encodeURIComponent: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent */
+    /* Unicode & Vietnamese Legacy Character Encodings: http://vietunicode.sourceforge.net/charset/ */
+
+    function toEscape(inputString) {
+        var escapeString = "";
+
+        for (var i = 0; i < inputString.length; i++) {
+            var code = inputString.charCodeAt(i);
+            if (code >= 0x28) {
+                escapeString += escape(inputString.charAt(i)).replace("%u", "\\u").replace("%", "\\u00");
+            } else {
+                escapeString += inputString.charAt(i);
+            }
+        }
+        //escapeString = escapeString.replace(/\u002f\u002a\u0020/g, "\"").replace(/\u0020\u002a\u002f/g, "\",");
+        //escapeString = escapeString.replace(/\u0020/g, "\": \"");
+        return escapeString;
+    }
+
+    function toEncode() {
+        var inputString = document.getElementById("inputString").value;
+        document.getElementById("outputConvertedString").value = toEscape(inputString);
+
+        var outputString = inputString;
+        var regPattern = "";
+
+
+        let _map = new Map([
+            /* á */
+            ["a\u0301", "\u00E1"],
+            /* à */
+            ["a\u0300", "\u00E0"],
+            /* ả */
+            ["a\u0309", "\u1EA3"],
+            /* ã */
+            ["a\u0303", "\u00E3"],
+            /* ạ */
+            ["a\u0323", "\u1EA1"],
+            /* â */
+            ["â", "\u00E2"],
+            /* ă */
+            ["\u0103", "\u0103"],
+            ["A\u0301", "\u00C1"],
+            ["A\u0300", "\u00C0"],
+            ["A\u0309", "\u1EA2"],
+            ["A\u0303", "\u00C3"],
+            ["A\u0323", "\u1EA0"],
+            ["\u0102", "\u0102"],
+            ["Â", "\u00C2"],
+            /* ấ */
+            ["â\u0301", "\u1EA5"],
+            /* ầ */
+            ["â\u0300", "\u1EA7"],
+            /* ẩ */
+            ["â\u0309", "\u1EA9"],
+            /* ẫ */
+            ["â\u0303", "\u1EAB"],
+            /* ậ */
+            ["â\u0323", "\u1EAD"]
+
+        ]);
+
+        for (let key of _map.keys()) {
+            regPattern += key + "|";
+        }
+        regPattern = regPattern.substring(0, regPattern.length - 1);
+
+        outputString = outputString.replace(new RegExp(regPattern, "g"), function(matched) {
+            return _map.get(matched);
+        });
+
+        outputString = regPattern + "\n" + outputString;
+        document.getElementById("outputUniCodeString").value = outputString;
+
+        /*
+        var str = "";
+        for (var i = 0; i < inputString.length; i++) {
+            str += "\\x" + inputString.charCodeAt(i).toString(16);
+        }
+        document.getElementById("outputUniCodeString").value = str;
+        */
+
+        document.getElementById("outputConvertedUniCodeString").value = toEscape(outputString);
+    }
+</script>
+
+<body>
+    <div class="panel">
+        <div>Nhập chuỗi Unicode</div> <textarea id="inputString"></textarea><br />
+        <div class="align_right"> <button type="button" id="escapeButton" title="Escape" onclick="toEncode();">Chuyển
+                mã</button> </div>
+        <div>Xuất chuỗi Escape (không chuyển ASCII code)</div> <textarea id="outputConvertedString"></textarea></br>
+        </br>
+        <hr with="50%" />
+        <div>Xuất chuỗi UniCode dựng sẵn</div> <textarea id="outputUniCodeString"></textarea></br>
+        </br>
+        <div>Xuất chuỗi Escape (không chuyển ASCII code)</div> <textarea id="outputConvertedUniCodeString"></textarea>
+    </div>
+</body>
+
+</html>
