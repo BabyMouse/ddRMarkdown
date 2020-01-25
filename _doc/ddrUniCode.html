@@ -43,8 +43,6 @@
                 escapeString += inputString.charAt(i);
             }
         }
-        //escapeString = escapeString.replace(/\u002f\u002a\u0020/g, "\"").replace(/\u0020\u002a\u002f/g, "\",");
-        //escapeString = escapeString.replace(/\u0020/g, "\": \"");
         return escapeString;
     }
 
@@ -61,9 +59,9 @@
         /* ạ */
         ["a\u0323", "\u1EA1"],
         /* â */
-        ["â", "\u00E2"],
+        /* ["â", "\u00E2"], */
         /* ă */
-        ["\u0103", "\u0103"],
+        /* ["\u0103", "\u0103"], */
 
         /* Á */
         ["A\u0301", "\u00C1"],
@@ -76,9 +74,9 @@
         /* Ạ */
         ["A\u0323", "\u1EA0"],
         /* Â */
-        ["Â", "\u00C2"],
+        /* ["Â", "\u00C2"], */
         /* Ă */
-        ["\u0102", "\u0102"],
+        /* ["\u0102", "\u0102"], */
 
         /* ấ */
         ["â\u0301", "\u1EA5"],
@@ -135,7 +133,7 @@
         /* ẹ */
         ["e\u0323", "\u1EB9"],
         /* ê */
-        ["ê", "\u00EA"],
+        /* ["ê", "\u00EA"], */
 
         /* É */
         ["E\u0301", "\u00C9"],
@@ -148,7 +146,7 @@
         /* Ẹ */
         ["E\u0323", "\u1EB8"],
         /* Ê */
-        ["Ê", "\u00CA"],
+        /* ["Ê", "\u00CA"], */
 
         /* ế */
         ["ê\u0301", "\u1EBF"],
@@ -205,9 +203,9 @@
         /* ọ */
         ["o\u0323", "\u1ECD"],
         /* ô */
-        ["ô", "\u00F4"],
+        /* ["ô", "\u00F4"], */
         /* ơ */
-        ["\u01A1", "\u01A1"],
+        /* ["\u01A1", "\u01A1"], */
 
         /* Ó */
         ["O\u0301", "\u00D3"],
@@ -220,9 +218,9 @@
         /* Ọ */
         ["O\u0323", "\u1ECC"],
         /* Ô */
-        ["Ô", "\u00D4"],
+        /* ["Ô", "\u00D4"], */
         /* Ơ */
-        ["\u01A0", "\u01A0"],
+        /* ["\u01A0", "\u01A0"], */
 
         /* ố */
         ["ô\u0301", "\u1ED1"],
@@ -279,7 +277,7 @@
         /* ụ */
         ["u\u0323", "\u1EE5"],
         /* ư */
-        ["\u01B0", "\u01B0"],
+        /* ["\u01B0", "\u01B0"], */
 
         /* Ú */
         ["U\u0301", "\u00DA"],
@@ -292,7 +290,7 @@
         /* Ụ */
         ["U\u0323", "\u1EE4"],
         /* Ư */
-        ["\u01AF", "\u01AF"],
+        /* ["\u01AF", "\u01AF"], */
 
         /* ứ */
         ["\u01B0\u0301", "\u1EE9"],
@@ -336,12 +334,12 @@
         /* Ỹ */
         ["Y\u0303", "\u1EF8"],
         /* Ỵ */
-        ["Y\u0323", "\u1EF4"],
+        ["Y\u0323", "\u1EF4"]
 
         /* đ */
-        ["\u0111", "\u0111"],
+        /* ["\u0111", "\u0111"], */
         /* Đ */
-        ["\u0110", "\u0110"]
+        /* ["\u0110", "\u0110"] */
     ]);
 
     function toUniCode(inputString) {
@@ -366,12 +364,14 @@
             }
         }
 
-        if (!compositeFlag) {
+        if (compositeFlag) {
             var outputString = toUniCode(inputString);
 
             document.getElementById("outputUniCodeString").value = outputString;
-
             document.getElementById("outputConvertedUniCodeString").value = toEscape(outputString);
+        } else {
+            document.getElementById("outputUniCodeString").value = "";
+            document.getElementById("outputConvertedUniCodeString").value = "";
         }
     }
 </script>
