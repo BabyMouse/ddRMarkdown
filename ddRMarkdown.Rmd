@@ -11,6 +11,8 @@ output:
     df_print: kable
     highlight: haddock
     keep_md: yes
+    includes:
+      in_header: header.html
 ---
 
 ```{r setup, include=FALSE}
@@ -36,62 +38,62 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## **Cám ơn**
 
-## **Phần 1:** Giới thiệu
+## **Phần 1:** Giới thiệu
 
-### **0.** Giới thiệu tổng quan
+### **0.** Giới thiệu tổng quan
 
-* Giới thiệu về dự án
+* Giới thiệu về dự án
 
-* **Mục tiêu:** Visualization nhưng thiên về Design (kĩ thuật, không phải mĩ thuật) với phạm vi public lên `RPubs`.
+* **Mục tiêu:** Visualization nhưng thiên về Design (kĩ thuật, không phải mĩ thuật) với phạm vi public lên `RPubs`.
 
-* Qui ước giao tiếp (protocol)
+* Qui ước giao tiếp (protocol)
   + Xưng hô
-  + Ngôn ngữ Anh, Việt
-  + Định dạng văn bản, tài liệu 
-  + Tổ chức tài liệu và cách đọc
+  + Ngôn ngữ Anh, Việt
+  + Định dạng văn bản, tài liệu 
+  + Tổ chức tài liệu và cách đọc
 
 ## **Phần 2:** Làm quen
 
-### **1.** Triết lí Design Documents (suy nghĩ một cách thông thái)
+### **1.** Triết lí Design Documents (suy nghĩ một cách thông thái)
 
 * Kaizen vs. Revolution ("anything goes" - Paul Karl Feyerabend)
 * Chia để trị (module, component)
-* Tổ chức thông tin 
+* Tổ chức thông tin 
 	* Tính logic
 	* Tính hệ thống
-* Khoa học vs. Nghệ thuật
+* Khoa học vs. Nghệ thuật
 * Nguyên lí "Xây cái Toilet" (History)
-* Học người đi trước ('đầu tiên và cũng là cuối cùng' - Harry Potter)
+* Học người đi trước ('đầu tiên và cũng là cuối cùng' - Harry Potter)
 	- Tiếp nhận
 	- Phân tích
-	- Bắt chước
+	- Bắt chước
 	- Tùy biến 
-	- Sáng tạo 
+	- Sáng tạo 
 
-### **2.** Mã hóa thông tin trong RMarkdown 
+### **2.** Mã hóa thông tin trong RMarkdown 
 
-* Nguyên lí thông tin dưới góc độ khoa học máy tính (hệ bin, hex, dec; bit, byte/ word, double words)
+* Nguyên lí thông tin dưới góc độ khoa học máy tính (hệ bin, hex, dec; bit, byte/ word, double words)
 * Kí tự: Bảng mã ASCII (7-bit, 8-bit), UniCode
 * Chuỗi kí tự: Escape string, URI
-* Định dạng văn bản bằng đánh dấu (markup)
+* Định dạng văn bản bằng đánh dấu (markup)
 	* Markdown
 	* LaTeX
 	* HTML
 	* CSS
 
-### **3.** Nguyên liệu chế biến Documents
+### **3.** Nguyên liệu chế biến Documents
 
 * Phát thảo khung sườn (template, skeleton, pattern)
-* Chọn chủ đề (theme)
-* Biến tấu phong cách (style)
+* Chọn chủ đề (theme)
+* Biến tấu phong cách (style)
 * Thổi hồn vào Documents (DHTML, JavaScript)
-	* Batch và R functions (Bắt chước)
+	* Batch và R functions (Bắt chước)
 	* Script và Own R function (Tùy biến)
-	* Language (Sáng tạo)
+	* Language (Sáng tạo)
 
 ## **Phần 3:** Làm thử
 
-### **4.** Định dạng chữ
+### **4.** Định dạng chữ
 
 ### **5.** Picture, Address, Block, Code
 
@@ -101,15 +103,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### **8.** Graphic (ggplot2)
 
-## **Chú giải thuật ngữ Anh - Việt**: ddrTerms
+## **Chú giải thuật ngữ Anh - Việt**: ddrTerms
 
 ## **Phụ lục**
 
-### **Phụ lục 1**: Convert UniCode sang Escape string 
+### **Phụ lục 1**: Convert UniCode sang Escape string 
 
-### **Phụ lục 2**: Convert UniCode tổ hợp sang UniCode dựng sẵn 
+### **Phụ lục 2**: Convert UniCode tổ hợp sang UniCode dựng sẵn 
 
-### **Phụ lục 3**: Convert Equartion từ LaTeX sang MathML
+### **Phụ lục 3**: Convert Equartion từ LaTeX sang MathML
 
 
 
