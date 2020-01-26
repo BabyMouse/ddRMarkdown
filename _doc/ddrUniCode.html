@@ -32,21 +32,7 @@
     /* encodeURIComponent: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent */
     /* Unicode & Vietnamese Legacy Character Encodings: http://vietunicode.sourceforge.net/charset/ */
 
-    function toEscape(inputString) {
-        var escapeString = "";
-
-        for (var i = 0; i < inputString.length; i++) {
-            var code = inputString.charCodeAt(i);
-            if (code >= 0xff) {
-                escapeString += escape(inputString.charAt(i)).replace("%u", "\\u").replace("%", "\\u00");
-            } else {
-                escapeString += inputString.charAt(i);
-            }
-        }
-        return escapeString;
-    }
-
-    let _mapCode = new Map([
+    let _mappingCode = new Map([
 
         /* á */
         ["a\u0301", "\u00E1"],
@@ -63,6 +49,28 @@
         /* ă */
         /* ["\u0103", "\u0103"], */
 
+        /* ấ */
+        ["â\u0301", "\u1EA5"],
+        /* ầ */
+        ["â\u0300", "\u1EA7"],
+        /* ẩ */
+        ["â\u0309", "\u1EA9"],
+        /* ẫ */
+        ["â\u0303", "\u1EAB"],
+        /* ậ */
+        ["â\u0323", "\u1EAD"],
+
+        /* ắ */
+        ["\u0103\u0301", "\u1EAF"],
+        /* ằ */
+        ["\u0103\u0300", "\u1EB1"],
+        /* ẳ */
+        ["\u0103\u0309", "\u1EB3"],
+        /* ẵ */
+        ["\u0103\u0303", "\u1EB5"],
+        /* ặ */
+        ["\u0103\u0323", "\u1EB7"],
+
         /* Á */
         ["A\u0301", "\u00C1"],
         /* À */
@@ -78,17 +86,6 @@
         /* Ă */
         /* ["\u0102", "\u0102"], */
 
-        /* ấ */
-        ["â\u0301", "\u1EA5"],
-        /* ầ */
-        ["â\u0300", "\u1EA7"],
-        /* ẩ */
-        ["â\u0309", "\u1EA9"],
-        /* ẫ */
-        ["â\u0303", "\u1EAB"],
-        /* ậ */
-        ["â\u0323", "\u1EAD"],
-
         /* Ấ */
         ["Â\u0301", "\u1EA4"],
         /* Ầ */
@@ -99,17 +96,6 @@
         ["Â\u0303", "\u1EAA"],
         /* Ậ */
         ["Â\u0323", "\u1EAC"],
-
-        /* ắ */
-        ["\u0103\u0301", "\u1EAF"],
-        /* ằ */
-        ["\u0103\u0300", "\u1EB1"],
-        /* ẳ */
-        ["\u0103\u0309", "\u1EB3"],
-        /* ẵ */
-        ["\u0103\u0303", "\u1EB5"],
-        /* ặ */
-        ["\u0103\u0323", "\u1EB7"],
 
         /* Ắ */
         ["\u0102\u0301", "\u1EAE"],
@@ -135,6 +121,17 @@
         /* ê */
         /* ["ê", "\u00EA"], */
 
+        /* ế */
+        ["ê\u0301", "\u1EBF"],
+        /* ề */
+        ["ê\u0300", "\u1EC1"],
+        /* ể */
+        ["ê\u0309", "\u1EC3"],
+        /* ễ */
+        ["ê\u0303", "\u1EC5"],
+        /* ệ */
+        ["ê\u0323", "\u1EC7"],
+
         /* É */
         ["E\u0301", "\u00C9"],
         /* È */
@@ -147,17 +144,6 @@
         ["E\u0323", "\u1EB8"],
         /* Ê */
         /* ["Ê", "\u00CA"], */
-
-        /* ế */
-        ["ê\u0301", "\u1EBF"],
-        /* ề */
-        ["ê\u0300", "\u1EC1"],
-        /* ể */
-        ["ê\u0309", "\u1EC3"],
-        /* ễ */
-        ["ê\u0303", "\u1EC5"],
-        /* ệ */
-        ["ê\u0323", "\u1EC7"],
 
         /* Ế */
         ["Ê\u0301", "\u1EBE"],
@@ -207,6 +193,28 @@
         /* ơ */
         /* ["\u01A1", "\u01A1"], */
 
+        /* ố */
+        ["ô\u0301", "\u1ED1"],
+        /* ồ */
+        ["ô\u0300", "\u1ED3"],
+        /* ổ */
+        ["ô\u0309", "\u1ED5"],
+        /* ỗ */
+        ["ô\u0303", "\u1ED7"],
+        /* ộ */
+        ["ô\u0323", "\u1ED9"],
+
+        /* ớ */
+        ["\u01A1\u0301", "\u1EDB"],
+        /* ờ */
+        ["\u01A1\u0300", "\u1EDD"],
+        /* ở */
+        ["\u01A1\u0309", "\u1EDF"],
+        /* ỡ */
+        ["\u01A1\u0303", "\u1EE1"],
+        /* ợ */
+        ["\u01A1\u0323", "\u1EE3"],
+
         /* Ó */
         ["O\u0301", "\u00D3"],
         /* Ò */
@@ -222,17 +230,6 @@
         /* Ơ */
         /* ["\u01A0", "\u01A0"], */
 
-        /* ố */
-        ["ô\u0301", "\u1ED1"],
-        /* ồ */
-        ["ô\u0300", "\u1ED3"],
-        /* ổ */
-        ["ô\u0309", "\u1ED5"],
-        /* ỗ */
-        ["ô\u0303", "\u1ED7"],
-        /* ộ */
-        ["ô\u0323", "\u1ED9"],
-
         /* Ố */
         ["Ô\u0301", "\u1ED0"],
         /* Ồ */
@@ -243,17 +240,6 @@
         ["Ô\u0303", "\u1ED6"],
         /* Ộ */
         ["Ô\u0323", "\u1ED8"],
-
-        /* ớ */
-        ["\u01A1\u0301", "\u1EDB"],
-        /* ờ */
-        ["\u01A1\u0300", "\u1EDD"],
-        /* ở */
-        ["\u01A1\u0309", "\u1EDF"],
-        /* ỡ */
-        ["\u01A1\u0303", "\u1EE1"],
-        /* ợ */
-        ["\u01A1\u0323", "\u1EE3"],
 
         /* Ớ */
         ["\u01A0\u0301", "\u1EDA"],
@@ -279,6 +265,17 @@
         /* ư */
         /* ["\u01B0", "\u01B0"], */
 
+        /* ứ */
+        ["\u01B0\u0301", "\u1EE9"],
+        /* ừ */
+        ["\u01B0\u0300", "\u1EEB"],
+        /* ử */
+        ["\u01B0\u0309", "\u1EED"],
+        /* ữ */
+        ["\u01B0\u0303", "\u1EEF"],
+        /* ự */
+        ["\u01B0\u0323", "\u1EF1"],
+
         /* Ú */
         ["U\u0301", "\u00DA"],
         /* Ù */
@@ -291,17 +288,6 @@
         ["U\u0323", "\u1EE4"],
         /* Ư */
         /* ["\u01AF", "\u01AF"], */
-
-        /* ứ */
-        ["\u01B0\u0301", "\u1EE9"],
-        /* ừ */
-        ["\u01B0\u0300", "\u1EEB"],
-        /* ử */
-        ["\u01B0\u0309", "\u1EED"],
-        /* ữ */
-        ["\u01B0\u0303", "\u1EEF"],
-        /* ự */
-        ["\u01B0\u0323", "\u1EF1"],
 
         /* Ứ */
         ["\u01AF\u0301", "\u1EE8"],
@@ -342,30 +328,46 @@
         /* ["\u0110", "\u0110"] */
     ]);
 
-    function toUniCode(inputString) {
-        for (let key of _mapCode.keys()) {
-            inputString = inputString.replace(new RegExp(key, "g"), function(matched) {
-                return _mapCode.get(matched);
-            });
+    function toEscape(inputString) {
+        var escapeString = "";
+
+        for (var i = 0; i < inputString.length; i++) {
+            var code = inputString.charCodeAt(i);
+            if (code >= 0xff) {
+                escapeString += escape(inputString.charAt(i)).replace("%u", "\\u").replace("%", "\\u00");
+            } else {
+                escapeString += inputString.charAt(i);
+            }
+        }
+        return escapeString;
+    }
+
+    function detectCompositeUnicode(inputString) {
+        var compositeFlag = false;
+
+        for (let key of _mappingCode.keys()) {
+            if (RegExp(key).test(inputString)) {
+                compositeFlag = true;
+                break;
+            }
+        }
+        return compositeFlag;
+    }
+
+    function toUnicode(inputString) {
+        for (let [key, value] of _mappingCode) {
+            inputString = inputString.replace(RegExp(key, "g"), value);
         }
         return inputString;
     }
 
     function toEncode() {
         var inputString = document.getElementById("inputString").value;
+
         document.getElementById("outputConvertedString").value = toEscape(inputString);
 
-        var compositeFlag = false;
-
-        for (let key of _mapCode.keys()) {
-            if (RegExp(key).test(inputString)) {
-                compositeFlag = true;
-                break;
-            }
-        }
-
-        if (compositeFlag) {
-            var outputString = toUniCode(inputString);
+        if (detectCompositeUnicode(inputString)) {
+            var outputString = toUnicode(inputString);
 
             document.getElementById("outputUniCodeString").value = outputString;
             document.getElementById("outputConvertedUniCodeString").value = toEscape(outputString);
