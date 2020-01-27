@@ -1,3 +1,7 @@
+/* Mẫu thử nghiệm được tạo ra bằng Unikey v4.3 RC4 x64 */
+/* - Cột 1: Composite Unicode */
+/* - Cột 2: UniCode */
+
 /* a e i o u y */
 
 /* á á */

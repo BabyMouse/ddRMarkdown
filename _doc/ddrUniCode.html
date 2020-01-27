@@ -354,6 +354,10 @@
         return compositeFlag;
     }
 
+    /**
+     * TODO: Can mark character converted by function:
+     * TODO: inputString.replace(RegExp(key, "g"), function(mached) { return "<b>" + value + "</b>";});
+     */
     function toUnicode(inputString) {
         for (let [key, value] of _mappingCode) {
             inputString = inputString.replace(RegExp(key, "g"), value);
