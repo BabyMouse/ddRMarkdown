@@ -1,5 +1,5 @@
 ---
-title: "0. Giới thiệu tổng quan"
+title: "0. Giới thiệu tổng quan"
 subtitle: "(<span style=\"text-decoration: underline\">**D**</span>esign <span style=\"text-decoration: underline\">**D**</span>ocuments with <span style=\"text-decoration: underline\">**RMarkdown**</span>)"
 author: "Trát Quang Thụy"
 date: "Ngày 22/1/2020"
@@ -17,21 +17,70 @@ output:
 
 <div class="logs">
 <div class="logs-caption">Logs</div>
+<div class="logs-content scroll">
+**29.1.2020**
+
+- Bắt đầu soạn thảo nội dung.
+
+**22.1.2020**
+
+- Khởi tạo ` ddrIntroduction`.
+
+</div></div>
+</br>
+<div class="logs">
+<div class="logs-caption">Nội dung</div>
 <div class="logs-content">
-**22.1.2020:** Khởi tạo `ddrIntroduction`.
+# <a target="_parent" href="https://rpubs.com/BabyMouse/ddRMarkdown">Mục lục</a>
+
+### 0. Giới thiệu tổng quan
+
+* [Giới thiệu về dự án](#IntroProj)
+	
+* [Mục tiêu](#Goal)
+	
+* [Qui ước giao tiếp (protocol)](#Protocol)
+	
+	* Xưng hô
+	* Ngôn ngữ Anh, Việt
+	* Định dạng văn bản, tài liệu
+	* Tổ chức tài liệu và cách đọc
+	* Phần mềm để thực tập
 
 </div></div>
 
-## 0. Giới thiệu tổng quan: ddrIntroduction
+## 0. Giới thiệu tổng quan
 
-* Giới thiệu về dự án
-
-* Mục tiêu: Visualization nhưng thiên về Design (kĩ thuật, không phải mĩ thuật) với phạm vi public lên RPubs.
-
-* Qui ước giao tiếp (protocol)
-
+* <a id="IntroProj" />Giới thiệu về dự án
+	
+* <a id="Goal" />Mục tiêu: Visualization nhưng thiên về Design (kĩ thuật, không phải mĩ thuật) với phạm vi public lên RPubs.
+	
+* <a id="Protocol" />Qui ước giao tiếp (protocol): Người - Người, Người - Máy
+	
 	* Xưng hô
-	* Ngôn ngữ Anh, Việt
-	* Định dạng văn bản, tài liệu
-	* Tổ chức tài liệu và cách đọc
+	* Ngôn ngữ Anh, Việt
+	* Định dạng văn bản, tài liệu
+	* Tổ chức tài liệu và cách đọc
+	* Phần mềm (version tương ứng) để thực tập: VS Code (và Ext về theme, formatter, code snippets), R (cả RTools), RStudio (add-on Knitr), cả MySQL nếu cần xây dựng database.
+
+
+<center>![MySQL: Data Export Wizard](_imgs/ddrIntroduction_dataExportWizard.png)</center><br/><br/>
+
+<center>![MySQL: Data Export Options](_imgs/ddrIntroduction_dataExportOptions.png)</center>
+
+
+Ở mục `Field Separator`,
+
+**Nếu chọn `;`** (dấu chấm phẩy)
+```{r eval=FALSE}
+read2.csv(f)
+```
+
+**Nếu chọn `,`** (dấu phẩy)
+```{r eval=FALSE}
+read.csv(f)
+```
+<br/><br/><br/><br/>
+
+
 

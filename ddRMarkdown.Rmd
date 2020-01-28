@@ -23,34 +23,40 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <div class="logs">
 <div class="logs-caption">Logs</div>
-<div class="logs-content">
+<div class="logs-content scroll">
+**28.1.2020:** Thêm trang **Giới thiệu**.
+
+- Link: <a target="_parent" href="https://rpubs.com/BabyMouse/ddrIntroduction">https://rpubs.com/BabyMouse/ddrIntroduction</a>
+
 **22.1.2020:** Thêm **Mục lục** và upload `RPubs`.
 
-- RPubs: <http://rpubs.com/BabyMouse/ddRMarkdown>
+- RPubs: <a target="_parent" href="https://rpubs.com/BabyMouse/ddRMarkdown">https://rpubs.com/BabyMouse/ddRMarkdown</a>
 
 **19.8.2020:** Khởi tạo project và upload lên `Github`.
 
-- GitHub: <https://github.com/BabyMouse/ddRMarkdown>
+- GitHub: <a target="_parent" href="https://github.com/BabyMouse/ddRMarkdown">https://github.com/BabyMouse/ddRMarkdown</a>
 
 </div></div>
 
-# **[Mục lục](http://rpubs.com/BabyMouse/ddRMarkdown)**
+# **<a target="_parent" href="https://rpubs.com/BabyMouse/ddRMarkdown">Mục lục</a>**
 
 ## **Cám ơn**
 
 ## **Phần 1:** Giới thiệu
 
-### **0.** Giới thiệu tổng quan
+### **0. Giới thiệu tổng quan:** <a target="_parent" href="https://rpubs.com/BabyMouse/ddrIntroduction">ddrIntroduction</a> (<span class="update">28.1.2020</span>)
 
 * Giới thiệu về dự án
-
-* **Mục tiêu:** Visualization nhưng thiên về Design (kĩ thuật, không phải mĩ thuật) với phạm vi public lên `RPubs`.
-
-* Qui ước giao tiếp (protocol)
-  + Xưng hô
-  + Ngôn ngữ Anh, Việt
-  + Định dạng văn bản, tài liệu 
-  + Tổ chức tài liệu và cách đọc
+	
+* Mục tiêu: Visualization nhưng thiên về Design (kĩ thuật, không phải mĩ thuật) với phạm vi public lên RPubs.
+	
+* Qui ước giao tiếp (protocol): Người - Người, Người - Máy
+	
+	* Xưng hô
+	* Ngôn ngữ Anh, Việt
+	* Định dạng văn bản, tài liệu
+	* Tổ chức tài liệu và cách đọc
+	* Phần mềm (version tương ứng) để thực tập: VS Code (và Ext về theme, formatter, code snippets), R (cả RTools), RStudio (add-on Knitr), cả MySQL nếu cần xây dựng database.
 
 ## **Phần 2:** Làm quen
 
@@ -112,8 +118,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ### **Phụ lục 2**: Convert UniCode tổ hợp sang UniCode dựng sẵn 
 
 ### **Phụ lục 3**: Convert Equartion từ LaTeX sang MathML
-
-
 
 <br/><br/><br/><br/>
 
