@@ -1,0 +1,2 @@
+"ID","Name","LaTeX","MathML","HTMLExample","HTMLDescription"
+1,"Equations","Inline: <code>&bsol;(...&bsol;)</code>, <code>&dollar;...&dollar;</code>; Display: <code>&bsol;[...&bsol;]</code>, <code>&dollar;&dollar;...&dollar;&dollar;</code>","<math>...</math> hay <math xmlns=""[http://www.w3.org/1998/Math/MathML](http://www.w3.org/1998/Math/MathML)"">...</math>","","Đánh dấu Công thức toán học."

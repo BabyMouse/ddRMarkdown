@@ -1,0 +1,78 @@
+---
+title: "Các bảng mã"
+author: "Trát Quang Thụy"
+date: "1/30/2020"
+output: 
+  html_document: 
+    css: Style.css
+    df_print: default
+    highlight: haddock
+    keep_md: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(knitr.table.format = 'html')
+options(knitr.kable.NA = '')
+```
+
+[ASCII Table](http://ascii-table.com/codepage.php?1252)
+
+[JavaScript String Escape / Unescape](https://www.freeformatter.com/javascript-escape.html)
+
+[List of XML and HTML character entity references](https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references)
+
+[Tại sao không bao giờ nên sử dụng utf8 trong MySQL?](https://topdev.vn/blog/tai-sao-khong-bao-gio-nen-su-dung-utf8-trong-mysql/)
+
+[LaTeX/Mathematics](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
+
+[Mathematical Markup Language (MathML) Version 3.0 2nd Edition](https://www.w3.org/TR/MathML3/)
+
+```{r}
+tex_mmlPathFile = "G:/R/Projects/ddRMarkdown/_datasets/tex_mml.csv"
+tex_mml = read.csv(tex_mmlPathFile, encoding = "UTF-8")
+
+escapePathFile = "G:/R/Projects/ddRMarkdown/_datasets/escape.csv"
+escape = read.csv(escapePathFile, encoding = "UTF-8")
+
+library(kableExtra)
+library(xtable)
+```
+
+```{r}
+head(escape)
+kable(escape[2:ncol(escape)]) %>% kable_styling(bootstrap_options = c("striped", "hover")) %>% scroll_box(width = "auto")
+```
+
+```{r}
+# xtable(escape)
+
+head(tex_mml)
+kable(tex_mml[2:ncol(tex_mml)]) %>% kable_styling(bootstrap_options = c("striped", "hover")) %>% scroll_box(width = "auto")
+
+t = c("Inline: \\$...\\$; Display: &#x0024;&#x0024;...&#x0024;&#x0024;")
+
+kable(t) %>% kable_styling(bootstrap_options = c("striped", "hover")) %>% scroll_box(width = "auto")
+
+```
+
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:auto; "><table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Name </th>
+   <th style="text-align:left;"> LaTeX </th>
+   <th style="text-align:left;"> MathML </th>
+   <th style="text-align:left;"> HTMLExample </th>
+   <th style="text-align:left;"> HTMLDescription </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Equations </td>
+   <td style="text-align:left;"> Inline: <code>&bsol;(...&bsol;)</code>, <code>&dollar;...&dollar;</code>; Display: <code>&bsol;[...&bsol;]</code>, <code>&dollar;&dollar;...&dollar;&dollar;</code></td>
+   <td style="text-align:left;"> <code>&lt;math&gt;...&lt;/math&gt;</code> hay <code>&lt;math xmlns="[http://www.w3.org/1998/Math/MathML](http://www.w3.org/1998/Math/MathML)"&gt;...&lt;/math&gt;</code> </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> Đánh dấu Công thức toán học. </td>
+  </tr>
+</tbody>
+</table></div>
