@@ -18,38 +18,47 @@ options(knitr.kable.NA = '')
 
 [ASCII Table](http://ascii-table.com/codepage.php?1252)
 
-[JavaScript String Escape / Unescape](https://www.freeformatter.com/javascript-escape.html)
+[Tại sao không bao giờ nên sử dụng utf8 trong MySQL?](https://topdev.vn/blog/tai-sao-khong-bao-gio-nen-su-dung-utf8-trong-mysql/)
 
 [List of XML and HTML character entity references](https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references)
 
-[Tại sao không bao giờ nên sử dụng utf8 trong MySQL?](https://topdev.vn/blog/tai-sao-khong-bao-gio-nen-su-dung-utf8-trong-mysql/)
+[JavaScript String Escape / Unescape](https://www.freeformatter.com/javascript-escape.html)
 
 [LaTeX/Mathematics](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
 
 [Mathematical Markup Language (MathML) Version 3.0 2nd Edition](https://www.w3.org/TR/MathML3/)
 
 ```{r}
-tex_mmlPathFile = "G:/R/Projects/ddRMarkdown/_datasets/tex_mml.csv"
-tex_mml = read.csv(tex_mmlPathFile, encoding = "UTF-8")
+html_entitiesPathFile = "G:/R/Projects/ddRMarkdown/_datasets/html_entities.csv"
+html_entities = read.csv(html_entitiesPathFile, encoding = "UTF-8")
 
 escapePathFile = "G:/R/Projects/ddRMarkdown/_datasets/escape.csv"
 escape = read.csv(escapePathFile, encoding = "UTF-8")
 
+tex_mmlPathFile = "G:/R/Projects/ddRMarkdown/_datasets/tex_mml.csv"
+tex_mml = read.csv(tex_mmlPathFile, encoding = "UTF-8")
+
 library(kableExtra)
-library(xtable)
 ```
 
 ```{r}
-head(escape)
+# head(html_entities)
+kable(html_entities[2:ncol(html_entities)]) %>% kable_styling(bootstrap_options = c("striped", "hover")) %>% scroll_box(width = "auto")
+```
+
+```{r}
+# head(escape)
 kable(escape[2:ncol(escape)]) %>% kable_styling(bootstrap_options = c("striped", "hover")) %>% scroll_box(width = "auto")
 ```
 
 ```{r}
-# xtable(escape)
-
-head(tex_mml)
+# head(tex_mml)
 kable(tex_mml[2:ncol(tex_mml)]) %>% kable_styling(bootstrap_options = c("striped", "hover")) %>% scroll_box(width = "auto")
+```
 
+
+
+```{r}
 t = c("Inline: \\$...\\$; Display: &#x0024;&#x0024;...&#x0024;&#x0024;")
 
 kable(t) %>% kable_styling(bootstrap_options = c("striped", "hover")) %>% scroll_box(width = "auto")
