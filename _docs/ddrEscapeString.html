@@ -31,7 +31,7 @@
 
         var sourceString = document.getElementById("inputString").value;
         var escapeString = "";
-        document.getElementById("outputOriginalString").value = escape(sourceString);
+        document.getElementById("outputOriginalString").value = escape(sourceString).replace(/%u/g, "\\u").replace(/%/g, "\\u00");
 
         for (var i = 0; i < sourceString.length; i++) {
             var code = sourceString.charCodeAt(i);

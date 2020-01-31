@@ -101,7 +101,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### **4.** Định dạng chữ
 
-### **5.** Picture, Address, Block, Code
+### 5. Image, Address, Block, Code: ddrHyperText
 
 ### **6.** Equation 
 

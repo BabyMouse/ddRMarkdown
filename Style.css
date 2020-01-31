@@ -38,15 +38,17 @@ h2,
     font-weight: 600;
 }
 
-h3,
 .level3,
+.level4,
+.logs-content,
+code,
+h3,
 h4,
 li,
 p,
-code,
 pre,
-.level4,
-.logs-content {
+td,
+th {
     font-size: 20pt;
 }
 

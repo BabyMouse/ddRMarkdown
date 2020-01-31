@@ -28,3 +28,32 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 5. Image, Address, Block, Code: ddrHyperText
 
+Images
+Images on the web or local files in the same directory:
+
+![alt text](http://example.com/logo.png)
+
+![alt text](figures/img.png)
+
+![MySQL: Data Export Wizard](_imgs/ddrIntroduction_dataExportWizard.png)
+
+Links
+Use a plain http address or add a link to a phrase:
+
+http://example.com
+
+[linked phrase](http://example.com)
+
+
+<a target="_parent" href="https://rpubs.com/BabyMouse/ddrIntroduction">ddrIntroduction</a>
+
+Reference Style Links and Images
+Links
+A [linked phrase][id]. 
+
+At the bottom of the document:
+
+[id]: http://example.com/ "Title"
+
+[Qui ước giao tiếp (protocol)](#Protocol)
+
