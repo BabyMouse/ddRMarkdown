@@ -1,9 +1,12 @@
 ---
-title: "Các bảng mã"
+title: "Phụ lục 1: Các bảng mã thường dùng"
+subtitle: "(<span style=\"text-decoration: underline\">**D**</span>esign <span style=\"text-decoration: underline\">**D**</span>ocuments with <span style=\"text-decoration: underline\">**RMarkdown**</span>)"
 author: "Trát Quang Thụy"
-date: "1/30/2020"
+date: "Ngày 30/1/2020"
 output: 
   html_document: 
+    code_download: yes
+    code_folding: show
     css: Style.css
     df_print: default
     highlight: haddock
@@ -16,18 +19,39 @@ options(knitr.table.format = 'html')
 options(knitr.kable.NA = '')
 ```
 
+<div class="logs">
+<div class="logs-caption">Logs</div>
+<div class="logs-content scroll">
+**3.2.2020:** Upload lên `RPubs`.
+
+- RPubs: <a target="_parent" href="https://rpubs.com/BabyMouse/ddrEncodingTables">https://rpubs.com/BabyMouse/ddrEncodingTables</a>
+
+**30.1.2020:** Khởi tạo trang và upload lên `GitHub`.
+
+- GitHub: <a target="_parent" href="https://github.com/BabyMouse/ddRMarkdown">https://github.com/BabyMouse/ddRMarkdown</a>
+
+</div></div>
+
+# Tài liệu tham khảo
 [ASCII Table](http://ascii-table.com/codepage.php?1252)
 
 [Tại sao không bao giờ nên sử dụng utf8 trong MySQL?](https://topdev.vn/blog/tai-sao-khong-bao-gio-nen-su-dung-utf8-trong-mysql/)
 
-[List of XML and HTML character entity references](https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references)
+[Wikipedia: List of XML and HTML character entity references](https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references)
 
 [JavaScript String Escape / Unescape](https://www.freeformatter.com/javascript-escape.html)
 
-[LaTeX/Mathematics](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
+[LaTeX / Mathematics](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
 
-[Mathematical Markup Language (MathML) Version 3.0 2nd Edition](https://www.w3.org/TR/MathML3/)
+[Overleaf: Mathematical expressions](https://www.overleaf.com/learn/latex/Mathematical_expressions)
 
+[Wikipedia: MathML](https://en.wikipedia.org/wiki/MathML)
+
+[MDN: MathML](https://developer.mozilla.org/en-US/docs/Web/MathML)
+
+[W3C: Mathematical Markup Language (MathML) Version 3.0 2nd Edition](https://www.w3.org/TR/MathML3/)
+
+# Load dữ liệu và các thư viện cần dùng
 ```{r}
 html_entitiesPathFile = "G:/R/Projects/ddRMarkdown/_datasets/html_entities.csv"
 html_entities = read.csv(html_entitiesPathFile, encoding = "UTF-8")
@@ -41,21 +65,46 @@ tex_mml = read.csv(tex_mmlPathFile, encoding = "UTF-8")
 library(kableExtra)
 ```
 
+# Các mã kí tự hay dùng trong trang web
 ```{r}
 # head(html_entities)
-kable(html_entities[2:ncol(html_entities)]) %>% kable_styling(bootstrap_options = c("striped", "hover")) %>% scroll_box(width = "auto")
+kable(html_entities[2:ncol(html_entities)]) %>%
+  kable_styling(bootstrap_options = c("striped", "hover")) %>%
+  scroll_box(width = "auto")
 ```
 
+# Các mã escape
 ```{r}
 # head(escape)
-kable(escape[2:ncol(escape)]) %>% kable_styling(bootstrap_options = c("striped", "hover")) %>% scroll_box(width = "auto")
+kable(escape[2:ncol(escape)]) %>%
+  kable_styling(bootstrap_options = c("striped", "hover")) %>%
+  scroll_box(width = "auto")
 ```
 
+# Các mã đánh dấu Công thức toán học hay dùng
 ```{r}
-# head(tex_mml)
-kable(tex_mml[2:ncol(tex_mml)]) %>% kable_styling(bootstrap_options = c("striped", "hover")) %>% scroll_box(width = "auto")
+#head(tex_mml)
+kable(tex_mml[2:ncol(tex_mml)]) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>%
+  column_spec(1, width = "5%") %>%
+  column_spec(2, width = "5%") %>%
+  column_spec(3, width = "10%") %>%
+  column_spec(4, width = "10%") %>%
+  column_spec(5, width = "15%") %>%
+  scroll_box(width = "auto")
+
 ```
 
+<!--
+#as.factor(tex_mml$MathML)
+#tex_mml$MathML[1]
+#options(keep.source = FALSE)
+
+#print(kable(tex_mml[2:ncol(tex_mml)]) %>% kable_styling(bootstrap_options = c("striped", "hover")) %>% scroll_box(width = "auto"))
+
+#htmltools::html_print(
+#  kable(tex_mml[2:ncol(tex_mml)]) %>% kable_styling(bootstrap_options = c("striped", #"hover")) %>% scroll_box(width = "auto")
+#)
 
 
 ```{r}
@@ -78,10 +127,13 @@ kable(t) %>% kable_styling(bootstrap_options = c("striped", "hover")) %>% scroll
 <tbody>
   <tr>
    <td style="text-align:left;"> Equations </td>
-   <td style="text-align:left;"> Inline: <code>&bsol;(...&bsol;)</code>, <code>&dollar;...&dollar;</code>; Display: <code>&bsol;[...&bsol;]</code>, <code>&dollar;&dollar;...&dollar;&dollar;</code></td>
-   <td style="text-align:left;"> <code>&lt;math&gt;...&lt;/math&gt;</code> hay <code>&lt;math xmlns="[http://www.w3.org/1998/Math/MathML](http://www.w3.org/1998/Math/MathML)"&gt;...&lt;/math&gt;</code> </td>
+   <td style="text-align:left;"> Inline: <code>&bsol;(...&bsol;)</code>, <code>&dollar;...&dollar;</code>; Display: `\[...\]`, <code>&dollar;&dollar;...&dollar;&dollar;</code></td>
+   <td style="text-align:left;"> `html <math>...</math>` hay <code>&lt;math xmlns="[http://www.w3.org/1998/Math/MathML](http://www.w3.org/1998/Math/MathML)"&gt;...&lt;/math&gt;</code> </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Đánh dấu Công thức toán học. </td>
   </tr>
 </tbody>
 </table></div>
+-->
+
+<br/><br/><br/><br/>

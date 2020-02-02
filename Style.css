@@ -10,7 +10,8 @@ p {
 }
 
 p>code,
-li>code {
+li>code,
+td>code {
     font-weight: 600;
 }
 
@@ -60,6 +61,7 @@ h3,
 h4,
 li,
 p,
+td,
 .level4,
 .logs-content {
     font-weight: 400;

@@ -24,6 +24,10 @@ knitr::opts_chunk$set(echo = TRUE)
 <div class="logs">
 <div class="logs-caption">Logs</div>
 <div class="logs-content scroll">
+**3.2.2020:** Thêm trang **Phụ lục 1: Các bảng mã**.
+
+- Link: <a target="_parent" href="https://rpubs.com/BabyMouse/ddrEncodingTables">ddrEncodingTables</a>
+
 **28.1.2020:** Thêm trang **Giới thiệu**.
 
 - Link: <a target="_parent" href="https://rpubs.com/BabyMouse/ddrIntroduction">https://rpubs.com/BabyMouse/ddrIntroduction</a>
@@ -32,7 +36,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 - RPubs: <a target="_parent" href="https://rpubs.com/BabyMouse/ddRMarkdown">https://rpubs.com/BabyMouse/ddRMarkdown</a>
 
-**19.8.2020:** Khởi tạo project và upload lên `Github`.
+**19.1.2020:** Khởi tạo project và upload lên `GitHub`.
 
 - GitHub: <a target="_parent" href="https://github.com/BabyMouse/ddRMarkdown">https://github.com/BabyMouse/ddRMarkdown</a>
 
@@ -44,7 +48,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## **Phần 1:** Giới thiệu
 
-### **0. Giới thiệu tổng quan:** <a target="_parent" href="https://rpubs.com/BabyMouse/ddrIntroduction">ddrIntroduction</a> (<span class="update">28.1.2020</span>)
+### 0. Giới thiệu tổng quan: <a target="_parent" href="https://rpubs.com/BabyMouse/ddrIntroduction">ddrIntroduction</a> (<span class="update">28.1.2020</span>)
 
 * Giới thiệu về dự án
 	
@@ -58,9 +62,9 @@ knitr::opts_chunk$set(echo = TRUE)
 	* Tổ chức tài liệu và cách đọc
 	* Phần mềm (version tương ứng) để thực tập: VS Code (và Ext về theme, formatter, code snippets), R (cả RTools), RStudio (add-on Knitr), cả MySQL nếu cần xây dựng database.
 
-## **Phần 2:** Làm quen
+## Phần 2: Làm quen
 
-### **1.** Triết lí Design Documents (suy nghĩ một cách thông thái)
+### 1. Triết lí Design Documents (suy nghĩ một cách thông thái)
 
 * Kaizen vs. Revolution ("anything goes" - Paul Karl Feyerabend)
 * Chia để trị (module, component)
@@ -76,7 +80,7 @@ knitr::opts_chunk$set(echo = TRUE)
 	- Tùy biến 
 	- Sáng tạo 
 
-### **2.** Mã hóa thông tin trong RMarkdown 
+### 2. Mã hóa thông tin trong RMarkdown 
 
 * Nguyên lí thông tin dưới góc độ khoa học máy tính (hệ bin, hex, dec; bit, byte/ word, double words)
 * Kí tự: Bảng mã ASCII (7-bit, 8-bit), UniCode
@@ -87,7 +91,7 @@ knitr::opts_chunk$set(echo = TRUE)
 	* HTML
 	* CSS
 
-### **3.** Nguyên liệu chế biến Documents
+### 3. Nguyên liệu chế biến Documents
 
 * Phát thảo khung sườn (template, skeleton, pattern)
 * Chọn chủ đề (theme)
@@ -97,27 +101,29 @@ knitr::opts_chunk$set(echo = TRUE)
 	* Script và Own R function (Tùy biến)
 	* Language (Sáng tạo)
 
-## **Phần 3:** Làm thử
+## Phần 3: Làm thử
 
-### **4.** Định dạng chữ
+### 4. Định dạng chữ
 
 ### 5. Image, Address, Block, Code: ddrHyperText
 
-### **6.** Equation 
+### 6. Equation 
 
-### **7.** Table (kable)
+### 7. Table (kable)
 
-### **8.** Graphic (ggplot2)
+### 8. Graphic (ggplot2)
 
-## **Chú giải thuật ngữ Anh - Việt**: ddrTerms
+## Phụ lục
 
-## **Phụ lục**
+### Phụ lục 1: Các bảng mã thường dùng: <a target="_parent" href="https://rpubs.com/BabyMouse/ddrEncodingTables">ddrEncodingTables</a> (<span class="update">3.2.2020</span>)
 
-### **Phụ lục 1**: Convert UniCode sang Escape string 
+### Phụ lục 2: Convert UniCode sang Escape string
 
-### **Phụ lục 2**: Convert UniCode tổ hợp sang UniCode dựng sẵn 
+### Phụ lục 3: Convert UniCode tổ hợp sang UniCode dựng sẵn 
 
-### **Phụ lục 3**: Convert Equartion từ LaTeX sang MathML
+### Phụ lục 4: Convert Equartion từ LaTeX sang MathML
+
+## Chú giải thuật ngữ Anh - Việt: ddrTerms
 
 <br/><br/><br/><br/>
 
