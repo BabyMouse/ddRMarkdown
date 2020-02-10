@@ -73,12 +73,15 @@ output:
 
 **Nếu chọn `;`** (dấu chấm phẩy)
 ```{r eval=FALSE}
-read2.csv(f)
+read2.csv(pathFile)
+
+#Hoặc xài câu lệnh
+read.csv(pathFile, sep = ";")
 ```
 
 **Nếu chọn `,`** (dấu phẩy)
 ```{r eval=FALSE}
-read.csv(f)
+read.csv(pathFile)
 ```
 <br/><br/><br/><br/>
 

@@ -95,6 +95,9 @@ kable(tex_mml[2:ncol(tex_mml)]) %>%
 
 ```
 
+<div>`$\begin{pmatrix}0 & 1 \\ 2 & 3\end{pmatrix}$`
+$\begin{pmatrix}0 & 1 \\ 2 & 3\end{pmatrix}$</div>
+
 <!--
 #as.factor(tex_mml$MathML)
 #tex_mml$MathML[1]
