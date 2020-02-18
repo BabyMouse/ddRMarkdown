@@ -2,7 +2,7 @@
 title: "6. Equation"
 subtitle: "(<span style=\"text-decoration: underline\">**D**</span>esign <span style=\"text-decoration: underline\">**D**</span>ocuments with <span style=\"text-decoration: underline\">**RMarkdown**</span>)"
 author: "Trát Quang Thụy"
-date: "Ngày 22/1/2020"
+date: "Ngày 19/2/2020"
 output: 
   html_document: 
     code_download: yes
@@ -11,6 +11,8 @@ output:
     df_print: kable
     highlight: haddock
     keep_md: yes
+    includes:
+      in_header: header.html
 ---
 
 ```{r setup, include=FALSE}
@@ -22,9 +24,104 @@ knitr::opts_chunk$set(echo = TRUE)
 <div class="logs">
 <div class="logs-caption">Logs</div>
 <div class="logs-content">
-**22.1.2020:** Khởi tạo `ddrEquation`.
+**18.2.2020:**
+
+- `Customize` `RStudio` với `mhchem` để hiển thị Công thức hóa học.
+
+- Upload lên `RPubs`.
+
+**22.1.2020:**
+
+- Khởi tạo trang  `ddrEquation`.
 
 </div></div>
+<br/>
 
 ## 6. Equation: ddrEquation
+<br/><br/>
 
+<!--
+https://www.facebook.com/babymouse.nice/posts/4043399262352910
+-->
+
+### 6.3. Hiển thị Chemistry formulae với `mhchem`
+
+Do `RStudio` phiên bản hiện hành (`v1.2.5033`) xài `JavaScript` `MathJax` `v2.7.2` để hiển thị Công thức toán học, để file "`MathJax.js`" online trên host `RStudio`, với config không cho phép biểu diễn những công thức hóa học, hay phương trình hóa học, dù là rất đơn giản. Do vậy, chúng ta cần phải `customize` bổ sung cho  `RStudio` cũng như `RMarkdown`, để hiển thị được những Công thức hóa học dạng đơn giản.
+
+<br/>
+**Bước 1:** Hiển thị trong `RMarkdown Editor` (`RStudio`)
+
+* Trong `Windows`,
+
+  1. Đổi tên file `mhchem.js` thành `mhchem.bak.js` ở thư mục cài đặt `RStudio` (thông thường là `C:/Program Files/RStudio/resources/mathjax-26/extensions/TeX`).
+
+  2. Download file `https://raw.githubusercontent.com/mhchem/MathJax-mhchem/master/mhchem.js` mới nhất (`v3.3.2`), chép vào thay thế.
+
+* Mở file `MathJax.js` ở thư mục `C:/Program Files/RStudio/resources/mathjax-26` bằng `Notepad` dưới quyền Administrator (click chuột phải vào `Notepad`, chọn `Run as administrator`). Rồi `Enter` xuống dòng ở cuối file, bổ sung thêm đoạn code sau, rồi `Save` lại.
+
+```javascript
+MathJax.Hub.Config({ TeX: { extensions: ["mhchem.js"] } });
+```
+
+<br/>
+**Bước 2:** Hiển thị trong `Viewer` (`RStudio`)
+
+* Tiếp tục sử dụng `Notepad` để mở file `C:/Program Files/RStudio/resources/presentation/mathjax.html`, rồi bổ sung thêm đoạn code `TeX: { extensions: ["mhchem.js"] }` như sau (nhớ dấu `,` phân cách):
+
+```html
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ showProcessingMessages: false, messageStyle: "none", TeX: { extensions: ["mhchem.js"] } });
+</script>
+
+<script type="text/javascript" src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+```
+
+<br/>
+**Bước 3:** Hiển thị online trên `RPubs`
+
+* Tạo file `header.html` ở cùng thư mục với file `RMarkdown` đang soạn thảo, để cấu hình cho `MathJax` load thêm `extension` dạng online là `mhchem`.
+
+Nội dung file `header.html`
+```html
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path["mhchem"] = "https://cdnjs.cloudflare.com/ajax/libs/mathjax-mhchem/3.3.2";
+    MathJax.Hub.Config({ TeX: { extensions: ["[mhchem]/mhchem.js"] } });
+</script>
+```
+
+* Chỉ định cho `RMarkdown` tích hợp thêm nội dung của file `header.html` vào tag `<head>` khi xây dựng trang web.
+
+```yml
+output: 
+  html_document: 
+    includes:
+      in_header: header.html #Thêm đường dẫn nếu file không cùng thư mục.
+```
+
+***Lưu ý:*** Cái chuyện thục vô bằng phím `Spacebar` hay `Tab` là rất quan trọng, nhất là ở phần `header` của `RMarkdown`.
+
+***Tham khảo thêm:*** https://bookdown.org/yihui/rmarkdown/html-document.html#advanced-customization.
+
+<br/>
+**Bước 4:** Thử nghiệm lại bằng Công thức hóa học cụ thể
+
+* `$\ce{SO4^2- + Ba^2+ -> BaSO4 v}$` $\ce{SO4^2- + Ba^2+ -> BaSO4 v}$
+
+Hoặc:
+
+* `$$\ce{SO4^2- + Ba^2+ -> BaSO4 v}$$` $$\ce{SO4^2- + Ba^2+ -> BaSO4 v}$$
+
+***Lưu ý:*** `MathJax` `v2.7.2` biểu diễn các Công thức Hóa học thông qua `Extension` (một đoạn `JavaScript`) là `mhchem`. Do vậy, để biểu diễn tất cả những Công thức Hóa học mà `mhchem` hỗ trợ (tùy thuộc vào phiên bản của `mhchem`), thiết nghĩ, cũng nên xem lướt qua tài liệu của chính tác giả gốc viết.
+
+***Tham khảo thêm:***
+
+1. `MathJax`/mhchem: https://docs.mathjax.org/en/v2.7-latest/tex.html
+
+2. `Tài liệu` mhchem: https://mhchem.github.io/MathJax-mhchem/
+
+3. `Source code` mhchem: https://github.com/mhchem/MathJax-mhchem
+
+4. `LaTeX`/mhchem: https://www.ctan.org/pkg/mhchem.
+
+<br/><br/><br/><br/>
