@@ -11,6 +11,12 @@ output:
     df_print: default
     highlight: haddock
     keep_md: yes
+    #mathjax: null
+    #mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    #mathjax: local
+    #self_contained: false
+    includes:
+      in_header: header.html
 ---
 
 ```{r setup, include=FALSE}
@@ -22,6 +28,14 @@ options(knitr.kable.NA = '')
 <div class="logs">
 <div class="logs-caption">Logs</div>
 <div class="logs-content scroll">
+**18.2.2020:**
+
+- Thêm một số dạng Công thức Toán học.
+
+- Thêm dạng Công thức Hóa học.
+
+- Thêm `Navigation Bars`.
+
 **3.2.2020:** Upload lên `RPubs`.
 
 - RPubs: <a target="_parent" href="https://rpubs.com/BabyMouse/ddrEncodingTables">https://rpubs.com/BabyMouse/ddrEncodingTables</a>
@@ -31,6 +45,7 @@ options(knitr.kable.NA = '')
 - GitHub: <a target="_parent" href="https://github.com/BabyMouse/ddRMarkdown">https://github.com/BabyMouse/ddRMarkdown</a>
 
 </div></div>
+</br>
 
 # Tài liệu tham khảo
 [ASCII Table](http://ascii-table.com/codepage.php?1252)
@@ -127,6 +142,52 @@ kable(tex_mml[tex_mml$Group == 7, 3:ncol(tex_mml)], row.names = F) %>%
 
 <div>`$\begin{pmatrix}0 & 1 \\ 2 & 3\end{pmatrix}$`
 $\begin{pmatrix}0 & 1 \\ 2 & 3\end{pmatrix}$</div>
+
+```{r}
+kable(tex_mml[tex_mml$Group == 8, 3:ncol(tex_mml)], row.names = F) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = T) %>%
+  scroll_box(width = "auto")
+```
+`$\ce{SO4^2-+Ba^2+->BaSO4 v}$` $\ce{SO4^2-+Ba^2+->BaSO4 v}$
+
+`$\ce{SO}_4^{2-}\ce{+Ba^2+->BaSO4 v}$` $\ce{SO}_4^{2-}\ce{+Ba^2+->BaSO4 v}$
+
+<!--
+https://www.facebook.com/babymouse.nice/posts/4043399262352910
+
+Công thức Hóa học đơn giản trong RStudio/Knitr (render HTML)
+
+Do RStudio phiên bản hiện hành (v1.2.5033) xài JavaScript MathJax v2.6.1 (để file "MathJax.js" online trên host RStudio) với config không cho phép biểu diễn những công thức hóa học, hay phương trình hóa học, dù là rất đơn giản. Do vậy, chúng ta cần customize Knitr lại, để xài được phiên bản MathJax mới nhất (v3.0).
+
+Bước 1: Config RMarkdown
+
+  html_document: 
+    mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+
+Lưu ý cái chuyện thục vô bằng phím Spacebar hay Tab là rất quan trọng, nhất là ở phần header của RMarkdown.
+
+Tham khảo thêm: https://bookdown.org/yihui/rmarkdown/html-document.html#mathjax-equations.
+
+Bước 2: Thử nghiệm lại bằng công thức hóa học cụ thể
+
+$\ce{SO4^2- + Ba^2+ -> BaSO4 v}$
+
+Hoặc:
+
+$$\ce{SO4^2- + Ba^2+ -> BaSO4 v}$$
+
+Xem thêm: http://docs.mathjax.org/en/latest/input/tex/extensions/mhchem.html.
+
+Cũng lưu ý thêm. MathJax v3.0 biểu diễn Công thức Hóa học thông qua Extension (một đoạn JavaScript) là mhchem. Do vậy, để biểu diễn tất cả những Công thức Hóa học mà mhchem hỗ trợ, thiết nghĩ, cũng nên xem lướt qua tài liệu của chính tác giả gốc viết.
+
+Link: https://www.ctan.org/pkg/mhchem.
+
+---
+Cái mình cần, ví dụ như là vẽ mạch vòng thơm tho, thậm chí là bàn cờ vua, hay những nốt nhạc, đồ thị dao động tắt dần (vật lí), thì có vẻ như Knitr chưa hỗ trợ ở dạng HTML (hiểu nôm na là web, để upload lên RPubs). Hic.
+
+Hình như hàng ngàn packages loại LaTeX đều được Knitr hỗ trợ (thông qua Pandoc), nhưng chỉ dành cho dạng PDF, và chỉ upload lên một số host hơi đặc dụng mà thôi.
+-->
+
 
 <!--
 #as.factor(tex_mml$MathML)
