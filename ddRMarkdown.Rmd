@@ -24,27 +24,42 @@ knitr::opts_chunk$set(echo = TRUE)
 <div class="logs">
 <div class="logs-caption">Logs</div>
 <div class="logs-content scroll">
-**3.2.2020:** Thêm trang **Phụ lục 1: Các bảng mã**.
+**18.2.2020:**
 
-- Link: <a target="_parent" href="https://rpubs.com/BabyMouse/ddrEncodingTables">ddrEncodingTables</a>
+- Thêm `Navigation Bars`.
 
-**28.1.2020:** Thêm trang **Giới thiệu**.
+- Thêm trang "*6. Equation*": <a target="_parent" href="https://rpubs.com/BabyMouse/ddrEquation">https://rpubs.com/BabyMouse/ddrEquation</a>
 
-- Link: <a target="_parent" href="https://rpubs.com/BabyMouse/ddrIntroduction">https://rpubs.com/BabyMouse/ddrIntroduction</a>
+**3.2.2020:**
 
-**22.1.2020:** Thêm **Mục lục** và upload `RPubs`.
+- Thêm trang "*Phụ lục 1: Các bảng mã*": <a target="_parent" href="https://rpubs.com/BabyMouse/ddrEncodingTables">https://rpubs.com/BabyMouse/ddrEncodingTables</a>
+
+**28.1.2020:**
+
+- Thêm trang "*Giới thiệu*": <a target="_parent" href="https://rpubs.com/BabyMouse/ddrIntroduction">https://rpubs.com/BabyMouse/ddrIntroduction</a>
+
+**22.1.2020:**
+
+- Thêm "*Mục lục*" và upload `RPubs`.
 
 - RPubs: <a target="_parent" href="https://rpubs.com/BabyMouse/ddRMarkdown">https://rpubs.com/BabyMouse/ddRMarkdown</a>
 
-**19.1.2020:** Khởi tạo project và upload lên `GitHub`.
+**19.1.2020:**
+
+- Khởi tạo project và upload lên `GitHub`.
 
 - GitHub: <a target="_parent" href="https://github.com/BabyMouse/ddRMarkdown">https://github.com/BabyMouse/ddRMarkdown</a>
 
 </div></div>
+<br/>
 
 # **<a target="_parent" href="https://rpubs.com/BabyMouse/ddRMarkdown">Mục lục</a>**
 
+<br/>
+
 ## **Cám ơn**
+
+<br/>
 
 ## **Phần 1:** Giới thiệu
 
@@ -61,6 +76,8 @@ knitr::opts_chunk$set(echo = TRUE)
 	* Định dạng văn bản, tài liệu
 	* Tổ chức tài liệu và cách đọc
 	* Phần mềm (version tương ứng) để thực tập: VS Code (và Ext về theme, formatter, code snippets), R (cả RTools), RStudio (add-on Knitr), cả MySQL nếu cần xây dựng database.
+
+<br/>
 
 ## Phần 2: Làm quen
 
@@ -101,27 +118,33 @@ knitr::opts_chunk$set(echo = TRUE)
 	* Script và Own R function (Tùy biến)
 	* Language (Sáng tạo)
 
+<br/>
+
 ## Phần 3: Làm thử
 
 ### 4. Định dạng chữ
 
 ### 5. Image, Address, Block, Code: ddrHyperText
 
-### 6. Equation 
+### 6. Equation <a target="_parent" href="https://rpubs.com/BabyMouse/ddrEquation">ddrEquation</a> (<span class="update">19.2.2020</span>)
 
 ### 7. Table (kable)
 
 ### 8. Graphic (ggplot2)
 
+<br/>
+
 ## Phụ lục
 
-### Phụ lục 1: Các bảng mã thường dùng: <a target="_parent" href="https://rpubs.com/BabyMouse/ddrEncodingTables">ddrEncodingTables</a> (<span class="update">3.2.2020</span>)
+### Phụ lục 1: Các bảng mã thường dùng: <a target="_parent" href="https://rpubs.com/BabyMouse/ddrEncodingTables">ddrEncodingTables</a> (<span class="update">19.2.2020</span>)
 
 ### Phụ lục 2: Convert UniCode sang Escape string
 
 ### Phụ lục 3: Convert UniCode tổ hợp sang UniCode dựng sẵn 
 
 ### Phụ lục 4: Convert Equartion từ LaTeX sang MathML
+
+<br/>
 
 ## Chú giải thuật ngữ Anh - Việt: ddrTerms
 
