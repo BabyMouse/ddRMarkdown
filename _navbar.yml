@@ -1,0 +1,7 @@
+#Tham khảo: https://www.rdocumentation.org/packages/rmarkdown/versions/2.1/topics/html_document
+left:
+  - text: "Home"
+    href: https://rpubs.com/BabyMouse/ddRMarkdown
+right:
+  - text: GitHub
+    href: https://github.com/BabyMouse/ddRMarkdown
