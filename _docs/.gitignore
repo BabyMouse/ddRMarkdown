@@ -1,13 +1,20 @@
 # File để thử nghiệm
 Test.html
 input-tex_mml2chtml.html
-
 # Tài liệu nội bộ
 # - MathJax: https://www.mathjax.org
 MathJax-master
 MathJax-master.zip
-
 # - MySQL: https://dev.mysql.com/doc/
 MySQL_refman-8.0-en.a4.pdf
-
-
+# - LaTeX Equation
+# .Link: https://www.latex-project.org/help/documentation/amsldoc.pdf
+# .Link: https://www.ctan.org/pkg/amsmath
+amsldoc.pdf
+# .Link: https://mirror-hk.koddos.net/CTAN/macros/latex/contrib/mathtools/mathtools.pdf
+# .Link: https://www.ctan.org/pkg/mathtools
+mathtools.pdf
+# - LaTeX Chemical formulae: https://www.ctan.org/pkg/mhchem
+mhchem.pdf
+# - LaTeX Mathematics of Physics: https://ctan.org/pkg/physics
+physics.pdf
