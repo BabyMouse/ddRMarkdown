@@ -24,7 +24,7 @@ output:
 
 **22.1.2020**
 
-- Khởi tạo ` ddrIntroduction`.
+- Khởi tạo `ddrIntroduction`.
 
 </div></div>
 </br>
