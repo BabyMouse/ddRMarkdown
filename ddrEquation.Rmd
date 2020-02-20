@@ -12,7 +12,7 @@ output:
     highlight: haddock
     keep_md: yes
     includes:
-      in_header: header.html
+      in_header: _header_MathJax.html
 ---
 
 ```{r setup, include=FALSE}
@@ -44,7 +44,7 @@ knitr::opts_chunk$set(echo = TRUE)
 https://www.facebook.com/babymouse.nice/posts/4043399262352910
 -->
 
-### 6.3. Hiển thị Chemistry formulae với `mhchem`
+### 6.3. Hiển thị `Chemistry formulae` với `mhchem`
 
 Do `RStudio` phiên bản hiện hành (`v1.2.5033`) xài `JavaScript` `MathJax` `v2.7.2` để hiển thị Công thức toán học, để file "`MathJax.js`" online trên host `RStudio`, với config không cho phép biểu diễn những công thức hóa học, hay phương trình hóa học, dù là rất đơn giản. Do vậy, chúng ta cần phải `customize` bổ sung cho  `RStudio` cũng như `RMarkdown`, để hiển thị được những Công thức hóa học dạng đơn giản.
 
@@ -101,7 +101,7 @@ output:
 
 ***Lưu ý:*** Cái chuyện thục vô bằng phím `Spacebar` hay `Tab` là rất quan trọng, nhất là ở phần `header` của `RMarkdown`.
 
-***Tham khảo thêm:*** https://bookdown.org/yihui/rmarkdown/html-document.html#advanced-customization.
+***Tham khảo thêm:*** <a target="_parent" href="https://bookdown.org/yihui/rmarkdown/html-document.html#advanced-customization">https://bookdown.org/yihui/rmarkdown/html-document.html#advanced-customization</a>.
 
 <br/>
 **Bước 4:** Thử nghiệm lại bằng Công thức hóa học cụ thể
@@ -116,12 +116,12 @@ Hoặc:
 
 ***Tham khảo thêm:***
 
-1. `MathJax`/mhchem: https://docs.mathjax.org/en/v2.7-latest/tex.html
+1. `MathJax`/mhchem: <a target="_parent" href="https://docs.mathjax.org/en/v2.7-latest/tex.html">https://docs.mathjax.org/en/v2.7-latest/tex.html</a>.
 
-2. `Tài liệu` mhchem: https://mhchem.github.io/MathJax-mhchem/
+2. `Tài liệu` mhchem: <a target="_parent" href="https://mhchem.github.io/MathJax-mhchem">https://mhchem.github.io/MathJax-mhchem</a>.
 
-3. `Source code` mhchem: https://github.com/mhchem/MathJax-mhchem
+3. `Source code` mhchem: <a target="_parent" href="https://github.com/mhchem/MathJax-mhchem">https://github.com/mhchem/MathJax-mhchem</a>.
 
-4. `LaTeX`/mhchem: https://www.ctan.org/pkg/mhchem.
+4. `LaTeX`/mhchem: <a target="_parent" href="https://www.ctan.org/pkg/mhchem">https://www.ctan.org/pkg/mhchem</a>.
 
 <br/><br/><br/><br/>

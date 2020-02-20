@@ -2,7 +2,7 @@
 title: "Phụ lục 1: Các bảng mã thường dùng"
 subtitle: "(<span style=\"text-decoration: underline\">**D**</span>esign <span style=\"text-decoration: underline\">**D**</span>ocuments with <span style=\"text-decoration: underline\">**RMarkdown**</span>)"
 author: "Trát Quang Thụy"
-date: "Ngày 30/1/2020"
+date: "Ngày 20/2/2020"
 output: 
   html_document: 
     code_download: yes
@@ -16,7 +16,7 @@ output:
     #mathjax: local
     #self_contained: false
     includes:
-      in_header: header.html
+      in_header: _header_MathJax.html
 ---
 
 ```{r setup, include=FALSE}
