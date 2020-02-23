@@ -7,12 +7,13 @@ output:
   html_document: 
     code_download: yes
     code_folding: show
-    css: Style.css
+    css: style.css
     df_print: kable
     highlight: haddock
     keep_md: yes
     includes:
       in_header: _header_MathJax.html
+      before_body: doc_prefix.html
 ---
 
 ```{r setup, include=FALSE}
@@ -36,6 +37,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 </div></div>
 <br/>
+
+<div class="content-fck-font-size">
 
 ## 6. Equation: ddrEquation
 <br/><br/>
@@ -124,4 +127,5 @@ Hoặc:
 
 4. `LaTeX`/mhchem: <a target="_parent" href="https://www.ctan.org/pkg/mhchem">https://www.ctan.org/pkg/mhchem</a>.
 
+</div>
 <br/><br/><br/><br/>

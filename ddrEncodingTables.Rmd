@@ -7,7 +7,7 @@ output:
   html_document: 
     code_download: yes
     code_folding: show
-    css: Style.css
+    css: style.css
     df_print: default
     highlight: haddock
     keep_md: yes
@@ -17,6 +17,7 @@ output:
     #self_contained: false
     includes:
       in_header: _header_MathJax.html
+      before_body: doc_prefix.html
 ---
 
 ```{r setup, include=FALSE}
