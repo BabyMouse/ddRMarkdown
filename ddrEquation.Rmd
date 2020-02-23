@@ -7,13 +7,14 @@ output:
   html_document: 
     code_download: yes
     code_folding: show
+    #theme: null
     css: style.css
     df_print: kable
     highlight: haddock
     keep_md: yes
     includes:
-      in_header: _header_MathJax.html
-      before_body: doc_prefix.html
+      in_header: _header.html
+      before_body: _doc_prefix.html
 ---
 
 ```{r setup, include=FALSE}
