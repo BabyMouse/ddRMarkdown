@@ -1,0 +1,70 @@
+<!--https://github.com/rstudio/rmarkdown-website/blob/master/_navbar.html-->
+<style>
+    .navbar-collapse::after,
+    .navbar-collapse::before {
+        content: none !important;
+    }
+</style>
+<script>
+    function contentFckFontSize(isUp) {
+
+        var fontSize = parseInt($('.content-fck-font-size').attr('data-font-size'));
+
+        if (!fontSize || fontSize == 0) {
+            fontSize = 100;
+        }
+        /*else if (fontSize > 120) {
+                   fontSize = 120;
+               } else if (fontSize < 80) {
+                   fontSize = 80;
+               }*/
+        console.log(fontSize);
+
+        if (isUp) {
+            fontSize = fontSize + 20;
+        } else {
+            fontSize = fontSize - 20;
+        }
+        console.log(fontSize);
+
+        $('.content-fck-font-size').attr('data-font-size', fontSize);
+        $('.content-fck-font-size').attr('style', 'font-size:' + fontSize + '%!important');
+
+        //$('.content-fck-font-size .fontd').css({'font-size': fontSize+'%!important'});
+        //$('.content-fck-font-size .fontd').attr('style', 'font-size:' + fontSize + '%!important');
+    }
+</script>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container" style="width: auto;">
+        <div id="navbar" class="navbar-collapse collapse" style="display: flex !important; justify-content: space-between;">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a target="_parent" href="https://rpubs.combyMouse/ddRMarkdown "><i class="fas fa-home" />&nbsp;Home</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li>
+                    <i class="fas fa-font fa-xs" onclick="contentFckFontSize(false);"></i>
+
+                    <i class="fas fa-font" onclick="contentFckFontSize(true);"></i>
+                </li>
+            </ul>
+
+            <!--
+            <ul class="nav navbar-nav">
+                <li>
+                    <a target="_parent" href="https://rpubs.combyMouse/ddRMarkdown"><i class="fas fa-home" />&nbsp;Home</a>
+                </li>
+            </ul>
+            -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a target="_parent" href="https://github.com/BabyMouse/ddRMarkdown"><i class="fa fa-github" />&nbsp;GitHub</a>
+                </li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+    <!--/.container -->
+</div>
+<!--/.navbar -->
