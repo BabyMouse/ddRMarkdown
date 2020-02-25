@@ -6,7 +6,7 @@ rsconnect
 # File được tự động tạo ra bởi RMarkdown
 *.md
 /*.html
-!/_doc_prefix.html
+!/_doc_prefix_navbar.html
 !/_header.html
 !/_header_MathJax.html
 #
