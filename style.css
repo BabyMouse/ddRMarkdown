@@ -1,0 +1,168 @@
+/* Style này chỉ dành cho RMarkdown không xài Theme. */
+
+
+/* padding for bootstrap navbar */
+
+body {
+    /* offset scroll position for anchor links (for fixed navbar)  */
+    padding-bottom: 40px;
+    padding-top: 51px;
+}
+
+.container {
+    width: auto;
+}
+
+.navbar-display-flex {
+    border-top: 0;
+    box-shadow: none;
+    display: flex;
+    justify-content: space-between;
+    max-height: 340px;
+    overflow-x: visible;
+}
+
+.txt-cursor-pointer {
+    color: #777;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    line-height: 20px;
+    padding-right: 5px;
+    padding-top: 20px;
+    vertical-align: baseline;
+}
+
+.txt-cursor-pointer:hover {
+    color: #000;
+}
+
+.txt-xs {
+    font-size: 0.75em;
+}
+
+code {
+    color: #000000;
+    font-weight: 400;
+}
+
+p {
+    font-weight: 400;
+}
+
+p>code,
+li>code,
+td>code {
+    font-weight: 600;
+}
+
+hr {
+    background-color: #aaa;
+    background-image: linear-gradient(to right, #eee, #aaa, #eee);
+    height: 2px;
+}
+
+.main-container {
+    font-size: 1.1em;
+    max-width: 96% !important;
+}
+
+h1,
+.level1 {
+    font-size: 30pt;
+    font-weight: 600;
+}
+
+h2,
+.level2,
+.logs-caption {
+    font-size: 24pt;
+    font-weight: 600;
+}
+
+.level3,
+.level4,
+.logs-content,
+code,
+h3,
+h4,
+li,
+p,
+pre,
+td,
+th {
+    font-size: 20pt;
+}
+
+h3,
+.level3 {
+    font-weight: 600;
+}
+
+h4,
+li,
+p,
+td,
+.level4,
+.logs-content {
+    font-weight: 400;
+}
+
+div.sourceCode {
+    margin: 0 0 0.5em 0;
+}
+
+img {
+    border: solid 1px #304e6d;
+}
+
+.scroll {
+    height: 200px;
+    overflow-y: scroll;
+}
+
+.title {
+    font-weight: 600;
+    color: #22b15d;
+}
+
+.subtitle {
+    font-weight: 500;
+    color: #000;
+}
+
+.logs {
+    width: auto;
+}
+
+.logs-caption {
+    background-image: linear-gradient(#5b6676, #7a7a7a, #6b7686);
+    border-radius: 0.3rem 0.3rem 0rem 0rem;
+    border: solid 2px #fafafa;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 0px;
+    padding: 5px 10px 5px 10px;
+    width: auto;
+}
+
+.logs-content {
+    background-color: #f3f6fa;
+    border-radius: 0rem 0rem 0.3rem 0.3rem;
+    border: solid 1px #dce6f0;
+    color: #304e6d;
+    line-height: 1.25;
+    margin-top: 0px;
+    padding: 10px;
+    width: auto;
+    word-wrap: break-word;
+}
+
+.logs-content>p {
+    margin: 10px 5px 5px 5px;
+}
+
+.update {
+    color: #287a17;
+    font-size: 14pt;
+}
