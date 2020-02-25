@@ -13,8 +13,11 @@ output:
     highlight: haddock
     keep_md: yes
     includes:
-      in_header: _header.html
-      before_body: _doc_prefix.html
+      in_header:
+        - _header.html
+        - _header_MathJax.html
+      before_body:
+        - _doc_prefix_navbar.html
 ---
 
 ```{r setup, include=FALSE}
