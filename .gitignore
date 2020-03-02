@@ -17,3 +17,6 @@ MathJax-master
 #
 # Cache files.
 *_files
+Respond.js
+bootstrap.css
+jquery.min.js

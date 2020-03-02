@@ -1,35 +1,22 @@
-<meta name="viewport" content="width=device-width">
-
 <script>
-    /*
-     ** Change font-size.
-     ** URL: https://baoangiang.com.vn/static/templates/version1/homepage/css/reset.css?id=1.002e
-     */
-    function contentFckFontSize(isUp) {
+  /**
+   ** Change font-size.
+   ** URL: https://baoangiang.com.vn/static/templates/version1/homepage/js/common.js?id=1.002e
+   */
+  function contentFckFontSize(isUp) {
+    var divMainContentStyle = document.querySelector("div.container-fluid.main-container").style;
 
-        var fontSize = parseInt($('.content-fck-font-size').attr('data-font-size'));
-
-        if (!fontSize || fontSize == 0) {
-            fontSize = 100;
-        }
-        /*else if (fontSize > 120) {
-                   fontSize = 120;
-               } else if (fontSize < 80) {
-                   fontSize = 80;
-               }*/
-        console.log(fontSize);
-
-        if (isUp) {
-            fontSize = fontSize + 20;
-        } else {
-            fontSize = fontSize - 20;
-        }
-        console.log(fontSize);
-
-        $('.content-fck-font-size').attr('data-font-size', fontSize);
-        $('.content-fck-font-size').attr('style', 'font-size:' + fontSize + '%!important');
-
-        //$('.content-fck-font-size .fontd').css({'font-size': fontSize+'%!important'});
-        //$('.content-fck-font-size .fontd').attr('style', 'font-size:' + fontSize + '%!important');
+    var fontSize;
+    if (divMainContentStyle.fontSize == "") {
+      fontSize = 100;
+    } else {
+      fontSize = parseInt(divMainContentStyle.fontSize);
     }
+    if (isUp) {
+      fontSize = fontSize + 20;
+    } else {
+      fontSize = fontSize - 20;
+    }
+    divMainContentStyle.fontSize = fontSize + "%";
+  }
 </script>

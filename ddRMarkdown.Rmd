@@ -5,15 +5,23 @@ author: "Trát Quang Thụy"
 date: "Ngày 20/2/2020"
 output: 
   html_document: 
-    code_download: yes
-    code_folding: show
+    #code_download: yes
+    code_download: False
+    code_folding: null
+    theme: null
     css: style.css
     df_print: kable
-    highlight: haddock
+    highlight: null
+    mathjax: null
     keep_md: yes
     includes:
-      in_header: _header.html
-      before_body: doc_prefix.html
+      in_header:
+        - "_header.html"
+      before_body:
+        - "_doc_prefix.html"
+        - "_doc_prefix_navbar.html"
+      after_body:
+        - "_doc_suffix.html"
 ---
 
 ```{r setup, include=FALSE}
@@ -56,11 +64,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # **<a target="_parent" href="https://rpubs.com/BabyMouse/ddRMarkdown">Mục lục</a>**
 
-<br/>
-
 ## **Cám ơn**
-
-<br/>
 
 ## **Phần 1:** Giới thiệu
 
@@ -77,8 +81,6 @@ knitr::opts_chunk$set(echo = TRUE)
 	* Định dạng văn bản, tài liệu
 	* Tổ chức tài liệu và cách đọc
 	* Phần mềm (version tương ứng) để thực tập: VS Code (và Ext về theme, formatter, code snippets), R (cả RTools), RStudio (add-on Knitr), cả MySQL nếu cần xây dựng database.
-
-<br/>
 
 ## Phần 2: Làm quen
 
@@ -119,8 +121,6 @@ knitr::opts_chunk$set(echo = TRUE)
 	* Script và Own R function (Tùy biến)
 	* Language (Sáng tạo)
 
-<br/>
-
 ## Phần 3: Làm thử
 
 ### 4. Định dạng chữ
@@ -133,8 +133,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### 8. Graphic (ggplot2)
 
-<br/>
-
 ## Phụ lục
 
 ### Phụ lục 1: Các bảng mã thường dùng: <a target="_parent" href="https://rpubs.com/BabyMouse/ddrEncodingTables">ddrEncodingTables</a> (<span class="update">19.2.2020</span>)
@@ -145,12 +143,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Phụ lục 4: Convert Equartion từ LaTeX sang MathML
 
-<br/>
-
 ## Chú giải thuật ngữ Anh - Việt: ddrTerms
 
 <br/><br/><br/><br/>
 
-
-
- 
