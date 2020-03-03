@@ -6,9 +6,6 @@ rsconnect
 # File được tự động tạo ra bởi RMarkdown
 *.md
 /*.html
-!/_doc_prefix_navbar.html
-!/_header.html
-!/_header_MathJax.html
 #
 # File để thử nghiệm
 Test.css
