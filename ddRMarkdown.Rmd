@@ -12,17 +12,17 @@ output:
     highlight: null
     mathjax: null
     css:
-      - "style.css"
+      - "_includes/style.css"
     df_print: kable
     keep_md: yes
     includes:
       in_header:
-        - "_header.html"
+        - "_includes/header.html"
       before_body:
-        - "_doc_prefix.html"
-        - "_doc_prefix_navbar.html"
+        - "_includes/body_prefix.html"
+        - "_includes/body_prefix_navbar.html"
       after_body:
-        - "_doc_suffix.html"
+        - "_includes/body_suffix.html"
 ---
 
 ```{r setup, include=FALSE}
