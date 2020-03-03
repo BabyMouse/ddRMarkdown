@@ -1,23 +1,2 @@
-<script>
-  /**
-   ** Change font-size.
-   ** Link: https://www.evernote.com/l/Am6CL7GomhJL06oE7nXTBJmH5gZA93ZoET8/
-   ** Source: https://baoangiang.com.vn/static/templates/version1/homepage/js/common.js?id=1.002e
-   */
-  function contentFckFontSize(isUp) {
-    var divMainContentStyle = document.querySelector("div.container-fluid.main-container").style;
-
-    var fontSize;
-    if (divMainContentStyle.fontSize == "") {
-      fontSize = 100;
-    } else {
-      fontSize = parseInt(divMainContentStyle.fontSize);
-    }
-    if (isUp) {
-      fontSize += 20;
-    } else {
-      fontSize -= 20;
-    }
-    divMainContentStyle.fontSize = fontSize + "%";
-  }
-</script>
+<meta name="project" content="ddRMarkdown" />
+<meta name="rmarkdown" content="no theme" />

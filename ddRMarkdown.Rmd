@@ -13,11 +13,13 @@ output:
     mathjax: null
     css:
       - "_includes/style.css"
+      - "_includes/style_navbar.css"
     df_print: kable
     keep_md: yes
     includes:
       in_header:
         - "_includes/header.html"
+        - "_includes/header_navbar.html"
       before_body:
         - "_includes/body_prefix.html"
         - "_includes/body_prefix_navbar.html"
