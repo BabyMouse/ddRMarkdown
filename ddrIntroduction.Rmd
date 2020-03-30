@@ -2,21 +2,52 @@
 title: "0. Giới thiệu tổng quan"
 subtitle: "(<span style=\"text-decoration: underline\">**D**</span>esign <span style=\"text-decoration: underline\">**D**</span>ocuments with <span style=\"text-decoration: underline\">**RMarkdown**</span>)"
 author: "Trát Quang Thụy"
+#date: "Ngày `r format(Sys.time(), '%d %B, %Y')`22/1/2020"
 date: "Ngày 22/1/2020"
 output: 
   html_document: 
-    code_download: yes
-    code_folding: show
-    css: style.css
     df_print: kable
-    highlight: haddock
     keep_md: yes
+    template: "_template/pandoc_template_default.html"
+    #code_download: yes
+    #code_folding: show
+    #theme: default
+    theme: null
+    #self_contained: false
+    #highlight: null
+    #highlight: haddock
+    highlight: "_template/pandoc_highlight_haddock.theme"
+    pandoc_args: [
+      #"--highlight-style", "_includes/haddock.theme",
+      #"--syntax-definition","_template/r.xml",
+      "--variable", "code_folding=show",
+      "--variable", "source_embed=ddrIntroduction.Rmd",
+      "--variable", "code_menu=1",
+      ]
+    #md_extensions: +fenced_code_blocks+backtick_code_blocks
+    mathjax: null
+    css:
+      - "_includes/style.css"
+      - "_includes/style_navbar.css"
+      - "_includes/style_highlight.css"
+      - "_includes/style_code_btn.css"
     includes:
-      before_body: doc_prefix.html
+      in_header:
+        - "_includes/header.html"
+        - "_includes/header_codefolding.html"
+        - "_includes/header_sourceembed.html"
+        - "_includes/header_navbar.html"
+      before_body:
+        - "_includes/body_prefix.html"
+        - "_includes/body_prefix_navbar.html"
+      after_body:
+        - "_includes/body_suffix.html"
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 ---
-
 <div class="logs">
 <div class="logs-caption">Logs</div>
 <div class="logs-content scroll">
@@ -29,7 +60,7 @@ output:
 - Khởi tạo `ddrIntroduction`.
 
 </div></div>
-</br>
+<br/>
 <div class="logs">
 <div class="logs-caption">Nội dung</div>
 <div class="logs-content">
@@ -73,7 +104,7 @@ output:
 
 Ở mục `Field Separator`,
 
-**Nếu chọn `;`** (dấu chấm phẩy)
+**Nếu chọn `;`{.sql}** (dấu chấm phẩy)
 ```{r eval=FALSE}
 read2.csv(pathFile)
 

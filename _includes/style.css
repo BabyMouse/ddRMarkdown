@@ -1,6 +1,6 @@
 /**
 *! Style này chỉ dành cho RMarkdown không xài Theme.
-** Common.
+** - Common.
 */
 ::after,
 ::before {
@@ -69,6 +69,18 @@ a:hover {
 .row::before {
   display: table;
   content: " ";
+}
+
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.main-container {
+  font-size: 1.1em;
+  max-width: 96% !important;
 }
 
 .txt-cursor-pointer {
@@ -201,25 +213,10 @@ p {
   margin-bottom: 0px;
 }
 
-code {
-  color: #000000;
-  font-weight: 400;
-}
-
-p > code,
-li > code,
-td > code {
-  font-weight: 600;
-}
-
 hr {
   background-color: #aaa;
   height: 2px;
   background-image: linear-gradient(to right, #eee, #aaa, #eee);
-}
-
-div.sourceCode {
-  margin: 0 0 0.5em 0;
 }
 
 img {

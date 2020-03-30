@@ -1,24 +1,12 @@
 /**
 *! Style này chỉ dành cho RMarkdown không xài Theme.
-** Navigate bar.
+** - Navigate bar.
 */
 body {
   /* padding for bootstrap navbar (fixed navbar) */
   padding-top: 51px;
   /* padding for bootstrap navbar (fixed navbar) */
   padding-bottom: 40px;
-}
-
-.container-fluid {
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.main-container {
-  font-size: 1.1em;
-  max-width: 96% !important;
 }
 
 .navbar {

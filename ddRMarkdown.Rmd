@@ -11,11 +11,11 @@ output:
     theme: null
     highlight: null
     mathjax: null
+    df_print: kable
+    keep_md: yes
     css:
       - "_includes/style.css"
       - "_includes/style_navbar.css"
-    df_print: kable
-    keep_md: yes
     includes:
       in_header:
         - "_includes/header.html"

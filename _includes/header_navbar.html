@@ -6,13 +6,7 @@
    */
   function contentFckFontSize(isUp) {
     var divMainContentStyle = document.querySelector("div.container-fluid.main-container").style;
-
-    var fontSize;
-    if (divMainContentStyle.fontSize == "") {
-      fontSize = 100;
-    } else {
-      fontSize = parseInt(divMainContentStyle.fontSize);
-    }
+    var fontSize = divMainContentStyle.fontSize == "" ? 100 : parseInt(divMainContentStyle.fontSize);
     if (isUp) {
       fontSize += 20;
     } else {

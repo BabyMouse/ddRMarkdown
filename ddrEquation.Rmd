@@ -8,16 +8,17 @@ output:
     code_download: yes
     code_folding: show
     #theme: null
-    css: style.css
+    css:
+      - "_includes/style.css"
     df_print: kable
     highlight: haddock
     keep_md: yes
     includes:
       in_header:
-        - _header.html
-        - _header_MathJax.html
+        - "_includes/header.html"
+        - "_includes/header_MathJax.html"
       before_body:
-        - _doc_prefix_navbar.html
+        - "_includes/body_prefix_navbar.html"
 ---
 
 ```{r setup, include=FALSE}
