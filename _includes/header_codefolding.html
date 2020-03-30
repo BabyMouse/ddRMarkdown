@@ -1,0 +1,71 @@
+<script>
+  /**
+   ** Source: https://github.com/rstudio/rmarkdown/blob/master/inst/rmd/h/navigation-1.1/codefolding.js
+   */
+  function initializeCode(show) {
+    document.querySelector('button.dropdown-toggle').addEventListener('click', function() {
+      var el = document.querySelector('ul.dropdown-menu');
+      if (el.getAttribute('hidden') == null) {
+        el.setAttribute('hidden', '');
+      } else {
+        el.removeAttribute('hidden');
+      }
+    });
+    document.querySelector('button.dropdown-toggle').addEventListener('blur', function() {
+      document.querySelector('ul.dropdown-menu').setAttribute('hidden', '');
+    });
+
+    // handlers for show-all and hide all
+    document.getElementById("rmd-show-all-code").addEventListener("click", function() {
+      var elements = document.querySelectorAll('div.r-code-collapse');
+      elements.forEach(function(el) {
+        el.removeAttribute('hidden');
+      });
+    });
+    document.getElementById("rmd-hide-all-code").addEventListener("click", function() {
+      var elements = document.querySelectorAll('div.r-code-collapse');
+      elements.forEach(function(el) {
+        el.setAttribute('hidden', '');
+      });
+    });
+
+    var sourceCodeIndex = 1;
+    // select all R code blocks
+    var rCodeBlocks = document.querySelectorAll('div.sourceCode');
+    rCodeBlocks.forEach(function(el) {
+      var sourceCodeID = 'sourceCodeIndex-' + sourceCodeIndex;
+
+      // create a collapsable div to wrap the code in
+      var div = document.createElement("div");
+      div.classList.add('collapse', 'r-code-collapse');
+      div.setAttribute('id', sourceCodeID);
+      if (!show) div.setAttribute('hidden', '');
+      div.append(el.querySelector("pre"));
+
+      var divRow = document.createElement('div');
+      divRow.classList.add('row');
+      var divCol = document.createElement('div');
+      divCol.classList.add('col-md-12');
+      var btnCode = document.createElement('button');
+      btnCode.setAttribute('type', 'button');
+      btnCode.classList.add('btn', 'btn-default', 'btn-xs', 'code-folding-btn', 'pull-right');
+      btnCode.setAttribute('data-target', sourceCodeID);
+      btnCode.insertAdjacentHTML('afterbegin', '<span>' + (show ? 'Hide' : 'Code') + '</span>');
+      btnCode.addEventListener("click", function() {
+        var btnCodeText = this.querySelector("span");
+        if (btnCodeText.innerText == 'Hide') {
+          document.getElementById(this.getAttribute("data-target")).setAttribute('hidden', '');
+          btnCodeText.innerText = 'Code';
+        } else {
+          document.getElementById(this.getAttribute("data-target")).removeAttribute('hidden');
+          btnCodeText.innerText = 'Hide';
+        }
+      }, false);
+      divCol.append(btnCode);
+      divRow.append(divCol);
+      el.append(divRow);
+      el.append(div);
+      sourceCodeIndex++;
+    });
+  }
+</script>

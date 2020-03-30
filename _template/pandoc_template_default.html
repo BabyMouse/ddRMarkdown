@@ -1,0 +1,171 @@
+$--
+$-- Pandoc Template
+$-- - https://pandoc.org/MANUAL.html#templates
+$-- - https://github.com/jgm/pandoc-templates
+$-- Source: RMarkdown package v2.1, https://github.com/rstudio/rmarkdown/tree/master/inst/rmd/h/default.html
+$--
+<!DOCTYPE html>
+<html$if(lang)$ lang="$lang$" xml:lang="$lang$"$endif$>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  $for(author-meta)$<meta name="author" content="$author-meta$" />$endfor$
+  $if(date-meta)$<meta name="date" content="$date-meta$" />$endif$
+  <title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
+$for(header-includes)$
+  $header-includes$
+$endfor$
+$if(code_folding)$
+  <style type="text/css">
+    .sourceCode .row {
+      width: 100%;
+    }
+    .sourceCode {
+      overflow-x: auto;
+    }
+    .code-folding-btn {
+      margin-right: -30px;
+    }
+  </style>
+$endif$ $-- code_folding
+$if(abstract)$
+<style type="text/css">
+  p.abstract{
+    text-align: center;
+    font-weight: bold;
+  }
+  div.abstract{
+    margin: auto;
+    width: 90%;
+  }
+</style>
+$endif$ $-- abstract
+$if(source_embed)$
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
+$endif$ $-- source_embed
+$if(kable-scroll)$
+<!-- kable-scroll -->
+<style type="text/css">
+.kable-table {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: auto;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-bottom: 20px;
+  max-height: 350px;
+}
+
+.kable-table table {
+  margin-bottom: 0px;
+}
+
+.kable-table table>thead>tr>th {
+  border: none;
+  border-bottom: 2px solid #dddddd;
+}
+
+.kable-table table>thead {
+  background-color: #fff;
+}
+</style>
+$endif$ $-- kable-scroll
+$if(code_menu)$
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+$endif$ $-- code_menu
+$for(css)$<link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$ />$endfor$
+</head>
+
+<body>
+  <div class="container-fluid main-container">
+  $for(include-before)$$include-before$$endfor$
+    <div id="header" class="fluid-row">
+$if(code_menu)$
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;" hidden>
+$if(code_folding)$
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+$if(source_embed)$
+<li role="separator" class="divider"></li>
+$endif$ $-- source_embed
+$endif$ $-- code_folding
+$if(source_embed)$
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+$endif$ $-- source_embed
+</ul>
+</div>
+$endif$ $-- code_menu
+$if(title)$<h1 class="title toc-ignore">$title$</h1>
+$if(subtitle)$<h3 class="subtitle">$subtitle$</h3>$endif$
+$for(author)$
+$if(author.name)$
+<h4 class="author">$author.name$</h4>
+$if(author.affiliation)$
+<address class="author_afil">
+$author.affiliation$<br>$endif$
+$if(author.email)$
+<a class="author_email" href="mailto:#">$author.email$</a>
+</address>
+$endif$
+$else$
+<h4 class="author">$author$</h4>
+$endif$
+$endfor$ $-- author
+$if(date)$<h4 class="date">$date$</h4>$endif$
+$if(abstract)$
+<div class="abstract">
+<p class="abstract">Abstract</p>
+$abstract$
+</div>
+$endif$ $-- abstract
+$endif$ $-- title
+    </div>
+$body$
+$for(include-after)$$include-after$$endfor$
+</div>
+$if(kable-scroll)$
+<script>
+$$(document).ready(function () {
+  $$('.knitsql-table').addClass('kable-table');
+  var container = $$('.kable-table');
+  container.each(function() {
+
+    // move the caption out of the table
+    var table = $$(this).children('table');
+    var caption = table.children('caption').detach();
+    caption.insertBefore($$(this)).css('display', 'inherit');
+  });
+});
+</script>
+$endif$ $-- kable-scroll
+$if(code_menu)$
+<!-- code folding -->
+<script>
+$-- $if(source_embed)$ document.addEventListener('DOMContentLoaded', window.initializeSourceEmbed("$source_embed$"));$endif$
+$if(code_folding)$ window.addEventListener('DOMContentLoaded', initializeCode("$code_folding$" === "show"));$endif$
+</script>
+$endif$ $-- code_menu
+$if(mathjax-url)$
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "$mathjax-url$";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+$endif$ $-- mathjax-url
+</body>
+</html>
