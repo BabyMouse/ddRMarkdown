@@ -17,38 +17,6 @@ $--
 $for(header-includes)$
   $header-includes$
 $endfor$
-$if(code_folding)$
-  <style type="text/css">
-    .sourceCode .row {
-      width: 100%;
-    }
-    .sourceCode {
-      overflow-x: auto;
-    }
-    .code-folding-btn {
-      margin-right: -30px;
-    }
-  </style>
-$endif$ $-- code_folding
-$if(abstract)$
-<style type="text/css">
-  p.abstract{
-    text-align: center;
-    font-weight: bold;
-  }
-  div.abstract{
-    margin: auto;
-    width: 90%;
-  }
-</style>
-$endif$ $-- abstract
-$if(source_embed)$
-<style type="text/css">
-#rmd-source-code {
-  display: none;
-}
-</style>
-$endif$ $-- source_embed
 $if(kable-scroll)$
 <!-- kable-scroll -->
 <style type="text/css">
@@ -76,12 +44,6 @@ $if(kable-scroll)$
 }
 </style>
 $endif$ $-- kable-scroll
-$if(code_menu)$
-<!-- code folding -->
-<style type="text/css">
-.code-folding-btn { margin-bottom: 4px; }
-</style>
-$endif$ $-- code_menu
 $for(css)$<link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$ />$endfor$
 </head>
 
@@ -153,7 +115,7 @@ $if(code_menu)$
 <!-- code folding -->
 <script>
 $-- $if(source_embed)$ document.addEventListener('DOMContentLoaded', window.initializeSourceEmbed("$source_embed$"));$endif$
-$if(code_folding)$ window.addEventListener('DOMContentLoaded', initializeCode("$code_folding$" === "show"));$endif$
+$if(code_folding)$ window.addEventListener('DOMContentLoaded', initializeCodeFolding("$code_folding$" === "show"));$endif$
 </script>
 $endif$ $-- code_menu
 $if(mathjax-url)$

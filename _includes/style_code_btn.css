@@ -1,11 +1,12 @@
 /**
 *! Style này chỉ dành cho RMarkdown không xài Theme.
-** - Navigate bar.
+** - Code button in Navigate bar.
+** - Show/ Hide source code.
 */
 .btn-group,
 .btn-group-vertical {
-  position: relative;
   display: inline-block;
+  position: relative;
   vertical-align: middle;
 }
 
@@ -26,9 +27,6 @@
 .btn-group-xs > .btn,
 .btn-xs {
   padding: 1px 5px;
-  font-size: 12px;
-  line-height: 1.5;
-  border-radius: 3px;
 }
 
 .btn-default {
@@ -59,12 +57,14 @@
 }
 
 .btn {
-  display: inline-block;
-  margin-bottom: 0;
-  font-size: 14px;
+  background-image: none;
   font-weight: 400;
+  font-size: 14px;
   line-height: 1.42857143;
   text-align: center;
+  display: inline-block;
+  border-radius: 4px;
+  margin-bottom: 0;
   white-space: nowrap;
   vertical-align: middle;
   -ms-touch-action: manipulation;
@@ -74,16 +74,14 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  background-image: none;
-  border-radius: 4px;
 }
 
 .btn.active,
 .btn:active {
   background-image: none;
-  outline: 0;
   -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+  outline: 0;
 }
 
 .btn.active.focus,
@@ -107,9 +105,9 @@ input,
 optgroup,
 select,
 textarea {
-  margin: 0;
-  font: inherit;
   color: inherit;
+  font: inherit;
+  margin: 0;
 }
 
 .btn .caret {
@@ -118,12 +116,12 @@ textarea {
 
 .caret {
   display: inline-block;
-  width: 0;
   height: 0;
+  width: 0;
   margin-left: 2px;
   vertical-align: middle;
   border-top: 4px dashed;
-  border-top: 4px solid\9;
+  border-top: 4px solid;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
 }
@@ -134,46 +132,46 @@ textarea {
 }
 
 .dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  float: left;
-  min-width: 160px;
-  padding: 5px 0;
-  margin: 2px 0 0;
-  font-size: 14px;
-  text-align: left;
-  list-style: none;
   background-color: #fff;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+  font-size: 14px;
+  text-align: left;
+  min-width: 160px;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, .15);
   border-radius: 4px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
   box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 2px 0 0;
+  padding: 5px 0;
+  float: left;
+  z-index: 1000;
+  list-style: none;
 }
 
 .dropdown-menu > li > a {
+  color: #333;
+  font-weight: 400;
+  line-height: 1.5;
   display: block;
   padding: 3px 20px;
   clear: both;
-  font-weight: 400;
-  line-height: 1.42857143;
-  color: #333;
   white-space: nowrap;
 }
 
 .dropdown-menu .divider {
-  height: 1px;
-  margin: 9px 0;
-  overflow: hidden;
   background-color: #e5e5e5;
+  height: 1px;
+  overflow: hidden;
+  margin: 9px 0;
 }
 
-.sourceCode .row {
-  width: 100%;
+.sourceCode {
+  overflow-x: auto;
 }
 
 .row {
@@ -181,83 +179,24 @@ textarea {
   margin-left: -15px;
 }
 
-.col-md-12 {
+.sourceCode .row {
   width: 100%;
 }
 
-.col-md-1,
-.col-md-10,
-.col-md-11,
-.col-md-12,
-.col-md-2,
-.col-md-3,
-.col-md-4,
-.col-md-5,
-.col-md-6,
-.col-md-7,
-.col-md-8,
-.col-md-9 {
-  float: left;
-}
-
-.col-lg-1,
-.col-lg-10,
-.col-lg-11,
-.col-lg-12,
-.col-lg-2,
-.col-lg-3,
-.col-lg-4,
-.col-lg-5,
-.col-lg-6,
-.col-lg-7,
-.col-lg-8,
-.col-lg-9,
-.col-md-1,
-.col-md-10,
-.col-md-11,
-.col-md-12,
-.col-md-2,
-.col-md-3,
-.col-md-4,
-.col-md-5,
-.col-md-6,
-.col-md-7,
-.col-md-8,
-.col-md-9,
-.col-sm-1,
-.col-sm-10,
-.col-sm-11,
-.col-sm-12,
-.col-sm-2,
-.col-sm-3,
-.col-sm-4,
-.col-sm-5,
-.col-sm-6,
-.col-sm-7,
-.col-sm-8,
-.col-sm-9,
-.col-xs-1,
-.col-xs-10,
-.col-xs-11,
-.col-xs-12,
-.col-xs-2,
-.col-xs-3,
-.col-xs-4,
-.col-xs-5,
-.col-xs-6,
-.col-xs-7,
-.col-xs-8,
-.col-xs-9 {
-  position: relative;
+.col-md-12 {
   min-height: 1px;
+  width: 100%;
+  position: relative;
   padding-right: 15px;
   padding-left: 15px;
-}
-
-.code-folding-btn {
-  margin-bottom: 4px;
+  float: left;
 }
 
 .code-folding-btn {
   margin-right: -30px;
+  margin-bottom: 4px;
+}
+
+#rmd-source-code {
+  display: none;
 }

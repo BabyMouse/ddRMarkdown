@@ -2,7 +2,10 @@
   /**
    ** Source: https://github.com/rstudio/rmarkdown/blob/master/inst/rmd/h/navigation-1.1/codefolding.js
    */
-  function initializeCode(show) {
+  function initializeCodeFolding(show) {
+    /**
+     ** Handlers for show/ hide Code menu
+     */
     document.querySelector('button.dropdown-toggle').addEventListener('click', function() {
       var el = document.querySelector('ul.dropdown-menu');
       if (el.getAttribute('hidden') == null) {
@@ -12,23 +15,30 @@
       }
     });
     document.querySelector('button.dropdown-toggle').addEventListener('blur', function() {
-      document.querySelector('ul.dropdown-menu').setAttribute('hidden', '');
+      //document.querySelector('ul.dropdown-menu').setAttribute('hidden', '');
     });
-
-    // handlers for show-all and hide all
+    /**
+     ** Handlers for show-all and hide all Source code
+     */
     document.getElementById("rmd-show-all-code").addEventListener("click", function() {
-      var elements = document.querySelectorAll('div.r-code-collapse');
-      elements.forEach(function(el) {
+      document.querySelectorAll('div.r-code-collapse').forEach(function(el) {
         el.removeAttribute('hidden');
+      });
+      document.querySelectorAll("button.code-folding-btn span").forEach(function(el) {
+        el.innerText = 'Hide';
       });
     });
     document.getElementById("rmd-hide-all-code").addEventListener("click", function() {
-      var elements = document.querySelectorAll('div.r-code-collapse');
-      elements.forEach(function(el) {
+      document.querySelectorAll('div.r-code-collapse').forEach(function(el) {
         el.setAttribute('hidden', '');
       });
+      document.querySelectorAll("button.code-folding-btn span").forEach(function(el) {
+        el.innerText = 'Code';
+      });
     });
-
+    /**
+     ** Handlers for Show/ Hide code button
+     */
     var sourceCodeIndex = 1;
     // select all R code blocks
     var rCodeBlocks = document.querySelectorAll('div.sourceCode');
