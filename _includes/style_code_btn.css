@@ -153,6 +153,10 @@ textarea {
   list-style: none;
 }
 
+.dropdown-menu > li {
+  margin: 0px;
+}
+
 .dropdown-menu > li > a {
   color: #333;
   font-weight: 400;
@@ -161,6 +165,13 @@ textarea {
   padding: 3px 20px;
   clear: both;
   white-space: nowrap;
+}
+
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:hover {
+  color: #262626;
+  background-color: #d1ebde;
+  text-decoration: none;
 }
 
 .dropdown-menu .divider {

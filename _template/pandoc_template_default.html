@@ -45,6 +45,46 @@ $if(kable-scroll)$
 </style>
 $endif$ $-- kable-scroll
 $for(css)$<link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$ />$endfor$
+$if(code_menu)$
+<script>
+  /**
+   ** Code menu
+   */
+  $--$if(source_embed)$ document.addEventListener('DOMContentLoaded', window.initializeSourceEmbed("$source_embed$"));$endif$
+  $if(code_folding)$ document.addEventListener('readystatechange', function() { if(document.readyState === "complete") initializeCodeFolding("$code_folding$" === "show"); });$endif$
+</script>
+$endif$ $-- code_menu
+$if(kable-scroll)$
+<script>
+  /**
+  ** Kable scroll
+  */
+  $$(document).ready(function() {
+    $$('.knitsql-table').addClass('kable-table');
+    var container = $$('.kable-table');
+    container.each(function() {
+
+      // move the caption out of the table
+      var table = $$(this).children('table');
+      var caption = table.children('caption').detach();
+      caption.insertBefore($$(this)).css('display', 'inherit');
+    });
+  });
+</script>
+$endif$ $-- kable-scroll
+$if(mathjax-url)$
+<script>
+  /**
+  ** MathJax URL: Dynamically load MathJax for compatibility with self-contained
+  */
+  (function() {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "$mathjax-url$";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+$endif$ $-- mathjax-url
 </head>
 
 <body>
@@ -96,38 +136,5 @@ $endif$ $-- title
 $body$
 $for(include-after)$$include-after$$endfor$
 </div>
-$if(kable-scroll)$
-<script>
-$$(document).ready(function () {
-  $$('.knitsql-table').addClass('kable-table');
-  var container = $$('.kable-table');
-  container.each(function() {
-
-    // move the caption out of the table
-    var table = $$(this).children('table');
-    var caption = table.children('caption').detach();
-    caption.insertBefore($$(this)).css('display', 'inherit');
-  });
-});
-</script>
-$endif$ $-- kable-scroll
-$if(code_menu)$
-<!-- code folding -->
-<script>
-$-- $if(source_embed)$ document.addEventListener('DOMContentLoaded', window.initializeSourceEmbed("$source_embed$"));$endif$
-$if(code_folding)$ window.addEventListener('DOMContentLoaded', initializeCodeFolding("$code_folding$" === "show"));$endif$
-</script>
-$endif$ $-- code_menu
-$if(mathjax-url)$
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "$mathjax-url$";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-$endif$ $-- mathjax-url
 </body>
 </html>
