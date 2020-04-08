@@ -6,6 +6,10 @@ code {
   white-space: pre;
 }
 
+pre.sourceCode {
+  margin: 0;
+}
+
 pre > code.sourceCode {
   white-space: pre;
   position: relative;
@@ -26,11 +30,7 @@ code.sourceCode > span {
 }
 
 div.sourceCode {
-  margin: 1em 0;
-}
-
-pre.sourceCode {
-  margin: 0;
+  margin: 0 0 0.5em 0;
 }
 
 @media screen {
@@ -84,8 +84,6 @@ pre.numberSource {
   border-left: 1px solid #aaaaaa;
   padding-left: 4px;
 }
-
-div.sourceCode {}
 
 @media screen {
   pre > code.sourceCode > span > a:first-child::before {
@@ -210,10 +208,6 @@ p > code,
 li > code,
 td > code {
   font-weight: 600;
-}
-
-div.sourceCode {
-  margin: 0 0 0.5em 0;
 }
 
 code {

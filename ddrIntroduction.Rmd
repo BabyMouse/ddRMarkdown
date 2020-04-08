@@ -9,22 +9,13 @@ output:
     df_print: kable
     keep_md: yes
     template: "_template/pandoc_template_default.html"
-    #code_download: yes
-    #code_folding: show
-    #theme: default
     theme: null
-    #self_contained: false
-    #highlight: null
-    #highlight: haddock
     highlight: "_template/pandoc_highlight_haddock.theme"
     pandoc_args: [
-      #"--highlight-style", "_includes/haddock.theme",
-      #"--syntax-definition","_template/r.xml",
+      "--variable", "code_menu",
       "--variable", "code_folding=show",
-      "--variable", "source_embed=ddrIntroduction.Rmd",
-      "--variable", "code_menu=1",
+      "--variable", "source_embed",
       ]
-    #md_extensions: +fenced_code_blocks+backtick_code_blocks
     mathjax: null
     css:
       - "_includes/style.css"
@@ -34,9 +25,9 @@ output:
     includes:
       in_header:
         - "_includes/header.html"
-        - "_includes/header_codefolding.html"
-        - "_includes/header_sourceembed.html"
-        - "_includes/header_navbar.html"
+        - "_includes/header_navbar.js.html"
+        - "_includes/header_codefolding.js.html"
+        - "_includes/header_sourceembed.js.html"
       before_body:
         - "_includes/body_prefix.html"
         - "_includes/body_prefix_navbar.html"
@@ -45,6 +36,7 @@ output:
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::spin('_template/sourceembed.R')
 ```
 
 ---
@@ -116,7 +108,16 @@ read.csv(pathFile, sep = ";")
 ```{r eval=FALSE}
 read.csv(pathFile)
 ```
+
 <br/><br/><br/><br/>
 
 
+
+```{r echo=FALSE}
+embed_file_a('ddrIntroduction.Rmd')
+```
+
+```{r include=FALSE}
+#knitr::knit_exit('<div>abc</div>')
+```
 

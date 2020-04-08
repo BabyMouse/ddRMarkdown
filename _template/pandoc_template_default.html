@@ -12,7 +12,7 @@ $--
   <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   $for(author-meta)$<meta name="author" content="$author-meta$" />$endfor$
-  $if(date-meta)$<meta name="date" content="$date-meta$" />$endif$
+  $if(date)$<meta name="date" content="$date$" />$endif$
   <title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
 $for(header-includes)$
   $header-includes$
@@ -49,9 +49,11 @@ $if(code_menu)$
 <script>
   /**
    ** Code menu
+   ** - Code Folding
+   ** - Source Embed
    */
-  $--$if(source_embed)$ document.addEventListener('DOMContentLoaded', window.initializeSourceEmbed("$source_embed$"));$endif$
   $if(code_folding)$ document.addEventListener('readystatechange', function() { if(document.readyState === "complete") initializeCodeFolding("$code_folding$" === "show"); });$endif$
+  $if(source_embed)$ document.addEventListener('readystatechange', function() { if(document.readyState === "complete") initializeSourceEmbed(); });$endif$
 </script>
 $endif$ $-- code_menu
 $if(kable-scroll)$
@@ -89,52 +91,45 @@ $endif$ $-- mathjax-url
 
 <body>
   <div class="container-fluid main-container">
-  $for(include-before)$$include-before$$endfor$
+$for(include-before)$   $include-before$$endfor$
     <div id="header" class="fluid-row">
 $if(code_menu)$
-<div class="btn-group pull-right">
-<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-<ul class="dropdown-menu" style="min-width: 50px;" hidden>
+      <div class="btn-group pull-right">
+        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+        <ul class="dropdown-menu" style="min-width: 50px;" hidden>
 $if(code_folding)$
-<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+          <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+          <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>$endif$ $-- code_folding
 $if(source_embed)$
-<li role="separator" class="divider"></li>
-$endif$ $-- source_embed
-$endif$ $-- code_folding
-$if(source_embed)$
-<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
-$endif$ $-- source_embed
-</ul>
-</div>
-$endif$ $-- code_menu
-$if(title)$<h1 class="title toc-ignore">$title$</h1>
-$if(subtitle)$<h3 class="subtitle">$subtitle$</h3>$endif$
+          <li role="separator" class="divider"></li>
+          <li><a id="rmd-download-source" href="#">Download Rmd</a></li>$endif$ $-- source_embed
+        </ul>
+      </div>$endif$ $-- code_menu
+$if(title)$
+      <h1 class="title toc-ignore">$title$</h1>$endif$ $-- title
+$if(subtitle)$
+      <h3 class="subtitle">$subtitle$</h3>$endif$ $-- subtitle
 $for(author)$
 $if(author.name)$
-<h4 class="author">$author.name$</h4>
+      <h4 class="author">$author.name$</h4>
 $if(author.affiliation)$
-<address class="author_afil">
-$author.affiliation$<br>$endif$
+      <address class="author_afil">$author.affiliation$<br>
 $if(author.email)$
-<a class="author_email" href="mailto:#">$author.email$</a>
-</address>
-$endif$
+        <a class="author_email" href="mailto:#">$author.email$</a>$endif$ $-- author.email
+      </address>$endif$ $-- author.affiliation
 $else$
-<h4 class="author">$author$</h4>
-$endif$
+      <h4 class="author">$author$</h4>$endif$ $-- author.name
 $endfor$ $-- author
-$if(date)$<h4 class="date">$date$</h4>$endif$
+$if(date)$
+      <h4 class="date">$date$</h4>$endif$ $-- date
 $if(abstract)$
-<div class="abstract">
-<p class="abstract">Abstract</p>
-$abstract$
-</div>
-$endif$ $-- abstract
-$endif$ $-- title
+      <div class="abstract">
+        <p class="abstract">Abstract</p>
+        <span>$abstract$</span>
+      </div>$endif$ $-- abstract
     </div>
 $body$
-$for(include-after)$$include-after$$endfor$
-</div>
+$for(include-after)$    $include-after$$endfor$
+  </div>
 </body>
 </html>
