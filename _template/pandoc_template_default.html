@@ -46,63 +46,113 @@ $if(kable-scroll)$
 $endif$ $-- kable-scroll
 $for(css)$<link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$ />$endfor$
 $if(code_menu)$
-<script>
-  /**
-   ** Code menu
-   ** - Code Folding
-   ** - Source Embed
-   */
-  $if(code_folding)$ document.addEventListener('readystatechange', function() { if(document.readyState === "complete") initializeCodeFolding("$code_folding$" === "show"); });$endif$
-  $if(source_embed)$ document.addEventListener('readystatechange', function() { if(document.readyState === "complete") initializeSourceEmbed(); });$endif$
-</script>
-$endif$ $-- code_menu
-$if(kable-scroll)$
-<script>
-  /**
-  ** Kable scroll
-  */
-  $$(document).ready(function() {
-    $$('.knitsql-table').addClass('kable-table');
-    var container = $$('.kable-table');
-    container.each(function() {
-
-      // move the caption out of the table
-      var table = $$(this).children('table');
-      var caption = table.children('caption').detach();
-      caption.insertBefore($$(this)).css('display', 'inherit');
+  <script>
+    /**
+    ** Code menu
+    ** - Code Folding
+    ** - Source Embed
+    */
+    document.addEventListener('readystatechange', function() { if(document.readyState === "complete") initializeCodeFolding("$code_folding$" === "show"); });
+    document.addEventListener('readystatechange', function() { if(document.readyState === "complete") initializeSourceEmbed(); });
+  </script>
+$elseif(code_folding)$
+  <script>
+    /**
+    ** Code menu
+    ** - Code Folding
+    ** - Source Embed
+    */
+    document.addEventListener('readystatechange', function() { if (document.readyState === "complete") initializeCodeFolding("$code_folding$" === "show"); });
+  $if(source_embed)$
+    document.addEventListener('readystatechange', function() { if (document.readyState === "complete") initializeSourceEmbed(); });$endif$
+  </script>
+$elseif(source_embed)$
+  <script>
+    /**
+    ** Code menu
+    ** - Source Embed
+    */
+    document.addEventListener('readystatechange', function() {
+      if (document.readyState === "complete"){
+        // Handlers for show/ hide Code menu
+        document.querySelector('button.dropdown-toggle').addEventListener('click', function() {
+          var el = document.querySelector('ul.dropdown-menu');
+          if (el.getAttribute('hidden') == null) {
+            el.setAttribute('hidden', '');
+          } else {
+            el.removeAttribute('hidden');
+          }
+        });
+        window.onclick = function(event) {
+          if (!event.target.classList.contains('dropdown-toggle') && !event.target.parentElement.classList.contains('dropdown-toggle')) {
+            document.querySelector('ul.dropdown-menu').setAttribute('hidden', '');
+          }
+        };
+        // Handlers for SourceEmbed
+        initializeSourceEmbed();
+      }
     });
-  });
-</script>
-$endif$ $-- kable-scroll
+  </script>$endif$ $-- code_menu
+$if(kable-scroll)$
+  <script>
+    /**
+    ** Kable scroll
+    */
+    $$(document).ready(function() {
+      $$('.knitsql-table').addClass('kable-table');
+      var container = $$('.kable-table');
+      container.each(function() {
+
+        // move the caption out of the table
+        var table = $$(this).children('table');
+        var caption = table.children('caption').detach();
+        caption.insertBefore($$(this)).css('display', 'inherit');
+      });
+    });
+  </script>$endif$ $-- kable-scroll
 $if(mathjax-url)$
-<script>
-  /**
-  ** MathJax URL: Dynamically load MathJax for compatibility with self-contained
-  */
-  (function() {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "$mathjax-url$";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-$endif$ $-- mathjax-url
+  <script>
+    /**
+    ** MathJax URL: Dynamically load MathJax for compatibility with self-contained
+    */
+    (function() {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "$mathjax-url$";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>$endif$ $-- mathjax-url
 </head>
 
 <body>
   <div class="container-fluid main-container">
-$for(include-before)$   $include-before$$endfor$
+$for(include-before)$  $include-before$$endfor$
     <div id="header" class="fluid-row">
 $if(code_menu)$
       <div class="btn-group pull-right">
         <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
         <ul class="dropdown-menu" style="min-width: 50px;" hidden>
-$if(code_folding)$
           <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
-          <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>$endif$ $-- code_folding
-$if(source_embed)$
+          <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+        </ul>
+      </div>
+$elseif(code_folding)$
+      <div class="btn-group pull-right">
+        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+        <ul class="dropdown-menu" style="min-width: 50px;" hidden>
+          <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+          <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>$if(source_embed)$
           <li role="separator" class="divider"></li>
           <li><a id="rmd-download-source" href="#">Download Rmd</a></li>$endif$ $-- source_embed
+        </ul>
+      </div>
+$elseif(source_embed)$
+      <div class="btn-group pull-right">
+        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+        <ul class="dropdown-menu" style="min-width: 50px;" hidden>
+          <li><a id="rmd-download-source" href="#">Download Rmd</a></li>
         </ul>
       </div>$endif$ $-- code_menu
 $if(title)$

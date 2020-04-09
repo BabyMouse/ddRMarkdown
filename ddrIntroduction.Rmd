@@ -12,8 +12,8 @@ output:
     theme: null
     highlight: "_template/pandoc_highlight_haddock.theme"
     pandoc_args: [
-      "--variable", "code_menu",
-      "--variable", "code_folding=show",
+      #"--variable", "code_menu",
+      #"--variable", "code_folding=show",
       "--variable", "source_embed",
       ]
     mathjax: null
@@ -26,7 +26,7 @@ output:
       in_header:
         - "_includes/header.html"
         - "_includes/header_navbar.js.html"
-        - "_includes/header_codefolding.js.html"
+        #- "_includes/header_codefolding.js.html"
         - "_includes/header_sourceembed.js.html"
       before_body:
         - "_includes/body_prefix.html"
@@ -37,6 +37,9 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::spin('_template/sourceembed.R')
+```
+```{r echo=FALSE}
+embed_file_a('ddrIntroduction.Rmd')
 ```
 
 ---
@@ -111,11 +114,6 @@ read.csv(pathFile)
 
 <br/><br/><br/><br/>
 
-
-
-```{r echo=FALSE}
-embed_file_a('ddrIntroduction.Rmd')
-```
 
 ```{r include=FALSE}
 #knitr::knit_exit('<div>abc</div>')
