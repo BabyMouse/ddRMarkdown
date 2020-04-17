@@ -2,8 +2,8 @@
 title: "0. Giới thiệu tổng quan"
 subtitle: "(<span style=\"text-decoration: underline\">**D**</span>esign <span style=\"text-decoration: underline\">**D**</span>ocuments with <span style=\"text-decoration: underline\">**RMarkdown**</span>)"
 author: "Trát Quang Thụy"
-#date: "Ngày `r format(Sys.time(), '%d %B, %Y')`22/1/2020"
-date: "Ngày 22/1/2020"
+date: "Ngày tạo: 22-1-2020"
+date-meta: "Cập nhật: `r format(Sys.time(), '%d-%m-%Y')`"
 output: 
   html_document: 
     df_print: kable
@@ -12,9 +12,9 @@ output:
     theme: null
     highlight: "_template/pandoc_highlight_haddock.theme"
     pandoc_args: [
-      #"--variable", "code_menu",
+      "--variable", "code_menu",
       #"--variable", "code_folding=show",
-      "--variable", "source_embed",
+      #"--variable", "source_embed",
       ]
     mathjax: null
     css:
@@ -26,7 +26,7 @@ output:
       in_header:
         - "_includes/header.html"
         - "_includes/header_navbar.js.html"
-        #- "_includes/header_codefolding.js.html"
+        - "_includes/header_codefolding.js.html"
         - "_includes/header_sourceembed.js.html"
       before_body:
         - "_includes/body_prefix.html"
@@ -97,10 +97,10 @@ embed_file_a('ddrIntroduction.Rmd')
 <center>![MySQL: Data Export Options](_imgs/ddrIntroduction_dataExportOptions.png)</center>
 
 
-Ở mục `Field Separator`,
+Ở mục `Field Separator`{.redmark},
 
-**Nếu chọn `;`{.sql}** (dấu chấm phẩy)
-```{r eval=FALSE}
+**Nếu chọn `;`{.redmark}** (dấu chấm phẩy)
+```{r, class.source='.some-style', eval=FALSE}
 read2.csv(pathFile)
 
 #Hoặc xài câu lệnh

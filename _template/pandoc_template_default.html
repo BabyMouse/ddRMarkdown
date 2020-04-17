@@ -12,7 +12,8 @@ $--
   <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   $for(author-meta)$<meta name="author" content="$author-meta$" />$endfor$
-  $if(date)$<meta name="date" content="$date$" />$endif$
+  $if(date)$<meta name="date-created" content="$date$" />$endif$ $-- ?base::strptime
+  $if(date-meta)$<meta name="last-updated" content="$date-meta$" />$endif$
   <title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
 $for(header-includes)$
   $header-includes$
@@ -52,7 +53,7 @@ $if(code_menu)$
     ** - Code Folding
     ** - Source Embed
     */
-    document.addEventListener('readystatechange', function() { if(document.readyState === "complete") initializeCodeFolding("$code_folding$" === "show"); });
+    document.addEventListener('readystatechange', function() { if(document.readyState === "complete") initializeCodeFolding(true); });
     document.addEventListener('readystatechange', function() { if(document.readyState === "complete") initializeSourceEmbed(); });
   </script>
 $elseif(code_folding)$
@@ -93,8 +94,7 @@ $elseif(source_embed)$
       }
     });
   </script>$endif$ $-- code_menu
-$if(kable-scroll)$
-  <script>
+$if(kable-scroll)$  <script>
     /**
     ** Kable scroll
     */
@@ -110,8 +110,7 @@ $if(kable-scroll)$
       });
     });
   </script>$endif$ $-- kable-scroll
-$if(mathjax-url)$
-  <script>
+$if(mathjax-url)$  <script>
     /**
     ** MathJax URL: Dynamically load MathJax for compatibility with self-contained
     */
@@ -127,11 +126,11 @@ $if(mathjax-url)$
 <body>
   <div class="container-fluid main-container">
 $for(include-before)$  $include-before$$endfor$
-    <div id="header" class="fluid-row">
+    <header id="header" class="fluid-row">
 $if(code_menu)$
       <div class="btn-group pull-right">
-        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-        <ul class="dropdown-menu" style="min-width: 50px;" hidden>
+        <button type="button" class="btn-default btn-xs dropdown-toggle"><span>Code</span> <span class="caret"></span></button>
+        <ul class="dropdown-menu" hidden>
           <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
           <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
           <li role="separator" class="divider"></li>
@@ -140,8 +139,8 @@ $if(code_menu)$
       </div>
 $elseif(code_folding)$
       <div class="btn-group pull-right">
-        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-        <ul class="dropdown-menu" style="min-width: 50px;" hidden>
+        <button type="button" class="btn-default btn-xs dropdown-toggle"><span>Code</span> <span class="caret"></span></button>
+        <ul class="dropdown-menu" hidden>
           <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
           <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>$if(source_embed)$
           <li role="separator" class="divider"></li>
@@ -150,8 +149,8 @@ $elseif(code_folding)$
       </div>
 $elseif(source_embed)$
       <div class="btn-group pull-right">
-        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-        <ul class="dropdown-menu" style="min-width: 50px;" hidden>
+        <button type="button" class="btn-default btn-xs dropdown-toggle"><span>Code</span> <span class="caret"></span></button>
+        <ul class="dropdown-menu" hidden>
           <li><a id="rmd-download-source" href="#">Download Rmd</a></li>
         </ul>
       </div>$endif$ $-- code_menu
@@ -171,13 +170,15 @@ $else$
       <h4 class="author">$author$</h4>$endif$ $-- author.name
 $endfor$ $-- author
 $if(date)$
-      <h4 class="date">$date$</h4>$endif$ $-- date
+      <div class="date">$date$</div>$endif$ $-- date
+$if(date-meta)$
+      <div class="date">$date-meta$</div>$endif$ $-- date-meta
 $if(abstract)$
       <div class="abstract">
         <p class="abstract">Abstract</p>
         <span>$abstract$</span>
       </div>$endif$ $-- abstract
-    </div>
+    </header>
 $body$
 $for(include-after)$    $include-after$$endfor$
   </div>
