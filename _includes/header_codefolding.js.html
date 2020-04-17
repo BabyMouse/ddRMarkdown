@@ -2,80 +2,260 @@
   /**
    ** Source: https://github.com/rstudio/rmarkdown/blob/master/inst/rmd/h/navigation-1.1/codefolding.js
    */
+  // Ref: https://github.com/KDE/syntax-highlighting/tree/master/data/syntax
+  var languages = new Map([
+    ["abc", '"abc'],
+    ["actionscript", "ActionScript"],
+    ["ada", "ada"],
+    ["agda", "agda"],
+    ["alertindent", "alertindent"],
+    ["apache", "Apache"],
+    ["asn1", "asn1"],
+    ["asp", "asp"],
+    ["ats", "ats"],
+    ["awk", "awk"],
+    ["bash", "Bash"],
+    ["bibtex", "bibtex"],
+    ["boo", "boo"],
+    ["c", "C"],
+    ["changelog", "changelog"],
+    ["clojure", "clojure"],
+    ["cmake", "CMake"],
+    ["coffee", "Coffee"],
+    ["coldfusion", "coldfusion"],
+    ["commonlisp", "CommonLisp"],
+    ["cpp", "C++"],
+    ["cs", "C#"],
+    ["css", "CSS"],
+    ["curry", "curry"],
+    ["d", "d"],
+    ["default", "default"],
+    ["diff", "diff"],
+    ["djangotemplate", "djangotemplate"],
+    ["dockerfile", "dockerfile"],
+    ["dot", "dot"],
+    ["doxygen", "doxygen"],
+    ["doxygenlua", "doxygenlua"],
+    ["dtd", "DTD"],
+    ["eiffel", "eiffel"],
+    ["elixir", "elixir"],
+    ["elm", "elm"],
+    ["email", "Email"],
+    ["erlang", "erlang"],
+    ["fasm", "fasm"],
+    ["fortran", "Fortran"],
+    ["fsharp", "F#"],
+    ["gcc", "gcc"],
+    ["glsl", "glsl"],
+    ["gnuassembler", "gnuassembler"],
+    ["go", "go"],
+    ["hamlet", "hamlet"],
+    ["haskell", "haskell"],
+    ["haxe", "haxe"],
+    ["html", "HTML"],
+    ["idris", "idris"],
+    ["ini", "ini"],
+    ["isocpp", "isocpp"],
+    ["j", "j"],
+    ["java", "Java"],
+    ["javadoc", "javadoc"],
+    ["javascript", "JavaScript"],
+    ["javascriptreact", "JavaScriptReact"],
+    ["json", "json"],
+    ["jsp", "jsp"],
+    ["julia", "julia"],
+    ["kotlin", "kotlin"],
+    ["latex", "LaTeX"],
+    ["lex", "lex"],
+    ["lilypond", "lilypond"],
+    ["literatecurry", "literatecurry"],
+    ["literatehaskell", "literatehaskell"],
+    ["llvm", "llvm"],
+    ["lua", "Lua"],
+    ["m4", "m4"],
+    ["makefile", "makefile"],
+    ["mandoc", "mandoc"],
+    ["markdown", "Markdown"],
+    ["mathematica", "mathematica"],
+    ["matlab", "matlab"],
+    ["maxima", "maxima"],
+    ["mediawiki", "mediawiki"],
+    ["metafont", "metafont"],
+    ["mips", "mips"],
+    ["modelines", "modelines"],
+    ["modula2", "modula2"],
+    ["modula3", "modula3"],
+    ["monobasic", "monobasic"],
+    ["mustache", "mustache"],
+    ["nasm", "nasm"],
+    ["noweb", "noweb"],
+    ["objectivec", "objectivec"],
+    ["objectivecpp", "objectivecpp"],
+    ["ocaml", "ocaml"],
+    ["octave", "octave"],
+    ["opencl", "opencl"],
+    ["pascal", "Pascal"],
+    ["perl", "Perl"],
+    ["php", "PHP"],
+    ["pike", "pike"],
+    ["postscript", "PostScript"],
+    ["povray", "povray"],
+    ["powershell", "PowerShell"],
+    ["prolog", "prolog"],
+    ["protobuf", "protobuf"],
+    ["pure", "pure"],
+    ["purebasic", "purebasic"],
+    ["python", "Python"],
+    ["qml", "qml"],
+    ["r", "R"],
+    ["relaxng", "relaxng"],
+    ["relaxngcompact", "relaxngcompact"],
+    ["rest", "rest"],
+    ["rhtml", "rhtml"],
+    ["roff", "roff"],
+    ["ruby", "Ruby"],
+    ["rust", "rust"],
+    ["scala", "scala"],
+    ["scheme", "scheme"],
+    ["sci", "sci"],
+    ["sed", "sed"],
+    ["sgml", "sgml"],
+    ["sml", "sml"],
+    ["sql", "SQL"],
+    ["sqlmysql", "MySQL"],
+    ["sqlpostgresql", "PostgreSQL SQL"],
+    ["stata", "Stata"],
+    ["tcl", "tcl"],
+    ["tcsh", "tcsh"],
+    ["texinfo", "texinfo"],
+    ["typescript", "TypeScript"],
+    ["verilog", "verilog"],
+    ["vhdl", "vhdl"],
+    ["xml", "XML"],
+    ["xorg", "xorg"],
+    ["xslt", "XSLT"],
+    ["xul", "xul"],
+    ["yacc", "yacc"],
+    ["yaml", "YAML"],
+    ["zsh", "Z shell"],
+  ]);
+
   function initializeCodeFolding(show) {
     /**
      ** Handlers for show/ hide Code menu
      */
-    document.querySelector('button.dropdown-toggle').addEventListener('click', function() {
-      var el = document.querySelector('ul.dropdown-menu');
-      if (el.getAttribute('hidden') == null) {
-        el.setAttribute('hidden', '');
-      } else {
-        el.removeAttribute('hidden');
-      }
-    });
+    document
+      .querySelector("button.dropdown-toggle")
+      .addEventListener("click", function() {
+        var el = document.querySelector("ul.dropdown-menu");
+        if (el.getAttribute("hidden") == null) {
+          el.setAttribute("hidden", "");
+        } else {
+          el.removeAttribute("hidden");
+        }
+      });
     window.onclick = function(event) {
-      if (!event.target.classList.contains('dropdown-toggle') && !event.target.parentElement.classList.contains('dropdown-toggle')) {
-        document.querySelector('ul.dropdown-menu').setAttribute('hidden', '');
+      if (
+        !event.target.classList.contains("dropdown-toggle") &&
+        !event.target.parentElement.classList.contains("dropdown-toggle")
+      ) {
+        document.querySelector("ul.dropdown-menu").setAttribute("hidden", "");
       }
     };
     /**
      ** Handlers for show-all and hide all Source code
      */
-    document.getElementById("rmd-show-all-code").addEventListener("click", function() {
-      document.querySelectorAll('div.r-code-collapse').forEach(function(el) {
-        el.removeAttribute('hidden');
+    document
+      .getElementById("rmd-show-all-code")
+      .addEventListener("click", function() {
+        document.querySelectorAll("div.r-code-collapse").forEach(function(el) {
+          el.removeAttribute("hidden");
+        });
+        document
+          .querySelectorAll("button.code-folding-btn span")
+          .forEach(function(el) {
+            el.innerText = "Hide";
+          });
       });
-      document.querySelectorAll("button.code-folding-btn span").forEach(function(el) {
-        el.innerText = 'Hide';
+    document
+      .getElementById("rmd-hide-all-code")
+      .addEventListener("click", function() {
+        document.querySelectorAll("div.r-code-collapse").forEach(function(el) {
+          el.setAttribute("hidden", "");
+        });
+        document
+          .querySelectorAll("button.code-folding-btn span")
+          .forEach(function(el) {
+            el.innerText = "Code";
+          });
       });
-    });
-    document.getElementById("rmd-hide-all-code").addEventListener("click", function() {
-      document.querySelectorAll('div.r-code-collapse').forEach(function(el) {
-        el.setAttribute('hidden', '');
-      });
-      document.querySelectorAll("button.code-folding-btn span").forEach(function(el) {
-        el.innerText = 'Code';
-      });
-    });
     /**
      ** Handlers for Show/ Hide code button
      */
     var sourceCodeIndex = 1;
     // select all R code blocks
-    var rCodeBlocks = document.querySelectorAll('div.sourceCode');
+    var rCodeBlocks = document.querySelectorAll("div.sourceCode");
     rCodeBlocks.forEach(function(el) {
-      var sourceCodeID = 'sourceCodeIndex-' + sourceCodeIndex;
+      var sourceCodeID = "sourceCodeIndex-" + sourceCodeIndex;
+      //var language = el.querySelector("pre").className.substr(11).toUpperCase();
+      var classList = el.querySelector("pre").className.split(' ');
+      var language;
+      for (var i = 0; i < classList.length; i++) {
+        language = languages.get(classList[i]);
+        if (language != undefined) break;
+      }
+
+      // create a codefoding bar div
+      var divCodeBar = document.createElement("div");
+      divCodeBar.classList.add("code-folding-bar");
+      divCodeBar.insertAdjacentHTML(
+        "afterbegin",
+        '<span class="sourceCode-index">#' +
+        sourceCodeIndex +
+        '</span> &horbar; <span class="sourceCode-lang">' +
+        language +
+        "</span>"
+      );
+      var btnCode = document.createElement("button");
+      btnCode.setAttribute("type", "button");
+      btnCode.classList.add(
+        "btn-default",
+        "btn-xs",
+        "code-folding-btn",
+        "pull-right"
+      );
+      btnCode.setAttribute("data-target", sourceCodeID);
+      btnCode.insertAdjacentHTML(
+        "afterbegin",
+        "<span>" + (show ? "Hide" : "Code") + "</span>"
+      );
+      btnCode.addEventListener(
+        "click",
+        function() {
+          var btnCodeText = this.querySelector("span");
+          if (btnCodeText.innerText == "Hide") {
+            document
+              .getElementById(this.getAttribute("data-target"))
+              .setAttribute("hidden", "");
+            btnCodeText.innerText = "Code";
+          } else {
+            document
+              .getElementById(this.getAttribute("data-target"))
+              .removeAttribute("hidden");
+            btnCodeText.innerText = "Hide";
+          }
+        },
+        false
+      );
+      divCodeBar.append(btnCode);
+      el.append(divCodeBar);
 
       // create a collapsable div to wrap the code in
       var div = document.createElement("div");
-      div.classList.add('collapse', 'r-code-collapse');
-      div.setAttribute('id', sourceCodeID);
-      if (!show) div.setAttribute('hidden', '');
+      div.setAttribute("id", sourceCodeID);
+      div.classList.add("collapse", "r-code-collapse");
+      if (!show) div.setAttribute("hidden", "");
       div.append(el.querySelector("pre"));
-
-      var divRow = document.createElement('div');
-      divRow.classList.add('row');
-      var divCol = document.createElement('div');
-      divCol.classList.add('col-md-12');
-      var btnCode = document.createElement('button');
-      btnCode.setAttribute('type', 'button');
-      btnCode.classList.add('btn', 'btn-default', 'btn-xs', 'code-folding-btn', 'pull-right');
-      btnCode.setAttribute('data-target', sourceCodeID);
-      btnCode.insertAdjacentHTML('afterbegin', '<span>' + (show ? 'Hide' : 'Code') + '</span>');
-      btnCode.addEventListener("click", function() {
-        var btnCodeText = this.querySelector("span");
-        if (btnCodeText.innerText == 'Hide') {
-          document.getElementById(this.getAttribute("data-target")).setAttribute('hidden', '');
-          btnCodeText.innerText = 'Code';
-        } else {
-          document.getElementById(this.getAttribute("data-target")).removeAttribute('hidden');
-          btnCodeText.innerText = 'Hide';
-        }
-      }, false);
-      divCol.append(btnCode);
-      divRow.append(divCol);
-      el.append(divRow);
       el.append(div);
       sourceCodeIndex++;
     });
