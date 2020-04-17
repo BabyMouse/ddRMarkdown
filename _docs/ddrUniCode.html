@@ -2,399 +2,388 @@
 <html>
 
 <head>
-    <title>Convert Composite UniCode to UniCode</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+  <title>Convert Composite UniCode to UniCode</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
 </head>
 <style>
-    body,
-    textarea {
-        font-size: 1.2em;
-    }
-    
-    .panel {
-        display: block;
-        width: 50%;
-    }
-    
-    textarea {
-        height: 150px;
-        width: 100%;
-    }
-    
-    .align_right {
-        text-align: right;
-    }
+  body,
+  textarea {
+    font-size: 1.2em;
+  }
+
+  .panel {
+    display: block;
+    width: 50%;
+  }
+
+  textarea {
+    height: 150px;
+    width: 100%;
+  }
+
+  .align_right {
+    text-align: right;
+  }
 </style>
 <script>
-    /* ASCII code: http://ascii-table.com/codepage.php?1252 */
-    /* escape: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/escape */
-    /* encodeURI: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI */
-    /* encodeURIComponent: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent */
-    /* Unicode & Vietnamese Legacy Character Encodings: http://vietunicode.sourceforge.net/charset/ */
+  /* ASCII code: http://ascii-table.com/codepage.php?1252 */
+  /* escape: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/escape */
+  /* encodeURI: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI */
+  /* encodeURIComponent: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent */
+  /* Unicode & Vietnamese Legacy Character Encodings: http://vietunicode.sourceforge.net/charset/ */
 
-    let _mappingCode = new Map([
+  let _mappingCode = new Map([
 
-        /* á */
-        ["a\u0301", "\u00E1"],
-        /* à */
-        ["a\u0300", "\u00E0"],
-        /* ả */
-        ["a\u0309", "\u1EA3"],
-        /* ã */
-        ["a\u0303", "\u00E3"],
-        /* ạ */
-        ["a\u0323", "\u1EA1"],
-        /* â */
-        /* ["â", "\u00E2"], */
-        /* ă */
-        /* ["\u0103", "\u0103"], */
+    /* á */
+    ["a\u0301", "\u00E1"],
+    /* à */
+    ["a\u0300", "\u00E0"],
+    /* ả */
+    ["a\u0309", "\u1EA3"],
+    /* ã */
+    ["a\u0303", "\u00E3"],
+    /* ạ */
+    ["a\u0323", "\u1EA1"],
+    /* â */
+    /* ["â", "\u00E2"], */
+    /* ă */
+    /* ["\u0103", "\u0103"], */
 
-        /* ấ */
-        ["â\u0301", "\u1EA5"],
-        /* ầ */
-        ["â\u0300", "\u1EA7"],
-        /* ẩ */
-        ["â\u0309", "\u1EA9"],
-        /* ẫ */
-        ["â\u0303", "\u1EAB"],
-        /* ậ */
-        ["â\u0323", "\u1EAD"],
+    /* ấ */
+    ["â\u0301", "\u1EA5"],
+    /* ầ */
+    ["â\u0300", "\u1EA7"],
+    /* ẩ */
+    ["â\u0309", "\u1EA9"],
+    /* ẫ */
+    ["â\u0303", "\u1EAB"],
+    /* ậ */
+    ["â\u0323", "\u1EAD"],
 
-        /* ắ */
-        ["\u0103\u0301", "\u1EAF"],
-        /* ằ */
-        ["\u0103\u0300", "\u1EB1"],
-        /* ẳ */
-        ["\u0103\u0309", "\u1EB3"],
-        /* ẵ */
-        ["\u0103\u0303", "\u1EB5"],
-        /* ặ */
-        ["\u0103\u0323", "\u1EB7"],
+    /* ắ */
+    ["\u0103\u0301", "\u1EAF"],
+    /* ằ */
+    ["\u0103\u0300", "\u1EB1"],
+    /* ẳ */
+    ["\u0103\u0309", "\u1EB3"],
+    /* ẵ */
+    ["\u0103\u0303", "\u1EB5"],
+    /* ặ */
+    ["\u0103\u0323", "\u1EB7"],
 
-        /* Á */
-        ["A\u0301", "\u00C1"],
-        /* À */
-        ["A\u0300", "\u00C0"],
-        /* Ả */
-        ["A\u0309", "\u1EA2"],
-        /* Ã */
-        ["A\u0303", "\u00C3"],
-        /* Ạ */
-        ["A\u0323", "\u1EA0"],
-        /* Â */
-        /* ["Â", "\u00C2"], */
-        /* Ă */
-        /* ["\u0102", "\u0102"], */
+    /* Á */
+    ["A\u0301", "\u00C1"],
+    /* À */
+    ["A\u0300", "\u00C0"],
+    /* Ả */
+    ["A\u0309", "\u1EA2"],
+    /* Ã */
+    ["A\u0303", "\u00C3"],
+    /* Ạ */
+    ["A\u0323", "\u1EA0"],
+    /* Â */
+    /* ["Â", "\u00C2"], */
+    /* Ă */
+    /* ["\u0102", "\u0102"], */
 
-        /* Ấ */
-        ["Â\u0301", "\u1EA4"],
-        /* Ầ */
-        ["Â\u0300", "\u1EA6"],
-        /* Ẩ */
-        ["Â\u0309", "\u1EA8"],
-        /* Ẫ */
-        ["Â\u0303", "\u1EAA"],
-        /* Ậ */
-        ["Â\u0323", "\u1EAC"],
+    /* Ấ */
+    ["Â\u0301", "\u1EA4"],
+    /* Ầ */
+    ["Â\u0300", "\u1EA6"],
+    /* Ẩ */
+    ["Â\u0309", "\u1EA8"],
+    /* Ẫ */
+    ["Â\u0303", "\u1EAA"],
+    /* Ậ */
+    ["Â\u0323", "\u1EAC"],
 
-        /* Ắ */
-        ["\u0102\u0301", "\u1EAE"],
-        /* Ằ */
-        ["\u0102\u0300", "\u1EB0"],
-        /* Ẳ */
-        ["\u0102\u0309", "\u1EB2"],
-        /* Ẵ */
-        ["\u0102\u0303", "\u1EB4"],
-        /* Ặ */
-        ["\u0102\u0323", "\u1EB6"],
+    /* Ắ */
+    ["\u0102\u0301", "\u1EAE"],
+    /* Ằ */
+    ["\u0102\u0300", "\u1EB0"],
+    /* Ẳ */
+    ["\u0102\u0309", "\u1EB2"],
+    /* Ẵ */
+    ["\u0102\u0303", "\u1EB4"],
+    /* Ặ */
+    ["\u0102\u0323", "\u1EB6"],
 
-        /* é */
-        ["e\u0301", "\u00E9"],
-        /* è */
-        ["e\u0300", "\u00E8"],
-        /* ẻ */
-        ["e\u0309", "\u1EBB"],
-        /* ẽ */
-        ["e\u0303", "\u1EBD"],
-        /* ẹ */
-        ["e\u0323", "\u1EB9"],
-        /* ê */
-        /* ["ê", "\u00EA"], */
+    /* é */
+    ["e\u0301", "\u00E9"],
+    /* è */
+    ["e\u0300", "\u00E8"],
+    /* ẻ */
+    ["e\u0309", "\u1EBB"],
+    /* ẽ */
+    ["e\u0303", "\u1EBD"],
+    /* ẹ */
+    ["e\u0323", "\u1EB9"],
+    /* ê */
+    /* ["ê", "\u00EA"], */
 
-        /* ế */
-        ["ê\u0301", "\u1EBF"],
-        /* ề */
-        ["ê\u0300", "\u1EC1"],
-        /* ể */
-        ["ê\u0309", "\u1EC3"],
-        /* ễ */
-        ["ê\u0303", "\u1EC5"],
-        /* ệ */
-        ["ê\u0323", "\u1EC7"],
+    /* ế */
+    ["ê\u0301", "\u1EBF"],
+    /* ề */
+    ["ê\u0300", "\u1EC1"],
+    /* ể */
+    ["ê\u0309", "\u1EC3"],
+    /* ễ */
+    ["ê\u0303", "\u1EC5"],
+    /* ệ */
+    ["ê\u0323", "\u1EC7"],
 
-        /* É */
-        ["E\u0301", "\u00C9"],
-        /* È */
-        ["E\u0300", "\u00C8"],
-        /* Ẻ */
-        ["E\u0309", "\u1EBA"],
-        /* Ẽ */
-        ["E\u0303", "\u1EBC"],
-        /* Ẹ */
-        ["E\u0323", "\u1EB8"],
-        /* Ê */
-        /* ["Ê", "\u00CA"], */
+    /* É */
+    ["E\u0301", "\u00C9"],
+    /* È */
+    ["E\u0300", "\u00C8"],
+    /* Ẻ */
+    ["E\u0309", "\u1EBA"],
+    /* Ẽ */
+    ["E\u0303", "\u1EBC"],
+    /* Ẹ */
+    ["E\u0323", "\u1EB8"],
+    /* Ê */
+    /* ["Ê", "\u00CA"], */
 
-        /* Ế */
-        ["Ê\u0301", "\u1EBE"],
-        /* Ề */
-        ["Ê\u0300", "\u1EC0"],
-        /* Ể */
-        ["Ê\u0309", "\u1EC2"],
-        /* Ễ */
-        ["Ê\u0303", "\u1EC4"],
-        /* Ệ */
-        ["Ê\u0323", "\u1EC6"],
+    /* Ế */
+    ["Ê\u0301", "\u1EBE"],
+    /* Ề */
+    ["Ê\u0300", "\u1EC0"],
+    /* Ể */
+    ["Ê\u0309", "\u1EC2"],
+    /* Ễ */
+    ["Ê\u0303", "\u1EC4"],
+    /* Ệ */
+    ["Ê\u0323", "\u1EC6"],
 
-        /* í */
-        ["i\u0301", "\u00ED"],
-        /* ì */
-        ["i\u0300", "\u00EC"],
-        /* ỉ */
-        ["i\u0309", "\u1EC9"],
-        /* ĩ */
-        ["i\u0303", "\u0129"],
-        /* ị */
-        ["i\u0323", "\u1ECB"],
+    /* í */
+    ["i\u0301", "\u00ED"],
+    /* ì */
+    ["i\u0300", "\u00EC"],
+    /* ỉ */
+    ["i\u0309", "\u1EC9"],
+    /* ĩ */
+    ["i\u0303", "\u0129"],
+    /* ị */
+    ["i\u0323", "\u1ECB"],
 
-        /* Í */
-        ["I\u0301", "\u00CD"],
-        /* Ì */
-        ["I\u0300", "\u00CC"],
-        /* Ỉ */
-        ["I\u0309", "\u1EC8"],
-        /* Ĩ */
-        ["I\u0303", "\u0128"],
-        /* Ị */
-        ["I\u0323", "\u1ECA"],
+    /* Í */
+    ["I\u0301", "\u00CD"],
+    /* Ì */
+    ["I\u0300", "\u00CC"],
+    /* Ỉ */
+    ["I\u0309", "\u1EC8"],
+    /* Ĩ */
+    ["I\u0303", "\u0128"],
+    /* Ị */
+    ["I\u0323", "\u1ECA"],
 
-        /* ó */
-        ["o\u0301", "\u00F3"],
-        /* ò */
-        ["o\u0300", "\u00F2"],
-        /* ỏ */
-        ["o\u0309", "\u1ECF"],
-        /* õ */
-        ["o\u0303", "\u00F5"],
-        /* ọ */
-        ["o\u0323", "\u1ECD"],
-        /* ô */
-        /* ["ô", "\u00F4"], */
-        /* ơ */
-        /* ["\u01A1", "\u01A1"], */
+    /* ó */
+    ["o\u0301", "\u00F3"],
+    /* ò */
+    ["o\u0300", "\u00F2"],
+    /* ỏ */
+    ["o\u0309", "\u1ECF"],
+    /* õ */
+    ["o\u0303", "\u00F5"],
+    /* ọ */
+    ["o\u0323", "\u1ECD"],
+    /* ô */
+    /* ["ô", "\u00F4"], */
+    /* ơ */
+    /* ["\u01A1", "\u01A1"], */
 
-        /* ố */
-        ["ô\u0301", "\u1ED1"],
-        /* ồ */
-        ["ô\u0300", "\u1ED3"],
-        /* ổ */
-        ["ô\u0309", "\u1ED5"],
-        /* ỗ */
-        ["ô\u0303", "\u1ED7"],
-        /* ộ */
-        ["ô\u0323", "\u1ED9"],
+    /* ố */
+    ["ô\u0301", "\u1ED1"],
+    /* ồ */
+    ["ô\u0300", "\u1ED3"],
+    /* ổ */
+    ["ô\u0309", "\u1ED5"],
+    /* ỗ */
+    ["ô\u0303", "\u1ED7"],
+    /* ộ */
+    ["ô\u0323", "\u1ED9"],
 
-        /* ớ */
-        ["\u01A1\u0301", "\u1EDB"],
-        /* ờ */
-        ["\u01A1\u0300", "\u1EDD"],
-        /* ở */
-        ["\u01A1\u0309", "\u1EDF"],
-        /* ỡ */
-        ["\u01A1\u0303", "\u1EE1"],
-        /* ợ */
-        ["\u01A1\u0323", "\u1EE3"],
+    /* ớ */
+    ["\u01A1\u0301", "\u1EDB"],
+    /* ờ */
+    ["\u01A1\u0300", "\u1EDD"],
+    /* ở */
+    ["\u01A1\u0309", "\u1EDF"],
+    /* ỡ */
+    ["\u01A1\u0303", "\u1EE1"],
+    /* ợ */
+    ["\u01A1\u0323", "\u1EE3"],
 
-        /* Ó */
-        ["O\u0301", "\u00D3"],
-        /* Ò */
-        ["O\u0300", "\u00D2"],
-        /* Ỏ */
-        ["O\u0309", "\u1ECE"],
-        /* Õ */
-        ["O\u0303", "\u00D5"],
-        /* Ọ */
-        ["O\u0323", "\u1ECC"],
-        /* Ô */
-        /* ["Ô", "\u00D4"], */
-        /* Ơ */
-        /* ["\u01A0", "\u01A0"], */
+    /* Ó */
+    ["O\u0301", "\u00D3"],
+    /* Ò */
+    ["O\u0300", "\u00D2"],
+    /* Ỏ */
+    ["O\u0309", "\u1ECE"],
+    /* Õ */
+    ["O\u0303", "\u00D5"],
+    /* Ọ */
+    ["O\u0323", "\u1ECC"],
+    /* Ô */
+    /* ["Ô", "\u00D4"], */
+    /* Ơ */
+    /* ["\u01A0", "\u01A0"], */
 
-        /* Ố */
-        ["Ô\u0301", "\u1ED0"],
-        /* Ồ */
-        ["Ô\u0300", "\u1ED2"],
-        /* Ổ */
-        ["Ô\u0309", "\u1ED4"],
-        /* Ỗ */
-        ["Ô\u0303", "\u1ED6"],
-        /* Ộ */
-        ["Ô\u0323", "\u1ED8"],
+    /* Ố */
+    ["Ô\u0301", "\u1ED0"],
+    /* Ồ */
+    ["Ô\u0300", "\u1ED2"],
+    /* Ổ */
+    ["Ô\u0309", "\u1ED4"],
+    /* Ỗ */
+    ["Ô\u0303", "\u1ED6"],
+    /* Ộ */
+    ["Ô\u0323", "\u1ED8"],
 
-        /* Ớ */
-        ["\u01A0\u0301", "\u1EDA"],
-        /* Ờ */
-        ["\u01A0\u0300", "\u1EDC"],
-        /* Ở */
-        ["\u01A0\u0309", "\u1EDE"],
-        /* Ỡ */
-        ["\u01A0\u0303", "\u1EE0"],
-        /* Ợ */
-        ["\u01A0\u0323", "\u1EE2"],
+    /* Ớ */
+    ["\u01A0\u0301", "\u1EDA"],
+    /* Ờ */
+    ["\u01A0\u0300", "\u1EDC"],
+    /* Ở */
+    ["\u01A0\u0309", "\u1EDE"],
+    /* Ỡ */
+    ["\u01A0\u0303", "\u1EE0"],
+    /* Ợ */
+    ["\u01A0\u0323", "\u1EE2"],
 
-        /* ú */
-        ["u\u0301", "\u00FA"],
-        /* ù */
-        ["u\u0300", "\u00F9"],
-        /* ủ */
-        ["u\u0309", "\u1EE7"],
-        /* ũ */
-        ["u\u0303", "\u0169"],
-        /* ụ */
-        ["u\u0323", "\u1EE5"],
-        /* ư */
-        /* ["\u01B0", "\u01B0"], */
+    /* ú */
+    ["u\u0301", "\u00FA"],
+    /* ù */
+    ["u\u0300", "\u00F9"],
+    /* ủ */
+    ["u\u0309", "\u1EE7"],
+    /* ũ */
+    ["u\u0303", "\u0169"],
+    /* ụ */
+    ["u\u0323", "\u1EE5"],
+    /* ư */
+    /* ["\u01B0", "\u01B0"], */
 
-        /* ứ */
-        ["\u01B0\u0301", "\u1EE9"],
-        /* ừ */
-        ["\u01B0\u0300", "\u1EEB"],
-        /* ử */
-        ["\u01B0\u0309", "\u1EED"],
-        /* ữ */
-        ["\u01B0\u0303", "\u1EEF"],
-        /* ự */
-        ["\u01B0\u0323", "\u1EF1"],
+    /* ứ */
+    ["\u01B0\u0301", "\u1EE9"],
+    /* ừ */
+    ["\u01B0\u0300", "\u1EEB"],
+    /* ử */
+    ["\u01B0\u0309", "\u1EED"],
+    /* ữ */
+    ["\u01B0\u0303", "\u1EEF"],
+    /* ự */
+    ["\u01B0\u0323", "\u1EF1"],
 
-        /* Ú */
-        ["U\u0301", "\u00DA"],
-        /* Ù */
-        ["U\u0300", "\u00D9"],
-        /* Ủ */
-        ["U\u0309", "\u1EE6"],
-        /* Ũ */
-        ["U\u0303", "\u0168"],
-        /* Ụ */
-        ["U\u0323", "\u1EE4"],
-        /* Ư */
-        /* ["\u01AF", "\u01AF"], */
+    /* Ú */
+    ["U\u0301", "\u00DA"],
+    /* Ù */
+    ["U\u0300", "\u00D9"],
+    /* Ủ */
+    ["U\u0309", "\u1EE6"],
+    /* Ũ */
+    ["U\u0303", "\u0168"],
+    /* Ụ */
+    ["U\u0323", "\u1EE4"],
+    /* Ư */
+    /* ["\u01AF", "\u01AF"], */
 
-        /* Ứ */
-        ["\u01AF\u0301", "\u1EE8"],
-        /* Ừ */
-        ["\u01AF\u0300", "\u1EEA"],
-        /* Ử */
-        ["\u01AF\u0309", "\u1EEC"],
-        /* Ữ */
-        ["\u01AF\u0303", "\u1EEE"],
-        /* Ự */
-        ["\u01AF\u0323", "\u1EF0"],
+    /* Ứ */
+    ["\u01AF\u0301", "\u1EE8"],
+    /* Ừ */
+    ["\u01AF\u0300", "\u1EEA"],
+    /* Ử */
+    ["\u01AF\u0309", "\u1EEC"],
+    /* Ữ */
+    ["\u01AF\u0303", "\u1EEE"],
+    /* Ự */
+    ["\u01AF\u0323", "\u1EF0"],
 
-        /* ý */
-        ["y\u0301", "\u00FD"],
-        /* ỳ */
-        ["y\u0300", "\u1EF3"],
-        /* ỷ */
-        ["y\u0309", "\u1EF7"],
-        /* ỹ */
-        ["y\u0303", "\u1EF9"],
-        /* ỵ */
-        ["y\u0323", "\u1EF5"],
+    /* ý */
+    ["y\u0301", "\u00FD"],
+    /* ỳ */
+    ["y\u0300", "\u1EF3"],
+    /* ỷ */
+    ["y\u0309", "\u1EF7"],
+    /* ỹ */
+    ["y\u0303", "\u1EF9"],
+    /* ỵ */
+    ["y\u0323", "\u1EF5"],
 
-        /* Ý */
-        ["Y\u0301", "\u00DD"],
-        /* Ỳ */
-        ["Y\u0300", "\u1EF2"],
-        /* Ỷ */
-        ["Y\u0309", "\u1EF6"],
-        /* Ỹ */
-        ["Y\u0303", "\u1EF8"],
-        /* Ỵ */
-        ["Y\u0323", "\u1EF4"]
+    /* Ý */
+    ["Y\u0301", "\u00DD"],
+    /* Ỳ */
+    ["Y\u0300", "\u1EF2"],
+    /* Ỷ */
+    ["Y\u0309", "\u1EF6"],
+    /* Ỹ */
+    ["Y\u0303", "\u1EF8"],
+    /* Ỵ */
+    ["Y\u0323", "\u1EF4"]
 
-        /* đ */
-        /* ["\u0111", "\u0111"], */
-        /* Đ */
-        /* ["\u0110", "\u0110"] */
-    ]);
+    /* đ */
+    /* ["\u0111", "\u0111"], */
+    /* Đ */
+    /* ["\u0110", "\u0110"] */
+  ]);
 
-    function toEscape(inputString) {
-        var escapeString = "";
+  function toEscape(inputString) {
+    var escapeString = "";
 
-        for (var i = 0; i < inputString.length; i++) {
-            var code = inputString.charCodeAt(i);
-            if (code >= 0xff) {
-                escapeString += escape(inputString.charAt(i)).replace("%u", "\\u").replace("%", "\\u00");
-            } else {
-                escapeString += inputString.charAt(i);
-            }
-        }
-        return escapeString;
+    for (var i = 0; i < inputString.length; i++) {
+      var code = inputString.charCodeAt(i);
+      if (code >= 0xff) {
+        escapeString += escape(inputString.charAt(i)).replace("%u", "\\u").replace("%", "\\u00");
+      } else {
+        escapeString += inputString.charAt(i);
+      }
     }
+    return escapeString;
+  }
 
-    function detectCompositeUnicode(inputString) {
-        var compositeFlag = false;
-
-        for (let key of _mappingCode.keys()) {
-            if (RegExp(key).test(inputString)) {
-                compositeFlag = true;
-                break;
-            }
-        }
-        return compositeFlag;
+  /**
+   * TODO: Can mark character converted by function:
+   * TODO: - inputString.replace(RegExp(key, "g"), function(mached) { return "<b>" + value + "</b>";});
+   * TODO: - Add Copy PlainText button
+   */
+  function toUnicode(inputString) {
+    for (let [key, value] of _mappingCode) {
+      inputString = inputString.replace(RegExp(key, "g"), value);
     }
+    return inputString;
+  }
 
-    /**
-     * TODO: Can mark character converted by function:
-     * TODO: inputString.replace(RegExp(key, "g"), function(mached) { return "<b>" + value + "</b>";});
-     */
-    function toUnicode(inputString) {
-        for (let [key, value] of _mappingCode) {
-            inputString = inputString.replace(RegExp(key, "g"), value);
-        }
-        return inputString;
+  function toEncode() {
+    var inputString = document.getElementById("inputString").value;
+
+    document.getElementById("outputConvertedString").value = toEscape(inputString);
+
+    if (_mappingCode.get(inputString) == undefined) {
+      var outputString = toUnicode(inputString);
+
+      document.getElementById("outputUniCodeString").value = outputString;
+      document.getElementById("outputConvertedUniCodeString").value = toEscape(outputString);
+    } else {
+      document.getElementById("outputUniCodeString").value = "";
+      document.getElementById("outputConvertedUniCodeString").value = "";
     }
-
-    function toEncode() {
-        var inputString = document.getElementById("inputString").value;
-
-        document.getElementById("outputConvertedString").value = toEscape(inputString);
-
-        if (detectCompositeUnicode(inputString)) {
-            var outputString = toUnicode(inputString);
-
-            document.getElementById("outputUniCodeString").value = outputString;
-            document.getElementById("outputConvertedUniCodeString").value = toEscape(outputString);
-        } else {
-            document.getElementById("outputUniCodeString").value = "";
-            document.getElementById("outputConvertedUniCodeString").value = "";
-        }
-    }
+  }
 </script>
 
 <body>
-    <div class="panel">
-        <div>Nhập chuỗi Unicode bất kì</div> <textarea id="inputString"></textarea><br />
-        <div class="align_right"> <button type="button" id="escapeButton" title="Escape" onclick="toEncode();">Chuyển
-                mã</button> </div>
-        <div>Xuất chuỗi Escape (không chuyển ASCII code)</div> <textarea id="outputConvertedString"></textarea></br>
-        </br>
-        <hr with="50%" />
-        <div>Xuất chuỗi UniCode dựng sẵn (<b>nếu có UniCode tổ hợp</b>)</div> <textarea id="outputUniCodeString"></textarea></br>
-        </br>
-        <div>Xuất chuỗi Escape (không chuyển ASCII code)</div> <textarea id="outputConvertedUniCodeString"></textarea>
-    </div>
+  <div class="panel">
+    <div>Nhập chuỗi Unicode bất kì</div> <textarea id="inputString"></textarea><br />
+    <div class="align_right"> <button type="button" id="escapeButton" title="Escape" onclick="toEncode();">Chuyển
+        mã</button> </div>
+    <div>Xuất chuỗi Escape (không chuyển ASCII code)</div> <textarea id="outputConvertedString"></textarea></br>
+    </br>
+    <hr with="50%" />
+    <div>Xuất chuỗi UniCode dựng sẵn (<b>nếu có UniCode tổ hợp</b>)</div> <textarea id="outputUniCodeString"></textarea></br>
+    </br>
+    <div>Xuất chuỗi Escape (không chuyển ASCII code)</div> <textarea id="outputConvertedUniCodeString"></textarea>
+  </div>
 </body>
 
 </html>
