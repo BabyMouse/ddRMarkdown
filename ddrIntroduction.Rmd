@@ -100,7 +100,7 @@ embed_file_a('ddrIntroduction.Rmd')
 Ở mục `Field Separator`{.redmark},
 
 **Nếu chọn `;`{.redmark}** (dấu chấm phẩy)
-```{r, class.source='.some-style', eval=FALSE}
+```{r eval=FALSE, class.source='.some-style'}
 read2.csv(pathFile)
 
 #Hoặc xài câu lệnh
