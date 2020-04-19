@@ -4,13 +4,13 @@
 */
 body {
   /* padding for bootstrap navbar (fixed navbar) */
-  padding-top: 51px;
+  padding-top: 60px;
   /* padding for bootstrap navbar (fixed navbar) */
   padding-bottom: 40px;
 }
 
-.navbar {
-  font-size: 1.5em;
+nav {
+  font-size: 1.5rem;
   min-height: 50px;
   border: 1px solid transparent;
   position: relative;
