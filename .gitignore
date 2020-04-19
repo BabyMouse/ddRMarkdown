@@ -8,8 +8,7 @@ rsconnect
 /*.html
 #
 # File để thử nghiệm
-Test.css
-Test.Rmd
+test*.*
 MathJax-master
 #
 # Cache files.

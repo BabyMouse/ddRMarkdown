@@ -131,43 +131,43 @@ $if(code_menu)$
       <div class="btn-group pull-right">
         <button type="button" class="btn-default btn-xs dropdown-toggle"><span>Code</span> <span class="caret"></span></button>
         <ul class="dropdown-menu" hidden>
-          <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
-          <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+          <li><a id="show-all-code" href="#">Show All Code</a></li>
+          <li><a id="hide-all-code" href="#">Hide All Code</a></li>
           <li role="separator" class="divider"></li>
-          <li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+          <li><a id="download-rmd-source" href="#">Download Rmd</a></li>
         </ul>
       </div>
 $elseif(code_folding)$
       <div class="btn-group pull-right">
         <button type="button" class="btn-default btn-xs dropdown-toggle"><span>Code</span> <span class="caret"></span></button>
         <ul class="dropdown-menu" hidden>
-          <li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
-          <li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>$if(source_embed)$
+          <li><a id="show-all-code" href="#">Show All Code</a></li>
+          <li><a id="hide-all-code" href="#">Hide All Code</a></li>$if(source_embed)$
           <li role="separator" class="divider"></li>
-          <li><a id="rmd-download-source" href="#">Download Rmd</a></li>$endif$ $-- source_embed
+          <li><a id="download-rmd-source" href="#">Download Rmd</a></li>$endif$ $-- source_embed
         </ul>
       </div>
 $elseif(source_embed)$
       <div class="btn-group pull-right">
         <button type="button" class="btn-default btn-xs dropdown-toggle"><span>Code</span> <span class="caret"></span></button>
         <ul class="dropdown-menu" hidden>
-          <li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+          <li><a id="download-rmd-source" href="#">Download Rmd</a></li>
         </ul>
       </div>$endif$ $-- code_menu
 $if(title)$
-      <h1 class="title toc-ignore">$title$</h1>$endif$ $-- title
+      <div class="title toc-ignore">$title$</div>$endif$ $-- title
 $if(subtitle)$
-      <h3 class="subtitle">$subtitle$</h3>$endif$ $-- subtitle
+      <div class="subtitle">$subtitle$</div>$endif$ $-- subtitle
 $for(author)$
 $if(author.name)$
-      <h4 class="author">$author.name$</h4>
+      <div class="author">$author.name$</div>
 $if(author.affiliation)$
       <address class="author_afil">$author.affiliation$<br>
 $if(author.email)$
         <a class="author_email" href="mailto:#">$author.email$</a>$endif$ $-- author.email
       </address>$endif$ $-- author.affiliation
 $else$
-      <h4 class="author">$author$</h4>$endif$ $-- author.name
+      <div class="author">$author$</div>$endif$ $-- author.name
 $endfor$ $-- author
 $if(date)$
       <div class="date">$date$</div>$endif$ $-- date

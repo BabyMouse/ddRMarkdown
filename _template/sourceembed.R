@@ -13,7 +13,7 @@ embed_file_a <- function(
     base64enc::base64encode(file)
   )
   htmltools::a(
-    id = "embed-file",
+    id = "embed-rmd-file",
     href = h,
     download = name,
     hidden = NA,
