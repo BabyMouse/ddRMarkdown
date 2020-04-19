@@ -5,13 +5,10 @@
    ** Source: https://baoangiang.com.vn/static/templates/version1/homepage/js/common.js?id=1.002e
    */
   function contentFckFontSize(isUp) {
-    var divMainContentStyle = document.querySelector("div.container-fluid.main-container").style;
-    var fontSize = divMainContentStyle.fontSize == "" ? 100 : parseInt(divMainContentStyle.fontSize);
-    if (isUp) {
-      fontSize += 20;
-    } else {
-      fontSize -= 20;
-    }
-    divMainContentStyle.fontSize = fontSize + "%";
+    let divMainContainer = document.querySelector("div.container-fluid.main-container").style;
+    let fontSize = divMainContainer.fontSize == "" ? 100 : parseInt(divMainContainer.fontSize);
+    if (isUp) fontSize += 20;
+    else fontSize -= 20;
+    divMainContainer.fontSize = fontSize + "%";
   }
 </script>

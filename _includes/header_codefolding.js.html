@@ -1,5 +1,7 @@
 <script>
   /**
+   ** Add Code-Menu to HMTL at run-time.
+   ** Add some features to Code-Box to HMTL at run-time.
    ** Source: https://github.com/rstudio/rmarkdown/blob/master/inst/rmd/h/navigation-1.1/codefolding.js
    */
   /**
@@ -18,7 +20,7 @@
     ["ats", "ats"],
     ["awk", "awk"],
     ["bash", "Bash"],
-    ["bibtex", "bibtex"],
+    ["bibtex", "BibTeX"],
     ["boo", "boo"],
     ["c", "C"],
     ["changelog", "changelog"],
@@ -41,7 +43,7 @@
     ["doxygenlua", "doxygenlua"],
     ["dtd", "DTD"],
     ["eiffel", "eiffel"],
-    ["elixir", "elixir"],
+    ["elixir", "Elixir"],
     ["elm", "elm"],
     ["email", "Email"],
     ["erlang", "erlang"],
@@ -51,11 +53,11 @@
     ["gcc", "gcc"],
     ["glsl", "glsl"],
     ["gnuassembler", "gnuassembler"],
-    ["go", "go"],
+    ["go", "Go"],
     ["hamlet", "hamlet"],
     ["haskell", "haskell"],
     ["haxe", "haxe"],
-    ["html", "HTML"],
+    ["html", "HTML/XHTML"],
     ["idris", "idris"],
     ["ini", "ini"],
     ["isocpp", "isocpp"],
@@ -80,7 +82,7 @@
     ["mandoc", "mandoc"],
     ["markdown", "Markdown"],
     ["mathematica", "mathematica"],
-    ["matlab", "matlab"],
+    ["matlab", "MATLAB/Octave"],
     ["maxima", "maxima"],
     ["mediawiki", "mediawiki"],
     ["metafont", "metafont"],
@@ -92,12 +94,12 @@
     ["mustache", "mustache"],
     ["nasm", "nasm"],
     ["noweb", "noweb"],
-    ["objectivec", "objectivec"],
-    ["objectivecpp", "objectivecpp"],
+    ["objectivec", "Objective-C"],
+    ["objectivecpp", "Objective-C++"],
     ["ocaml", "ocaml"],
     ["octave", "octave"],
     ["opencl", "opencl"],
-    ["pascal", "Pascal"],
+    ["pascal", "Pascal/Delphi"],
     ["perl", "Perl"],
     ["php", "PHP"],
     ["pike", "pike"],
@@ -142,125 +144,91 @@
     ["yaml", "YAML"],
     ["zsh", "Z shell"],
   ]);
+  let btnCode_Handler = function(elm, srcCodeID) {
+    let btnCode_Text = elm.currentTarget.querySelector("span");
+    if (btnCode_Text.innerText == "Hide") {
+      document.getElementById(srcCodeID).setAttribute("hidden", "");
+      btnCode_Text.innerText = "Code";
+    } else {
+      document.getElementById(srcCodeID).removeAttribute("hidden");
+      btnCode_Text.innerText = "Hide";
+    }
+  };
+  let btnMenuCode_Handler = function() {
+    let ulDropdown = document.querySelector("ul.dropdown-menu");
+    if (ulDropdown.getAttribute("hidden") == null) ulDropdown.setAttribute("hidden", "");
+    else ulDropdown.removeAttribute("hidden");
+  };
+  let window_Handler = function(elm) {
+    if (
+      !elm.target.classList.contains("dropdown-toggle") &&
+      !elm.target.parentElement.classList.contains("dropdown-toggle")
+    ) document.querySelector("ul.dropdown-menu").setAttribute("hidden", "");
+  };
+  let btnShowAllCode_Handler = function() {
+    for (let elm of document.querySelectorAll("div.code-collapse")) elm.removeAttribute("hidden");
+    for (let elm of document.querySelectorAll("button.code-box-btn span")) elm.innerText = "Hide";
+  }
+  let btnHideAllCode_Handler = function() {
+    for (let elm of document.querySelectorAll("div.code-collapse")) elm.setAttribute("hidden", "");
+    for (let elm of document.querySelectorAll("button.code-box-btn span")) elm.innerText = "Code";
+  }
 
   function initializeCodeFolding(show) {
     /**
      ** Handlers for show/ hide Code menu
      */
-    document
-      .querySelector("button.dropdown-toggle")
-      .addEventListener("click", function() {
-        var el = document.querySelector("ul.dropdown-menu");
-        if (el.getAttribute("hidden") == null) {
-          el.setAttribute("hidden", "");
-        } else {
-          el.removeAttribute("hidden");
-        }
-      });
-    window.onclick = function(event) {
-      if (
-        !event.target.classList.contains("dropdown-toggle") &&
-        !event.target.parentElement.classList.contains("dropdown-toggle")
-      ) {
-        document.querySelector("ul.dropdown-menu").setAttribute("hidden", "");
-      }
-    };
+    document.querySelector("button.dropdown-toggle").addEventListener("click", btnMenuCode_Handler);
+    window.addEventListener('click', function(elm) {
+      window_Handler(elm);
+    })
     /**
      ** Handlers for show-all and hide all Source code
      */
-    document
-      .getElementById("rmd-show-all-code")
-      .addEventListener("click", function() {
-        document.querySelectorAll("div.r-code-collapse").forEach(function(el) {
-          el.removeAttribute("hidden");
-        });
-        document
-          .querySelectorAll("button.code-folding-btn span")
-          .forEach(function(el) {
-            el.innerText = "Hide";
-          });
-      });
-    document
-      .getElementById("rmd-hide-all-code")
-      .addEventListener("click", function() {
-        document.querySelectorAll("div.r-code-collapse").forEach(function(el) {
-          el.setAttribute("hidden", "");
-        });
-        document
-          .querySelectorAll("button.code-folding-btn span")
-          .forEach(function(el) {
-            el.innerText = "Code";
-          });
-      });
+    document.getElementById("show-all-code").addEventListener("click", btnShowAllCode_Handler);
+    document.getElementById("hide-all-code").addEventListener("click", btnHideAllCode_Handler);
     /**
      ** Handlers for Show/ Hide code button
      */
-    var sourceCodeIndex = 1;
+    let sourceCodeIndex = 1;
+
     // select all R code blocks
-    var rCodeBlocks = document.querySelectorAll("div.sourceCode");
-    rCodeBlocks.forEach(function(el) {
-      var sourceCodeID = "sourceCodeIndex-" + sourceCodeIndex;
-      //var language = el.querySelector("pre").className.substr(11).toUpperCase();
-      var classList = el.querySelector("pre").className.split(' ');
-      var language;
-      for (var i = 0; i < classList.length; i++) {
+    for (let codeBlock of document.querySelectorAll("div.sourceCode")) {
+      let sourceCodeID = "sourceCodeIndex-" + sourceCodeIndex;
+      let classList = codeBlock.querySelector("pre").className.split(' ');
+      let language;
+      for (let i = 0; i < classList.length; i++) {
         language = languages.get(classList[i]);
         if (language != undefined) break;
       }
 
       // create a codefoding bar div
-      var divCodeBar = document.createElement("div");
-      divCodeBar.classList.add("code-folding-bar");
-      divCodeBar.insertAdjacentHTML(
-        "afterbegin",
-        '<span class="sourceCode-index">#' +
-        sourceCodeIndex +
-        '</span> &horbar; <span class="sourceCode-lang">' +
-        language +
-        "</span>"
-      );
-      var btnCode = document.createElement("button");
+      let divCodeBar = document.createElement("div");
+      divCodeBar.classList.add("code-box-bar");
+      divCodeBar.insertAdjacentHTML("afterbegin",
+        `<div class="code-box-label"><span class="sourceCode-index">#${sourceCodeIndex}</span><span>&horbar;</span><span class="sourceCode-lang">${language}</span></div>`);
+      let btnCode = document.createElement("button");
       btnCode.setAttribute("type", "button");
-      btnCode.classList.add(
-        "btn-default",
-        "btn-xs",
-        "code-folding-btn",
-        "pull-right"
-      );
+      btnCode.classList.add("btn-default", "btn-xs", "code-box-btn", "pull-right");
       btnCode.setAttribute("data-target", sourceCodeID);
-      btnCode.insertAdjacentHTML(
-        "afterbegin",
-        "<span>" + (show ? "Hide" : "Code") + "</span>"
-      );
-      btnCode.addEventListener(
-        "click",
-        function() {
-          var btnCodeText = this.querySelector("span");
-          if (btnCodeText.innerText == "Hide") {
-            document
-              .getElementById(this.getAttribute("data-target"))
-              .setAttribute("hidden", "");
-            btnCodeText.innerText = "Code";
-          } else {
-            document
-              .getElementById(this.getAttribute("data-target"))
-              .removeAttribute("hidden");
-            btnCodeText.innerText = "Hide";
-          }
-        },
-        false
-      );
-      divCodeBar.append(btnCode);
-      el.append(divCodeBar);
+      btnCode.insertAdjacentHTML("afterbegin", "<span>" + (show ? "Hide" : "Code") + "</span>");
+      btnCode.addEventListener("click", function(elm) {
+        btnCode_Handler(elm, sourceCodeID);
+      }, false);
+      let divButtonGroup = document.createElement('div');
+      divButtonGroup.classList.add('btn-group');
+      divButtonGroup.append(btnCode);
+      divCodeBar.append(divButtonGroup);
+      codeBlock.append(divCodeBar);
 
       // create a collapsable div to wrap the code in
-      var div = document.createElement("div");
-      div.setAttribute("id", sourceCodeID);
-      div.classList.add("collapse", "r-code-collapse");
-      if (!show) div.setAttribute("hidden", "");
-      div.append(el.querySelector("pre"));
-      el.append(div);
+      let divCollapse = document.createElement("div");
+      divCollapse.setAttribute("id", sourceCodeID);
+      divCollapse.classList.add("collapse", "code-collapse");
+      if (!show) divCollapse.setAttribute("hidden", "");
+      divCollapse.append(codeBlock.querySelector("pre"));
+      codeBlock.append(divCollapse);
       sourceCodeIndex++;
-    });
+    }
   }
 </script>
