@@ -3,8 +3,10 @@
 .RData
 .Ruserdata
 rsconnect
+#
 # File được tự động tạo ra bởi RMarkdown
 *.md
+!/.README.config.md
 /*.html
 #
 # File để thử nghiệm
@@ -16,3 +18,7 @@ MathJax-master
 Respond.js
 bootstrap.css
 jquery.min.js
+#
+# eslint-plugin-prettier package
+node_modules
+package-lock.json
