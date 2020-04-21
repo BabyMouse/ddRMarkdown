@@ -1,0 +1,25 @@
+---
+title: "Cấu hình ddRMarkdown"
+subtitle: "ddRMarkdown Configuration"
+author: "Trát Quang Thụy"
+date: "4/21/2020"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Cấu hình Workspace để làm việc với  [Visual Studio Code](https://code.visualstudio.com/).
+
+# Cài đặt [Visual Studio Code](https://code.visualstudio.com/)
+
+* Download: https://code.visualstudio.com/
+
+# Cài đặt [Node.js](https://nodejs.org/en/)
+
+Do chúng ta cần  [npm](https://www.npmjs.com/) để cài đặt 
+
+* Download: https://nodejs.org/en/
