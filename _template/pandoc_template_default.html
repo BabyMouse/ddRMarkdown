@@ -73,22 +73,15 @@ $elseif(source_embed)$
     ** Code menu
     ** - Source Embed
     */
-    document.addEventListener('readystatechange', function() {
-      if (document.readyState === "complete"){
-        // Handlers for show/ hide Code menu
-        document.querySelector('button.dropdown-toggle').addEventListener('click', function() {
-          var el = document.querySelector('ul.dropdown-menu');
-          if (el.getAttribute('hidden') == null) {
-            el.setAttribute('hidden', '');
-          } else {
-            el.removeAttribute('hidden');
-          }
+    document.addEventListener('readystatechange', function () {
+      if (document.readyState === "complete") {
+        /**
+        ** Handlers for show/ hide Code menu
+        */
+        document.querySelector("button.dropdown-toggle").addEventListener("click", btnMenuCode_Handler);
+        window.addEventListener("click", function (elm) {
+          window_Handler(elm);
         });
-        window.onclick = function(event) {
-          if (!event.target.classList.contains('dropdown-toggle') && !event.target.parentElement.classList.contains('dropdown-toggle')) {
-            document.querySelector('ul.dropdown-menu').setAttribute('hidden', '');
-          }
-        };
         // Handlers for SourceEmbed
         initializeSourceEmbed();
       }
