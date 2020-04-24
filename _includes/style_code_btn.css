@@ -30,7 +30,7 @@ button {
 
 button.active,
 button:active {
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   outline: 0;
 }
 
@@ -135,7 +135,7 @@ button.dropdown-toggle span {
   min-width: 50px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   position: absolute;
   top: 100%;
   left: 0;
@@ -147,7 +147,7 @@ button.dropdown-toggle span {
 }
 
 .dropdown-menu * {
-  font-size: 1.1rem
+  font-size: 1.1rem;
 }
 
 .dropdown-menu > li {
@@ -183,7 +183,7 @@ button.dropdown-toggle span {
 }
 
 .code-box-bar {
-  background-color: beige;
+  background-color: #d2dbe4 /*beige*/;
   width: 100%;
   border: 1px solid #ccc;
   position: relative;
@@ -219,7 +219,8 @@ button.dropdown-toggle span {
   margin-left: 10px;
 }
 
-.code-box-btn {}
+.code-box-btn {
+}
 
 #rmd-source-code {
   display: none;

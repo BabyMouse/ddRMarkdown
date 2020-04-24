@@ -3,59 +3,45 @@
  * ref: https://prettier.io/docs/en/options.html
  */
 module.exports = {
-  semi: false,
   overrides: [
     {
-      files: "*.test.js",
+      files: ['*.html'],
       options: {
-        semi: true
+        printWidth: 180,
+        tabWidth: 2,
+        //Print semicolons at the ends of statements.
+        semi: true,
+        //Print trailing commas wherever possible when multi-line.
+        //(A single - line array, for example, never gets trailing commas.)
+        trailingComma: 'none',
+        bracketSpacing: false,
+        singleQuote: true
       }
     },
     {
-      files: ["*.html"],
-      options: {
-        printWidth: 150,
-        tabWidth: 2
-      }
-    },
-    {
-      files: ["*.js.html"],
+      files: ['*.js', '*.prettierrc.js'],
       options: {
         printWidth: 180,
         tabWidth: 2,
         semi: true,
-        bracketSpacing: false
+        trailingComma: 'none',
+        bracketSpacing: false,
+        singleQuote: true
       }
     },
     {
-      files: ["*.css"],
+      files: ['*.css'],
       options: {
         tabWidth: 2
       }
     },
     {
-      files: ["*.js"],
-      options: {
-        printWidth: 180,
-        tabWidth: 2,
-        semi: true,
-        bracketSpacing: false
-      }
-    },
-    {
-      files: ["*.json", ".eslintrc"],
-      options: {
-        printWidth: 150,
-        tabWidth: 2
-      }
-    },
-    {
-      files: [".prettierrc.js"],
+      files: ['*.json', '*.code-workspace', '.eslintrc'],
       options: {
         printWidth: 150,
         tabWidth: 2,
-        semi: true,
-        trailingComma: "none"
+        trailingComma: 'none',
+        singleQuote: true
       }
     }
   ]

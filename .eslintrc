@@ -1,25 +1,28 @@
 /**
  * ref: https://eslint.org/docs/user-guide/configuring
  * ref: https://eslint.org/docs/rules/
+ * ref: https://www.npmjs.com/package/eslint-config-prettier
  */
 {
   "env": {
     "es6": true
   },
   "extends": ["plugin:prettier/recommended"],
-  //"plugins": ["prettier"],
   "rules": {
-    //"prettier/prettier": ["error"],
-    /*
-    "space-before-function-paren": [
+    "lines-around-comment": [
       "error",
       {
-        "anonymous": "never",
-        "named": "never",
-        "asyncArrow": "never"
+        "beforeBlockComment": true,
+        "afterBlockComment": true,
+        "beforeLineComment": true,
+        "afterLineComment": true,
+        "allowBlockStart": true,
+        "allowBlockEnd": true,
+        "allowObjectStart": true,
+        "allowObjectEnd": true,
+        "allowArrayStart": true,
+        "allowArrayEnd": true
       }
     ]
-    */
-    "space-before-function-paren": ["error", "never"]
   }
 }

@@ -7,7 +7,7 @@ output:
   html_document: 
     code_download: yes
     code_folding: show
-    css: style.css
+    css: "_includes/style.css"
     df_print: default
     highlight: haddock
     keep_md: yes
@@ -16,8 +16,8 @@ output:
     #mathjax: local
     #self_contained: false
     includes:
-      in_header: _header_MathJax.html
-      before_body: doc_prefix.html
+      in_header: "_includes/header_MathJax.js.html"
+      before_body: "_includes/body_prefix.html"
 ---
 
 ```{r setup, include=FALSE}
@@ -67,13 +67,13 @@ options(knitr.kable.NA = '')
 
 # Load dữ liệu và các thư viện cần dùng
 ```{r}
-html_entitiesPathFile = "G:/R/Projects/ddRMarkdown/_datasets/html_entities.csv"
+html_entitiesPathFile = "_datasets/html_entities.csv"
 html_entities = read.csv(html_entitiesPathFile, encoding = "UTF-8")
 
-escapePathFile = "G:/R/Projects/ddRMarkdown/_datasets/escape.csv"
+escapePathFile = "_datasets/escape.csv"
 escape = read.csv(escapePathFile, encoding = "UTF-8")
 
-tex_mmlPathFile = "G:/R/Projects/ddRMarkdown/_datasets/tex_mml.csv"
+tex_mmlPathFile = "_datasets/tex_mml.csv"
 tex_mml = read.csv(tex_mmlPathFile, encoding = "UTF-8")
 
 library(kableExtra)

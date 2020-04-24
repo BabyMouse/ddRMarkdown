@@ -30,7 +30,7 @@ code.redmark {
 
 pre {
   color: #333;
-  background-color: #f5f5f5;
+  background-color: #fcfcfc;
   font-size: 1.4rem;
   line-height: 1.5;
   display: block;
@@ -148,10 +148,12 @@ code span.an {
 }
 
 /* Attribute */
-code span.at {}
+code span.at {
+}
 
 /* BuiltIn */
-code span.bu {}
+code span.bu {
+}
 
 /* ControlFlow */
 code span.cf {
@@ -164,7 +166,8 @@ code span.ch {
 }
 
 /* Constant */
-code span.cn {}
+code span.cn {
+}
 
 /* Comment */
 code span.co {
@@ -188,10 +191,12 @@ code span.er {
 }
 
 /* Extension */
-code span.ex {}
+code span.ex {
+}
 
 /* Import */
-code span.im {}
+code span.im {
+}
 
 /* Information */
 code span.in {
@@ -204,7 +209,8 @@ code span.kw {
 }
 
 /* Operator */
-code span.op {}
+code span.op {
+}
 
 /* Other */
 code span.ot {
@@ -232,7 +238,8 @@ code span.st {
 }
 
 /* Variable */
-code span.va {}
+code span.va {
+}
 
 /* VerbatimString */
 code span.vs {
