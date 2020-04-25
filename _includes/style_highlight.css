@@ -2,13 +2,6 @@
 *! Style này chỉ dành cho RMarkdown không xài Theme.
 ** - Highlight.
 */
-code,
-kbd,
-pre,
-samp {
-  font-family: Consolas, monospace;
-}
-
 p > code,
 li > code {
   border: solid 1px #efeee6;

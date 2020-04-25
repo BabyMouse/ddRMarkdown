@@ -12,8 +12,26 @@
 }
 
 html {
-  font-family: sans-serif;
+  /**
+   ** Geneva: Apple
+   ** 'Segoe UI', Verdana, Tahoma: Microsoft
+   ** Helvetica: Adobe
+   *  ref: http://www.identifont.com
+   */
+  font-family: Geneva, 'Segoe UI', Verdana, Tahoma, 'Helvetica Neue', Helvetica, sans-serif;
   font-size: 20px;
+}
+
+code,
+kbd,
+pre,
+samp {
+  /**
+   ** Monaco: Apple
+   ** Consolas: Microsoft
+   *  ref: http://www.identifont.com
+   */
+  font-family: Monaco, Consolas, monospace;
 }
 
 body {
@@ -21,7 +39,6 @@ body {
   background-color: #fff;
   font-size: 1.5rem;
   line-height: 1.5;
-  font-family: Tahoma, "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0;
 }
 
@@ -71,7 +88,7 @@ a:hover {
 .panel-body::after,
 .panel-body::before {
   display: table;
-  content: " ";
+  content: ' ';
 }
 
 .container-fluid {
