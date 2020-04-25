@@ -179,7 +179,7 @@
       "editor.quickSuggestions": false
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.fontFamily": "Fira Code",
+    "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
     "editor.fontLigatures": true,
     "editor.formatOnPaste": false,
     "editor.formatOnSave": true,

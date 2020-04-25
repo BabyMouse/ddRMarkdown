@@ -32,7 +32,10 @@ module.exports = {
     {
       files: ['*.css'],
       options: {
-        tabWidth: 2
+        printWidth: 180,
+        tabWidth: 2,
+        bracketSpacing: true,
+        singleQuote: true
       }
     },
     {
